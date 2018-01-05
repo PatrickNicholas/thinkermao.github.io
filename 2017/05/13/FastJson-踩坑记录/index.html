@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.0.0">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Blog, Hashcoding.net, C++, GO, Java, Destribute, 分布式, 存储" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="about me">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about me">
+<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="about me">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-05T15:25:54.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about me">
+<meta name="twitter:description" content="about me">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
+
+
+
+
+
+  <title>FastJson 踩坑记录 | Coding</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c84227c882bfc8efa4a1edc9bc8f47e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+
+            
+              首页
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+
+            
+              关于
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+
+            
+              标签
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+
+            
+              分类
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+
+            
+              归档
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+
+            
+              站点地图
+            
+
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hashcoding.net/2017/05/13/FastJson-踩坑记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Patrick">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">FastJson 踩坑记录</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-13T20:49:05+08:00">2017-05-13</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Debug-日志/" itemprop="url" rel="index">
+                    <span itemprop="name">Debug 日志</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/13/FastJson-踩坑记录/" class="leancloud_visitors" data-flag-title="FastJson 踩坑记录">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>关键字: fastjson stackoverflow<br>本文使用的版本是 1.2.32</p>
+</blockquote>
+<p>fastjson 是阿里开源的Json格式化工具库。在项目中使用了fastjson，然后出现了一个奇怪的bug。程序在序列化的时候递归调用了我调用序列化函数的函数。简单点说就是序列化中递归地调用了自己，最后stackoverflow。</p>
+<p>下面是是使用的代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Host &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    </span><br><span class="line">    public Host() &#123;&#125;</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">        this.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    public static Host factory(byte [] bytes) &#123;</span><br><span class="line">        return JSON.parseObjec(bytes, Host.class);</span><br><span class="line">    &#125;</span><br><span class="line">    public byte[] getJson() &#123;</span><br><span class="line">        return JSON.toJSONBytes(this);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在程序中某处使用<code>byte []bytes = host.getJson()</code>，出现的错误大概如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">java.lang.StackOverflowError</span><br><span class="line">	at com.alibaba.fastjson.serializer.JSONSerializer.setContext(JSONSerializer.java:113)</span><br><span class="line">	at com.alibaba.fastjson.serializer.JSONSerializer.setContext(JSONSerializer.java:109)</span><br><span class="line">	at com.alibaba.fastjson.serializer.ASMSerializer_1_Host.write(Unknown Source)</span><br><span class="line">	at com.alibaba.fastjson.serializer.JSONSerializer.write(JSONSerializer.java:275)</span><br><span class="line">	at com.alibaba.fastjson.JSON.toJSONBytes(JSON.java:679)</span><br><span class="line">	at com.alibaba.fastjson.JSON.toJSONBytes(JSON.java:605)</span><br><span class="line">	at com.alibaba.fastjson.JSON.toJSONBytes(JSON.java:598)</span><br><span class="line">	at xxx.Host.getBytes(Host.java:38)</span><br><span class="line">	at com.alibaba.fastjson.serializer.ASMSerializer_1_Host.write(Unknown Source)</span><br><span class="line">	at com.alibaba.fastjson.serializer.JSONSerializer.write(JSONSerializer.java:275)</span><br><span class="line">	at com.alibaba.fastjson.JSON.toJSONBytes(JSON.java:679)</span><br><span class="line">	at com.alibaba.fastjson.JSON.toJSONBytes(JSON.java:605)</span><br><span class="line">	at com.alibaba.fastjson.JSON.toJSONBytes(JSON.java:598)</span><br><span class="line">	at xxx.Host.getBytes(Host.java:38)</span><br></pre></td></tr></table></figure>
+<p>分析调用堆栈发现fastjson在生成的<code>serializer.ASMSerializer\_1\_Host</code>中调用了<code>Host.getJson()</code>导致了递归。排除自己的错误后，就将代码定位到了fastjson中，应该是fastjson中出了问题。然后开始调试代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public static byte[] toJSONBytes(Object object, SerializeConfig config, int defaultFeatures, SerializerFeature... features) &#123;</span><br><span class="line">    SerializeWriter out = new SerializeWriter(null, defaultFeatures, features);</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        JSONSerializer serializer = new JSONSerializer(out, config);</span><br><span class="line">        serializer.write(object);</span><br><span class="line">        return out.toBytes(IOUtils.UTF8);</span><br><span class="line">    &#125; finally &#123;</span><br><span class="line">        out.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>按照栈调用顺序来看，出错点应该在<code>serializer.write(object)</code>内部，继续深入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public final void write(Object object) &#123;</span><br><span class="line">    if (object == null) &#123;</span><br><span class="line">        out.writeNull();</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Class&lt;?&gt; clazz = object.getClass();</span><br><span class="line">    ObjectSerializer writer = getObjectWriter(clazz);</span><br><span class="line"></span><br><span class="line">    try &#123;</span><br><span class="line">        writer.write(this, object, null, null, 0);</span><br><span class="line">    &#125; catch (IOException e) &#123;</span><br><span class="line">        throw new JSONException(e.getMessage(), e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里发现通过<code>getObjectWriter(clazz)</code>取得了<code>host</code>的<code>writer</code>，想必就是自动生成的<code>ASMSerializer_1_Host</code>实例。本来想进入<code>writer.write</code>中观察，没有源代码只好放弃。然后将目标放到<code>getObjectWriter</code>中，看看在<code>writer</code>实例构造过程中能不能找到点线索。</p>
+<p>经过几层跳转，来到了真正的<code>getObjectWriter</code>中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br></pre></td><td class="code"><pre><span class="line">private ObjectSerializer getObjectWriter(Class&lt;?&gt; clazz, boolean create) &#123;</span><br><span class="line">    ObjectSerializer writer = serializers.get(clazz);</span><br><span class="line"></span><br><span class="line">    if (writer == null) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            final ClassLoader classLoader = Thread.currentThread().getContextClassLoader();</span><br><span class="line">            for (Object o : ServiceLoader.load(AutowiredObjectSerializer.class, classLoader)) &#123;</span><br><span class="line">                if (!(o instanceof AutowiredObjectSerializer)) &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                AutowiredObjectSerializer autowired = (AutowiredObjectSerializer) o;</span><br><span class="line">                for (Type forType : autowired.getAutowiredFor()) &#123;</span><br><span class="line">                    put(forType, autowired);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (ClassCastException ex) &#123;</span><br><span class="line">            // skip</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        writer = serializers.get(clazz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (writer == null) &#123;</span><br><span class="line">        final ClassLoader classLoader = JSON.class.getClassLoader();</span><br><span class="line">        if (classLoader != Thread.currentThread().getContextClassLoader()) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                for (Object o : ServiceLoader.load(AutowiredObjectSerializer.class, classLoader)) &#123;</span><br><span class="line"></span><br><span class="line">                    if (!(o instanceof AutowiredObjectSerializer)) &#123;</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    AutowiredObjectSerializer autowired = (AutowiredObjectSerializer) o;</span><br><span class="line">                    for (Type forType : autowired.getAutowiredFor()) &#123;</span><br><span class="line">                        put(forType, autowired);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (ClassCastException ex) &#123;</span><br><span class="line">                // skip</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            writer = serializers.get(clazz);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (writer == null) &#123;</span><br><span class="line">        if (Map.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, MapSerializer.instance);</span><br><span class="line">        &#125; else if (List.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, ListSerializer.instance);</span><br><span class="line">        &#125; else if (Collection.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, CollectionCodec.instance);</span><br><span class="line">        &#125; else if (Date.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, DateCodec.instance);</span><br><span class="line">        &#125; else if (JSONAware.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, JSONAwareSerializer.instance);</span><br><span class="line">        &#125; else if (JSONSerializable.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, JSONSerializableSerializer.instance);</span><br><span class="line">        &#125; else if (JSONStreamAware.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, MiscCodec.instance);</span><br><span class="line">        &#125; else if (clazz.isEnum() || (clazz.getSuperclass() != null &amp;&amp; clazz.getSuperclass().isEnum())) &#123;</span><br><span class="line">            JSONType jsonType = clazz.getAnnotation(JSONType.class);</span><br><span class="line">            if (jsonType != null &amp;&amp; jsonType.serializeEnumAsJavaBean()) &#123;</span><br><span class="line">                put(clazz, createJavaBeanSerializer(clazz));</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                put(clazz, EnumSerializer.instance);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; else if (clazz.isArray()) &#123;</span><br><span class="line">            Class&lt;?&gt; componentType = clazz.getComponentType();</span><br><span class="line">            ObjectSerializer compObjectSerializer = getObjectWriter(componentType);</span><br><span class="line">            put(clazz, new ArraySerializer(componentType, compObjectSerializer));</span><br><span class="line">        &#125; else if (Throwable.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            SerializeBeanInfo beanInfo = TypeUtils.buildBeanInfo(clazz, null, propertyNamingStrategy);</span><br><span class="line">            beanInfo.features |= SerializerFeature.WriteClassName.mask;</span><br><span class="line">            put(clazz, new JavaBeanSerializer(beanInfo));</span><br><span class="line">        &#125; else if (TimeZone.class.isAssignableFrom(clazz) || Map.Entry.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, MiscCodec.instance);</span><br><span class="line">        &#125; else if (Appendable.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, AppendableSerializer.instance);</span><br><span class="line">        &#125; else if (Charset.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, ToStringSerializer.instance);</span><br><span class="line">        &#125; else if (Enumeration.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, EnumerationSerializer.instance);</span><br><span class="line">        &#125; else if (Calendar.class.isAssignableFrom(clazz) //</span><br><span class="line">                || XMLGregorianCalendar.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, CalendarCodec.instance);</span><br><span class="line">        &#125; else if (Clob.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, ClobSeriliazer.instance);</span><br><span class="line">        &#125; else if (TypeUtils.isPath(clazz)) &#123;</span><br><span class="line">            put(clazz, ToStringSerializer.instance);</span><br><span class="line">        &#125; else if (Iterator.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">            put(clazz, MiscCodec.instance);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            String className = clazz.getName();</span><br><span class="line">            if (className.startsWith(&quot;java.awt.&quot;) //</span><br><span class="line">                &amp;&amp; AwtCodec.support(clazz) //</span><br><span class="line">            ) &#123;</span><br><span class="line">                // awt</span><br><span class="line">                if (!awtError) &#123;</span><br><span class="line">                    try &#123;</span><br><span class="line">                        put(Class.forName(&quot;java.awt.Color&quot;), AwtCodec.instance);</span><br><span class="line">                        put(Class.forName(&quot;java.awt.Font&quot;), AwtCodec.instance);</span><br><span class="line">                        put(Class.forName(&quot;java.awt.Point&quot;), AwtCodec.instance);</span><br><span class="line">                        put(Class.forName(&quot;java.awt.Rectangle&quot;), AwtCodec.instance);</span><br><span class="line">                    &#125; catch (Throwable e) &#123;</span><br><span class="line">                        awtError = true;</span><br><span class="line">                        // skip</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                return  AwtCodec.instance;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            // jdk8</span><br><span class="line">            if ((!jdk8Error) //</span><br><span class="line">                &amp;&amp; (className.startsWith(&quot;java.time.&quot;) //</span><br><span class="line">                    || className.startsWith(&quot;java.util.Optional&quot;) //</span><br><span class="line">                    || className.equals(&quot;java.util.concurrent.atomic.LongAdder&quot;)</span><br><span class="line">                    || className.equals(&quot;java.util.concurrent.atomic.DoubleAdder&quot;)</span><br><span class="line">                )) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    put(Class.forName(&quot;java.time.LocalDateTime&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.LocalDate&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.LocalTime&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.ZonedDateTime&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.OffsetDateTime&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.OffsetTime&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.ZoneOffset&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.ZoneRegion&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.Period&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.Duration&quot;), Jdk8DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.time.Instant&quot;), Jdk8DateCodec.instance);</span><br><span class="line"></span><br><span class="line">                    put(Class.forName(&quot;java.util.Optional&quot;), OptionalCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.util.OptionalDouble&quot;), OptionalCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.util.OptionalInt&quot;), OptionalCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.util.OptionalLong&quot;), OptionalCodec.instance);</span><br><span class="line"></span><br><span class="line">                    put(Class.forName(&quot;java.util.concurrent.atomic.LongAdder&quot;), AdderSerializer.instance);</span><br><span class="line">                    put(Class.forName(&quot;java.util.concurrent.atomic.DoubleAdder&quot;), AdderSerializer.instance);</span><br><span class="line">                    </span><br><span class="line">                    writer = serializers.get(clazz);</span><br><span class="line">                    if (writer != null) &#123;</span><br><span class="line">                        return writer;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; catch (Throwable e) &#123;</span><br><span class="line">                    // skip</span><br><span class="line">                    jdk8Error = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            if ((!oracleJdbcError) //</span><br><span class="line">                &amp;&amp; className.startsWith(&quot;oracle.sql.&quot;)) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    put(Class.forName(&quot;oracle.sql.DATE&quot;), DateCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;oracle.sql.TIMESTAMP&quot;), DateCodec.instance);</span><br><span class="line">                    </span><br><span class="line">                    writer = serializers.get(clazz);</span><br><span class="line">                    if (writer != null) &#123;</span><br><span class="line">                        return writer;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; catch (Throwable e) &#123;</span><br><span class="line">                    // skip</span><br><span class="line">                    oracleJdbcError = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            if ((!springfoxError) //</span><br><span class="line">                &amp;&amp; className.equals(&quot;springfox.documentation.spring.web.json.Json&quot;)) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    put(Class.forName(&quot;springfox.documentation.spring.web.json.Json&quot;), //</span><br><span class="line">                        SwaggerJsonSerializer.instance);</span><br><span class="line">                    </span><br><span class="line">                    writer = serializers.get(clazz);</span><br><span class="line">                    if (writer != null) &#123;</span><br><span class="line">                        return writer;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">                    // skip</span><br><span class="line">                    springfoxError = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if ((!guavaError) //</span><br><span class="line">                    &amp;&amp; className.startsWith(&quot;com.google.common.collect.&quot;)) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    put(Class.forName(&quot;com.google.common.collect.HashMultimap&quot;), //</span><br><span class="line">                            GuavaCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;com.google.common.collect.LinkedListMultimap&quot;), //</span><br><span class="line">                            GuavaCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;com.google.common.collect.ArrayListMultimap&quot;), //</span><br><span class="line">                            GuavaCodec.instance);</span><br><span class="line">                    put(Class.forName(&quot;com.google.common.collect.TreeMultimap&quot;), //</span><br><span class="line">                            GuavaCodec.instance);</span><br><span class="line"></span><br><span class="line">                    writer = serializers.get(clazz);</span><br><span class="line">                    if (writer != null) &#123;</span><br><span class="line">                        return writer;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">                    // skip</span><br><span class="line">                    guavaError = true;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (className.equals(&quot;net.sf.json.JSONNull&quot;)) &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    put(Class.forName(&quot;net.sf.json.JSONNull&quot;), //</span><br><span class="line">                            MiscCodec.instance);</span><br><span class="line">                &#125; catch (ClassNotFoundException e) &#123;</span><br><span class="line">                    // skip</span><br><span class="line">                &#125;</span><br><span class="line">                writer = serializers.get(clazz);</span><br><span class="line">                if (writer != null) &#123;</span><br><span class="line">                    return writer;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (TypeUtils.isProxy(clazz)) &#123;</span><br><span class="line">                Class&lt;?&gt; superClazz = clazz.getSuperclass();</span><br><span class="line"></span><br><span class="line">                ObjectSerializer superWriter = getObjectWriter(superClazz);</span><br><span class="line">                put(clazz, superWriter);</span><br><span class="line">                return superWriter;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (create) &#123;</span><br><span class="line">                put(clazz, createJavaBeanSerializer(clazz));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        writer = serializers.get(clazz);</span><br><span class="line">    &#125;</span><br><span class="line">    return writer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>简单扫描代码逻辑，发现<code>writer</code>是通过<code>serializers.get(clazz)</code>获取的。而代码中分别从<code>Thread.currentThread().getContextClassLoader</code>、<code>JSON.class.getClassLoader</code>以及最后对一下常见类分析来填充<code>serializers</code>。最后一种办法的末尾，走到了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">put(clazz, createJavaBeanSerializer(clazz));</span><br></pre></td></tr></table></figure>
+<p>可以发现逻辑是实在找不到，使用<code>createJavaBeanSerializer(clazz)</code>来创建<code>clazz</code>对应的<code>writer</code>。看来我们的目标应该是这个<code>createJavaBeanSerializer</code>函数，所以进一步深入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private final ObjectSerializer createJavaBeanSerializer(Class&lt;?&gt; clazz) &#123;</span><br><span class="line">    SerializeBeanInfo beanInfo = TypeUtils.buildBeanInfo(clazz, null, propertyNamingStrategy, fieldBased);</span><br><span class="line">    if (beanInfo.fields.length == 0 &amp;&amp; Iterable.class.isAssignableFrom(clazz)) &#123;</span><br><span class="line">        return MiscCodec.instance;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return createJavaBeanSerializer(beanInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先调用<code>TypeUtils.buildBeanInfo</code>来生成<code>SerializerBeanInfo</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">public static SerializeBeanInfo buildBeanInfo(Class&lt;?&gt; beanType //</span><br><span class="line">        , Map&lt;String, String&gt; aliasMap //</span><br><span class="line">        , PropertyNamingStrategy propertyNamingStrategy //</span><br><span class="line">        , boolean fieldBased //</span><br><span class="line">) &#123;</span><br><span class="line">    </span><br><span class="line">    JSONType jsonType = beanType.getAnnotation(JSONType.class);</span><br><span class="line"></span><br><span class="line">    // fieldName,field ，先生成fieldName的快照，减少之后的findField的轮询</span><br><span class="line">    Map&lt;String, Field&gt; fieldCacheMap = new HashMap&lt;String, Field&gt;();</span><br><span class="line">    ParserConfig.parserAllFieldToCache(beanType, fieldCacheMap);</span><br><span class="line"></span><br><span class="line">    List&lt;FieldInfo&gt; fieldInfoList = fieldBased</span><br><span class="line">            ? computeGettersWithFieldBase(beanType, aliasMap, false, propertyNamingStrategy) //</span><br><span class="line">            : computeGetters(beanType, jsonType, aliasMap, fieldCacheMap, false, propertyNamingStrategy);</span><br><span class="line">    FieldInfo[] fields = new FieldInfo[fieldInfoList.size()];</span><br><span class="line">    fieldInfoList.toArray(fields);</span><br><span class="line">    </span><br><span class="line">    String[] orders = null;</span><br><span class="line"></span><br><span class="line">    final int features;</span><br><span class="line">    String typeName = null;</span><br><span class="line">    if (jsonType != null) &#123;</span><br><span class="line">        orders = jsonType.orders();</span><br><span class="line">        typeName = jsonType.typeName();</span><br><span class="line">        if (typeName.length() == 0) &#123;</span><br><span class="line">            typeName = null;</span><br><span class="line">        &#125;</span><br><span class="line">        features = SerializerFeature.of(jsonType.serialzeFeatures());</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        features = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    FieldInfo[] sortedFields;</span><br><span class="line">    List&lt;FieldInfo&gt; sortedFieldList;</span><br><span class="line">    if (orders != null &amp;&amp; orders.length != 0) &#123;</span><br><span class="line">        sortedFieldList = fieldBased</span><br><span class="line">                ? computeGettersWithFieldBase(beanType, aliasMap, true, propertyNamingStrategy) //</span><br><span class="line">                : computeGetters(beanType, jsonType, aliasMap,fieldCacheMap, true, propertyNamingStrategy);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        sortedFieldList = new ArrayList&lt;FieldInfo&gt;(fieldInfoList);</span><br><span class="line">        Collections.sort(sortedFieldList);</span><br><span class="line">    &#125;</span><br><span class="line">    sortedFields = new FieldInfo[sortedFieldList.size()];</span><br><span class="line">    sortedFieldList.toArray(sortedFields);</span><br><span class="line">    </span><br><span class="line">    if (Arrays.equals(sortedFields, fields)) &#123;</span><br><span class="line">        sortedFields = fields;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return new SerializeBeanInfo(beanType, jsonType, typeName, features, fields, sortedFields);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中<code>parserAllFieldToCache</code>将字段保存起来，减少访问次数。紧接着设置<code>fieldInfoList</code>的值，此时<code>fieldBase</code>为<code>false</code>，所以进入了<code>computeGetters</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br></pre></td><td class="code"><pre><span class="line">public static List&lt;FieldInfo&gt; computeGetters(Class&lt;?&gt; clazz, //</span><br><span class="line">                                            JSONType jsonType, //</span><br><span class="line">                                            Map&lt;String, String&gt; aliasMap, //</span><br><span class="line">                                            Map&lt;String, Field&gt; fieldCacheMap, //</span><br><span class="line">                                            boolean sorted, //</span><br><span class="line">                                            PropertyNamingStrategy propertyNamingStrategy //</span><br><span class="line">) &#123;</span><br><span class="line">    Map&lt;String, FieldInfo&gt; fieldInfoMap = new LinkedHashMap&lt;String, FieldInfo&gt;();</span><br><span class="line"></span><br><span class="line">    for (Method method : clazz.getMethods()) &#123;</span><br><span class="line">        String methodName = method.getName();</span><br><span class="line">        int ordinal = 0, serialzeFeatures = 0, parserFeatures = 0;</span><br><span class="line">        String label = null;</span><br><span class="line"></span><br><span class="line">        if (Modifier.isStatic(method.getModifiers())) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (method.getReturnType().equals(Void.TYPE)) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (method.getParameterTypes().length != 0) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (method.getReturnType() == ClassLoader.class) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (method.getName().equals(&quot;getMetaClass&quot;)</span><br><span class="line">            &amp;&amp; method.getReturnType().getName().equals(&quot;groovy.lang.MetaClass&quot;)) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        JSONField annotation = method.getAnnotation(JSONField.class);</span><br><span class="line"></span><br><span class="line">        if (annotation == null) &#123;</span><br><span class="line">            annotation = getSuperMethodAnnotation(clazz, method);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (annotation != null) &#123;</span><br><span class="line">            if (!annotation.serialize()) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ordinal = annotation.ordinal();</span><br><span class="line">            serialzeFeatures = SerializerFeature.of(annotation.serialzeFeatures());</span><br><span class="line">            parserFeatures = Feature.of(annotation.parseFeatures());</span><br><span class="line"></span><br><span class="line">            if (annotation.name().length() != 0) &#123;</span><br><span class="line">                String propertyName = annotation.name();</span><br><span class="line"></span><br><span class="line">                if (aliasMap != null) &#123;</span><br><span class="line">                    propertyName = aliasMap.get(propertyName);</span><br><span class="line">                    if (propertyName == null) &#123;</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                FieldInfo fieldInfo = new FieldInfo(propertyName, method, null, clazz, null, ordinal,</span><br><span class="line">                                                    serialzeFeatures, parserFeatures, annotation, null, label);</span><br><span class="line">                fieldInfoMap.put(propertyName, fieldInfo);</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (annotation.label().length() != 0) &#123;</span><br><span class="line">                label = annotation.label();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (methodName.startsWith(&quot;get&quot;)) &#123;</span><br><span class="line">            if (methodName.length() &lt; 4) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (methodName.equals(&quot;getClass&quot;)) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (methodName.equals(&quot;getDeclaringClass&quot;) &amp;&amp; clazz.isEnum()) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            char c3 = methodName.charAt(3);</span><br><span class="line"></span><br><span class="line">            String propertyName;</span><br><span class="line">            if (Character.isUpperCase(c3) //</span><br><span class="line">                || c3 &gt; 512 // for unicode method name</span><br><span class="line">            ) &#123;</span><br><span class="line">            if (compatibleWithJavaBean) &#123;</span><br><span class="line">                    propertyName = decapitalize(methodName.substring(3));</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    propertyName = Character.toLowerCase(methodName.charAt(3)) + methodName.substring(4);</span><br><span class="line">                &#125;</span><br><span class="line">                propertyName = getPropertyNameByCompatibleFieldName(fieldCacheMap, methodName,  propertyName,3);</span><br><span class="line">            &#125; else if (c3 == &apos;_&apos;) &#123;</span><br><span class="line">                propertyName = methodName.substring(4);</span><br><span class="line">            &#125; else if (c3 == &apos;f&apos;) &#123;</span><br><span class="line">                propertyName = methodName.substring(3);</span><br><span class="line">            &#125; else if (methodName.length() &gt;= 5 &amp;&amp; Character.isUpperCase(methodName.charAt(4))) &#123;</span><br><span class="line">                propertyName = decapitalize(methodName.substring(3));</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            boolean ignore = isJSONTypeIgnore(clazz, propertyName);</span><br><span class="line"></span><br><span class="line">            if (ignore) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            //假如bean的field很多的情况一下，轮询时将大大降低效率</span><br><span class="line">            Field field = ParserConfig.getFieldFromCache(propertyName, fieldCacheMap);</span><br><span class="line"></span><br><span class="line">            if (field == null &amp;&amp; propertyName.length() &gt; 1) &#123;</span><br><span class="line">                char ch = propertyName.charAt(1);</span><br><span class="line">                if (ch &gt;= &apos;A&apos; &amp;&amp; ch &lt;= &apos;Z&apos;) &#123;</span><br><span class="line">                    String javaBeanCompatiblePropertyName = decapitalize(methodName.substring(3));</span><br><span class="line">                    field = ParserConfig.getFieldFromCache(javaBeanCompatiblePropertyName, fieldCacheMap);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            JSONField fieldAnnotation = null;</span><br><span class="line">            if (field != null) &#123;</span><br><span class="line">                fieldAnnotation = field.getAnnotation(JSONField.class);</span><br><span class="line"></span><br><span class="line">                if (fieldAnnotation != null) &#123;</span><br><span class="line">                    if (!fieldAnnotation.serialize()) &#123;</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    ordinal = fieldAnnotation.ordinal();</span><br><span class="line">                    serialzeFeatures = SerializerFeature.of(fieldAnnotation.serialzeFeatures());</span><br><span class="line">                    parserFeatures = Feature.of(fieldAnnotation.parseFeatures());</span><br><span class="line"></span><br><span class="line">                    if (fieldAnnotation.name().length() != 0) &#123;</span><br><span class="line">                        propertyName = fieldAnnotation.name();</span><br><span class="line"></span><br><span class="line">                        if (aliasMap != null) &#123;</span><br><span class="line">                            propertyName = aliasMap.get(propertyName);</span><br><span class="line">                            if (propertyName == null) &#123;</span><br><span class="line">                                continue;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    if (fieldAnnotation.label().length() != 0) &#123;</span><br><span class="line">                        label = fieldAnnotation.label();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (aliasMap != null) &#123;</span><br><span class="line">                propertyName = aliasMap.get(propertyName);</span><br><span class="line">                if (propertyName == null) &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (propertyNamingStrategy != null) &#123;</span><br><span class="line">                propertyName = propertyNamingStrategy.translate(propertyName);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            FieldInfo fieldInfo = new FieldInfo(propertyName, method, field, clazz, null, ordinal, serialzeFeatures, parserFeatures,</span><br><span class="line">                                                annotation, fieldAnnotation, label);</span><br><span class="line">            fieldInfoMap.put(propertyName, fieldInfo);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (methodName.startsWith(&quot;is&quot;)) &#123;</span><br><span class="line">            if (methodName.length() &lt; 3) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (method.getReturnType() != Boolean.TYPE</span><br><span class="line">                    &amp;&amp; method.getReturnType() != Boolean.class) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            char c2 = methodName.charAt(2);</span><br><span class="line"></span><br><span class="line">            String propertyName;</span><br><span class="line">            if (Character.isUpperCase(c2)) &#123;</span><br><span class="line">                if (compatibleWithJavaBean) &#123;</span><br><span class="line">                    propertyName = decapitalize(methodName.substring(2));</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    propertyName = Character.toLowerCase(methodName.charAt(2)) + methodName.substring(3);</span><br><span class="line">                &#125;</span><br><span class="line">                propertyName = getPropertyNameByCompatibleFieldName(fieldCacheMap, methodName,  propertyName,2);</span><br><span class="line">            &#125; else if (c2 == &apos;_&apos;) &#123;</span><br><span class="line">                propertyName = methodName.substring(3);</span><br><span class="line">            &#125; else if (c2 == &apos;f&apos;) &#123;</span><br><span class="line">                propertyName = methodName.substring(2);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            boolean ignore = isJSONTypeIgnore(clazz, propertyName);</span><br><span class="line"></span><br><span class="line">            if (ignore) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Field field = ParserConfig.getFieldFromCache(propertyName,fieldCacheMap);</span><br><span class="line"></span><br><span class="line">            if (field == null) &#123;</span><br><span class="line">                field = ParserConfig.getFieldFromCache(methodName,fieldCacheMap);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            JSONField fieldAnnotation = null;</span><br><span class="line">            if (field != null) &#123;</span><br><span class="line">                fieldAnnotation = field.getAnnotation(JSONField.class);</span><br><span class="line"></span><br><span class="line">                if (fieldAnnotation != null) &#123;</span><br><span class="line">                    if (!fieldAnnotation.serialize()) &#123;</span><br><span class="line">                        continue;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    ordinal = fieldAnnotation.ordinal();</span><br><span class="line">                    serialzeFeatures = SerializerFeature.of(fieldAnnotation.serialzeFeatures());</span><br><span class="line">                    parserFeatures = Feature.of(fieldAnnotation.parseFeatures());</span><br><span class="line"></span><br><span class="line">                    if (fieldAnnotation.name().length() != 0) &#123;</span><br><span class="line">                        propertyName = fieldAnnotation.name();</span><br><span class="line"></span><br><span class="line">                        if (aliasMap != null) &#123;</span><br><span class="line">                            propertyName = aliasMap.get(propertyName);</span><br><span class="line">                            if (propertyName == null) &#123;</span><br><span class="line">                                continue;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    if (fieldAnnotation.label().length() != 0) &#123;</span><br><span class="line">                        label = fieldAnnotation.label();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (aliasMap != null) &#123;</span><br><span class="line">                propertyName = aliasMap.get(propertyName);</span><br><span class="line">                if (propertyName == null) &#123;</span><br><span class="line">                    continue;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (propertyNamingStrategy != null) &#123;</span><br><span class="line">                propertyName = propertyNamingStrategy.translate(propertyName);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            //优先选择get</span><br><span class="line">            if (fieldInfoMap.containsKey(propertyName)) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            FieldInfo fieldInfo = new FieldInfo(propertyName, method, field, clazz, null, ordinal, serialzeFeatures, parserFeatures,</span><br><span class="line">                                                annotation, fieldAnnotation, label);</span><br><span class="line">            fieldInfoMap.put(propertyName, fieldInfo);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Field[] fields = clazz.getFields();</span><br><span class="line">    computeFields(clazz, aliasMap, propertyNamingStrategy, fieldInfoMap, fields);</span><br><span class="line"></span><br><span class="line">    return getFieldInfos(clazz, sorted, fieldInfoMap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里针对<code>clazz</code>的每一个方法进行了判断，由于只有<code>get</code>和<code>set</code>开头的函数，所以只关心<code>methodName.startsWith(&quot;get&quot;)</code>分支。最后进入了<code>getPropertyNameByCompatibleFieldName</code>所在的分支，并将<code>propertyName</code>设置为对应<code>get</code>的属性名。在<code>getPropertyNameByCompatibleFieldName</code>函数中，而<code>compatibleWithFieldName</code>设置为<code>false</code>所以相当于跳过了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">private static String getPropertyNameByCompatibleFieldName(Map&lt;String, Field&gt; fieldCacheMap, String methodName,</span><br><span class="line">                                                            String propertyName,int fromIdx) &#123;</span><br><span class="line">    if (compatibleWithFieldName)&#123;</span><br><span class="line">            if (!fieldCacheMap.containsKey(propertyName))&#123;</span><br><span class="line">                String tempPropertyName=methodName.substring(fromIdx);</span><br><span class="line">                return  fieldCacheMap.containsKey(tempPropertyName)?tempPropertyName:propertyName;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    return propertyName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>继续分析，程序进入<code>isJSONTypeIgnore</code>根据注解判断是否跳过该字段，我的例子中不关心。紧接着调用了<code>getFieldFromCache</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">public static Field getFieldFromCache(String fieldName, Map&lt;String, Field&gt; fieldCacheMap) &#123;</span><br><span class="line">    Field field = fieldCacheMap.get(fieldName);</span><br><span class="line"></span><br><span class="line">    if (field == null) &#123;</span><br><span class="line">        field = fieldCacheMap.get(&quot;_&quot; + fieldName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (field == null) &#123;</span><br><span class="line">        field = fieldCacheMap.get(&quot;m_&quot; + fieldName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (field == null) &#123;</span><br><span class="line">        char c0 = fieldName.charAt(0);</span><br><span class="line">        if (c0 &gt;= &apos;a&apos; &amp;&amp; c0 &lt;= &apos;z&apos;) &#123;</span><br><span class="line">            char[] chars = fieldName.toCharArray();</span><br><span class="line">            chars[0] -= 32; // lower</span><br><span class="line">            String fieldNameX = new String(chars);</span><br><span class="line">            field = fieldCacheMap.get(fieldNameX);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return field;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里按照刚才取出的方法名来查找字段，如果失败则加上<code>_</code>或者<code>m_</code>之类的方法继续判断。返回继续分析，在做了部分如注解别名之类的处理后，将分析得到的结果生成一个<code>FieldInfo</code>，并保存在<code>fieldInfoMap</code>中。最后调用<code>computeFields</code>进一步处理一些<code>public</code>属性的<code>fields</code>数据。最后经过<code>getFieldInfos</code>处理后，将得到的<code>List&lt;FieldInfo&gt;</code>中，返回上一级。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">private static void computeFields(</span><br><span class="line">        Class&lt;?&gt; clazz, //</span><br><span class="line">        Map&lt;String, String&gt; aliasMap, //</span><br><span class="line">        PropertyNamingStrategy propertyNamingStrategy, //</span><br><span class="line">        Map&lt;String, FieldInfo&gt; fieldInfoMap, //</span><br><span class="line">        Field[] fields) &#123;</span><br><span class="line"></span><br><span class="line">    for (Field field : fields) &#123;</span><br><span class="line">        if (Modifier.isStatic(field.getModifiers())) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        JSONField fieldAnnotation = field.getAnnotation(JSONField.class);</span><br><span class="line"></span><br><span class="line">        int ordinal = 0, serialzeFeatures = 0, parserFeatures = 0;</span><br><span class="line">        String propertyName = field.getName();</span><br><span class="line">        String label = null;</span><br><span class="line">        if (fieldAnnotation != null) &#123;</span><br><span class="line">            if (!fieldAnnotation.serialize()) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            ordinal = fieldAnnotation.ordinal();</span><br><span class="line">            serialzeFeatures = SerializerFeature.of(fieldAnnotation.serialzeFeatures());</span><br><span class="line">            parserFeatures = Feature.of(fieldAnnotation.parseFeatures());</span><br><span class="line"></span><br><span class="line">            if (fieldAnnotation.name().length() != 0) &#123;</span><br><span class="line">                propertyName = fieldAnnotation.name();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if (fieldAnnotation.label().length() != 0) &#123;</span><br><span class="line">                label = fieldAnnotation.label();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (aliasMap != null) &#123;</span><br><span class="line">            propertyName = aliasMap.get(propertyName);</span><br><span class="line">            if (propertyName == null) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (propertyNamingStrategy != null) &#123;</span><br><span class="line">            propertyName = propertyNamingStrategy.translate(propertyName);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (!fieldInfoMap.containsKey(propertyName)) &#123;</span><br><span class="line">            FieldInfo fieldInfo = new FieldInfo(propertyName, null, field, clazz, null, ordinal, serialzeFeatures, parserFeatures,</span><br><span class="line">                                                null, fieldAnnotation, label);</span><br><span class="line">            fieldInfoMap.put(propertyName, fieldInfo);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析到这里，可以发现在<code>fieldInfoList</code>中实际上值：<code>name</code>,<code>json</code>。看到这里相比也能猜出大概了，现在继续跟踪。回到<code>buildBeanInfo</code>中，将刚才得到的<code>fieldInfoList</code>构造为<code>SerializeBeanInfo</code>并返回。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">public ObjectSerializer createJavaBeanSerializer(SerializeBeanInfo beanInfo) &#123;</span><br><span class="line">    JSONType jsonType = beanInfo.jsonType;</span><br><span class="line">    </span><br><span class="line">    if (jsonType != null) &#123;</span><br><span class="line">        Class&lt;?&gt; serializerClass = jsonType.serializer();</span><br><span class="line">        if (serializerClass != Void.class) &#123;</span><br><span class="line">            try &#123;</span><br><span class="line">                Object seralizer = serializerClass.newInstance();</span><br><span class="line">                if (seralizer instanceof ObjectSerializer) &#123;</span><br><span class="line">                    return (ObjectSerializer) seralizer;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; catch (Throwable e) &#123;</span><br><span class="line">                // skip</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        if (jsonType.asm() == false) &#123;</span><br><span class="line">            asm = false;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for (SerializerFeature feature : jsonType.serialzeFeatures()) &#123;</span><br><span class="line">            if (SerializerFeature.WriteNonStringValueAsString == feature //</span><br><span class="line">                    || SerializerFeature.WriteEnumUsingToString == feature //</span><br><span class="line">                    || SerializerFeature.NotWriteDefaultValue == feature) &#123;</span><br><span class="line">                asm = false;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Class&lt;?&gt; clazz = beanInfo.beanType;</span><br><span class="line">    if (!Modifier.isPublic(beanInfo.beanType.getModifiers())) &#123;</span><br><span class="line">        return new JavaBeanSerializer(beanInfo);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    boolean asm = this.asm &amp;&amp; !fieldBased;</span><br><span class="line"></span><br><span class="line">    if (asm &amp;&amp; asmFactory.classLoader.isExternalClass(clazz)</span><br><span class="line">            || clazz == Serializable.class || clazz == Object.class) &#123;</span><br><span class="line">        asm = false;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (asm &amp;&amp; !ASMUtils.checkName(clazz.getSimpleName())) &#123;</span><br><span class="line">        asm = false;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (asm) &#123;</span><br><span class="line">        for(FieldInfo fieldInfo : beanInfo.fields)&#123;</span><br><span class="line">            Field field = fieldInfo.field;</span><br><span class="line">            if (field != null &amp;&amp; !field.getType().equals(fieldInfo.fieldClass)) &#123;</span><br><span class="line">                asm = false;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Method method = fieldInfo.method;</span><br><span class="line">            if (method != null &amp;&amp; !method.getReturnType().equals(fieldInfo.fieldClass)) &#123;</span><br><span class="line">                asm = false;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            JSONField annotation = fieldInfo.getAnnotation();</span><br><span class="line">            </span><br><span class="line">            if (annotation == null) &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            if ((!ASMUtils.checkName(annotation.name())) //</span><br><span class="line">                    || annotation.format().length() != 0</span><br><span class="line">                    || annotation.jsonDirect()</span><br><span class="line">                    || annotation.serializeUsing() != Void.class</span><br><span class="line">                    || annotation.unwrapped()</span><br><span class="line">                    ) &#123;</span><br><span class="line">                asm = false;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            for (SerializerFeature feature : annotation.serialzeFeatures()) &#123;</span><br><span class="line">                if (SerializerFeature.WriteNonStringValueAsString == feature //</span><br><span class="line">                        || SerializerFeature.WriteEnumUsingToString == feature //</span><br><span class="line">                        || SerializerFeature.NotWriteDefaultValue == feature) &#123;</span><br><span class="line">                    asm = false;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (asm) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            ObjectSerializer asmSerializer = createASMSerializer(beanInfo);</span><br><span class="line">            if (asmSerializer != null) &#123;</span><br><span class="line">                return asmSerializer;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (ClassFormatError e) &#123;</span><br><span class="line">            // skip</span><br><span class="line">        &#125; catch (ClassCastException e) &#123;</span><br><span class="line">            // skip</span><br><span class="line">        &#125; catch (Throwable e) &#123;</span><br><span class="line">            throw new JSONException(&quot;create asm serializer error, class &quot;</span><br><span class="line">                    + clazz, e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return new JavaBeanSerializer(beanInfo);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>经过处理后进入了<code>createASMSerializer</code>，其中调用<code>createJavaBeanSerializer</code>来创建具体的<code>writer</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br></pre></td><td class="code"><pre><span class="line">public JavaBeanSerializer createJavaBeanSerializer(SerializeBeanInfo beanInfo) throws Exception &#123;</span><br><span class="line">    Class&lt;?&gt; clazz = beanInfo.beanType;</span><br><span class="line">    if (clazz.isPrimitive()) &#123;</span><br><span class="line">        throw new JSONException(&quot;unsupportd class &quot; + clazz.getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    JSONType jsonType = clazz.getAnnotation(JSONType.class);</span><br><span class="line"></span><br><span class="line">    FieldInfo[] unsortedGetters = beanInfo.fields;;</span><br><span class="line"></span><br><span class="line">    for (FieldInfo fieldInfo : unsortedGetters) &#123;</span><br><span class="line">        if (fieldInfo.field == null //</span><br><span class="line">            &amp;&amp; fieldInfo.method != null //</span><br><span class="line">            &amp;&amp; fieldInfo.method.getDeclaringClass().isInterface()) &#123;</span><br><span class="line">            return new JavaBeanSerializer(clazz);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    FieldInfo[] getters = beanInfo.sortedFields;</span><br><span class="line"></span><br><span class="line">    boolean nativeSorted = beanInfo.sortedFields == beanInfo.fields;</span><br><span class="line"></span><br><span class="line">    if (getters.length &gt; 256) &#123;</span><br><span class="line">        return new JavaBeanSerializer(clazz);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    for (FieldInfo getter : getters) &#123;</span><br><span class="line">        if (!ASMUtils.checkName(getter.getMember().getName())) &#123;</span><br><span class="line">            return new JavaBeanSerializer(clazz);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    String className = &quot;ASMSerializer_&quot; + seed.incrementAndGet() + &quot;_&quot; + clazz.getSimpleName();</span><br><span class="line">    String packageName = ASMSerializerFactory.class.getPackage().getName();</span><br><span class="line">    String classNameType = packageName.replace(&apos;.&apos;, &apos;/&apos;) + &quot;/&quot; + className;</span><br><span class="line">    String classNameFull = packageName + &quot;.&quot; + className;</span><br><span class="line"></span><br><span class="line">    ClassWriter cw = new ClassWriter();</span><br><span class="line">    cw.visit(V1_5 //</span><br><span class="line">                , ACC_PUBLIC + ACC_SUPER //</span><br><span class="line">                , classNameType //</span><br><span class="line">                , JavaBeanSerializer //</span><br><span class="line">                , new String[] &#123; ObjectSerializer &#125; //</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    for (FieldInfo fieldInfo : getters) &#123;</span><br><span class="line">        if (fieldInfo.fieldClass.isPrimitive() //</span><br><span class="line">            //|| fieldInfo.fieldClass.isEnum() //</span><br><span class="line">            || fieldInfo.fieldClass == String.class) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        new FieldWriter(cw, ACC_PUBLIC, fieldInfo.name + &quot;_asm_fieldType&quot;, &quot;Ljava/lang/reflect/Type;&quot;) //</span><br><span class="line">                                                                                                        .visitEnd();</span><br><span class="line"></span><br><span class="line">        if (List.class.isAssignableFrom(fieldInfo.fieldClass)) &#123;</span><br><span class="line">            new FieldWriter(cw, ACC_PUBLIC, fieldInfo.name + &quot;_asm_list_item_ser_&quot;,</span><br><span class="line">                            ObjectSerializer_desc) //</span><br><span class="line">                                                    .visitEnd();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        new FieldWriter(cw, ACC_PUBLIC, fieldInfo.name + &quot;_asm_ser_&quot;, ObjectSerializer_desc) //</span><br><span class="line">                                                                                                    .visitEnd();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    MethodVisitor mw = new MethodWriter(cw, ACC_PUBLIC, &quot;&lt;init&gt;&quot;, &quot;(&quot; + desc(SerializeBeanInfo.class) + &quot;)V&quot;, null, null);</span><br><span class="line">    mw.visitVarInsn(ALOAD, 0);</span><br><span class="line">    mw.visitVarInsn(ALOAD, 1);</span><br><span class="line">    mw.visitMethodInsn(INVOKESPECIAL, JavaBeanSerializer, &quot;&lt;init&gt;&quot;, &quot;(&quot; + desc(SerializeBeanInfo.class) + &quot;)V&quot;);</span><br><span class="line"></span><br><span class="line">    // init _asm_fieldType</span><br><span class="line">    for (int i = 0; i &lt; getters.length; ++i) &#123;</span><br><span class="line">        FieldInfo fieldInfo = getters[i];</span><br><span class="line">        if (fieldInfo.fieldClass.isPrimitive() //</span><br><span class="line">//                || fieldInfo.fieldClass.isEnum() //</span><br><span class="line">            || fieldInfo.fieldClass == String.class) &#123;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mw.visitVarInsn(ALOAD, 0);</span><br><span class="line"></span><br><span class="line">        if (fieldInfo.method != null) &#123;</span><br><span class="line">            mw.visitLdcInsn(com.alibaba.fastjson.asm.Type.getType(desc(fieldInfo.declaringClass)));</span><br><span class="line">            mw.visitLdcInsn(fieldInfo.method.getName());</span><br><span class="line">            mw.visitMethodInsn(INVOKESTATIC, type(ASMUtils.class), &quot;getMethodType&quot;,</span><br><span class="line">                                &quot;(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Type;&quot;);</span><br><span class="line"></span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            mw.visitVarInsn(ALOAD, 0);</span><br><span class="line">            mw.visitLdcInsn(i);</span><br><span class="line">            mw.visitMethodInsn(INVOKESPECIAL, JavaBeanSerializer, &quot;getFieldType&quot;, &quot;(I)Ljava/lang/reflect/Type;&quot;);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mw.visitFieldInsn(PUTFIELD, classNameType, fieldInfo.name + &quot;_asm_fieldType&quot;, &quot;Ljava/lang/reflect/Type;&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mw.visitInsn(RETURN);</span><br><span class="line">    mw.visitMaxs(4, 4);</span><br><span class="line">    mw.visitEnd();</span><br><span class="line"></span><br><span class="line">    boolean DisableCircularReferenceDetect = false;</span><br><span class="line">    if (jsonType != null) &#123;</span><br><span class="line">        for (SerializerFeature featrues : jsonType.serialzeFeatures()) &#123;</span><br><span class="line">            if (featrues == SerializerFeature.DisableCircularReferenceDetect) &#123;</span><br><span class="line">                DisableCircularReferenceDetect = true;</span><br><span class="line">                break;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 0 write</span><br><span class="line">    // 1 writeNormal</span><br><span class="line">    // 2 writeNonContext</span><br><span class="line">    for (int i = 0; i &lt; 3; ++i) &#123;</span><br><span class="line">        String methodName;</span><br><span class="line">        boolean nonContext = DisableCircularReferenceDetect;</span><br><span class="line">        boolean writeDirect = false;</span><br><span class="line">        if (i == 0) &#123;</span><br><span class="line">            methodName = &quot;write&quot;;</span><br><span class="line">            writeDirect = true;</span><br><span class="line">        &#125; else if (i == 1) &#123;</span><br><span class="line">            methodName = &quot;writeNormal&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            writeDirect = true;</span><br><span class="line">            nonContext = true;</span><br><span class="line">            methodName = &quot;writeDirectNonContext&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Context context = new Context(getters, beanInfo, classNameType, writeDirect,</span><br><span class="line">                                        nonContext);</span><br><span class="line"></span><br><span class="line">        mw = new MethodWriter(cw, //</span><br><span class="line">                                ACC_PUBLIC, //</span><br><span class="line">                                methodName, //</span><br><span class="line">                                &quot;(L&quot; + JSONSerializer</span><br><span class="line">                                            + &quot;;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/reflect/Type;I)V&quot;, //</span><br><span class="line">                                null, //</span><br><span class="line">                                new String[] &#123; &quot;java/io/IOException&quot; &#125; //</span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">        &#123;</span><br><span class="line">            Label endIf_ = new Label();</span><br><span class="line">            mw.visitVarInsn(ALOAD, Context.obj);</span><br><span class="line">            //serializer.writeNull();</span><br><span class="line">            mw.visitJumpInsn(IFNONNULL, endIf_);</span><br><span class="line">            mw.visitVarInsn(ALOAD, Context.serializer);</span><br><span class="line">            mw.visitMethodInsn(INVOKEVIRTUAL, JSONSerializer,</span><br><span class="line">                    &quot;writeNull&quot;, &quot;()V&quot;);</span><br><span class="line"></span><br><span class="line">            mw.visitInsn(RETURN);</span><br><span class="line">            mw.visitLabel(endIf_);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mw.visitVarInsn(ALOAD, Context.serializer);</span><br><span class="line">        mw.visitFieldInsn(GETFIELD, JSONSerializer, &quot;out&quot;, SerializeWriter_desc);</span><br><span class="line">        mw.visitVarInsn(ASTORE, context.var(&quot;out&quot;));</span><br><span class="line"></span><br><span class="line">        if ((!nativeSorted) //</span><br><span class="line">            &amp;&amp; !context.writeDirect) &#123;</span><br><span class="line"></span><br><span class="line">            if (jsonType == null || jsonType.alphabetic()) &#123;</span><br><span class="line">                Label _else = new Label();</span><br><span class="line"></span><br><span class="line">                mw.visitVarInsn(ALOAD, context.var(&quot;out&quot;));</span><br><span class="line">                mw.visitMethodInsn(INVOKEVIRTUAL, SerializeWriter, &quot;isSortField&quot;, &quot;()Z&quot;);</span><br><span class="line"></span><br><span class="line">                mw.visitJumpInsn(IFNE, _else);</span><br><span class="line">                mw.visitVarInsn(ALOAD, 0);</span><br><span class="line">                mw.visitVarInsn(ALOAD, 1);</span><br><span class="line">                mw.visitVarInsn(ALOAD, 2);</span><br><span class="line">                mw.visitVarInsn(ALOAD, 3);</span><br><span class="line">                mw.visitVarInsn(ALOAD, 4);</span><br><span class="line">                mw.visitVarInsn(ILOAD, 5);</span><br><span class="line">                mw.visitMethodInsn(INVOKEVIRTUAL, classNameType,</span><br><span class="line">                                    &quot;writeUnsorted&quot;, &quot;(L&quot; + JSONSerializer</span><br><span class="line">                                                    + &quot;;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/reflect/Type;I)V&quot;);</span><br><span class="line">                mw.visitInsn(RETURN);</span><br><span class="line"></span><br><span class="line">                mw.visitLabel(_else);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        // isWriteDoubleQuoteDirect</span><br><span class="line">        if (context.writeDirect &amp;&amp; !nonContext) &#123;</span><br><span class="line">            Label _direct = new Label();</span><br><span class="line">            Label _directElse = new Label();</span><br><span class="line"></span><br><span class="line">            mw.visitVarInsn(ALOAD, 0);</span><br><span class="line">            mw.visitVarInsn(ALOAD, Context.serializer);</span><br><span class="line">            mw.visitMethodInsn(INVOKEVIRTUAL, JavaBeanSerializer, &quot;writeDirect&quot;, &quot;(L&quot; + JSONSerializer + &quot;;)Z&quot;);</span><br><span class="line">            mw.visitJumpInsn(IFNE, _directElse);</span><br><span class="line"></span><br><span class="line">            mw.visitVarInsn(ALOAD, 0);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 1);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 2);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 3);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 4);</span><br><span class="line">            mw.visitVarInsn(ILOAD, 5);</span><br><span class="line">            mw.visitMethodInsn(INVOKEVIRTUAL, classNameType,</span><br><span class="line">                                &quot;writeNormal&quot;, &quot;(L&quot; + JSONSerializer</span><br><span class="line">                                                + &quot;;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/reflect/Type;I)V&quot;);</span><br><span class="line">            mw.visitInsn(RETURN);</span><br><span class="line"></span><br><span class="line">            mw.visitLabel(_directElse);</span><br><span class="line">            mw.visitVarInsn(ALOAD, context.var(&quot;out&quot;));</span><br><span class="line">            mw.visitLdcInsn(SerializerFeature.DisableCircularReferenceDetect.mask);</span><br><span class="line">            mw.visitMethodInsn(INVOKEVIRTUAL, SerializeWriter, &quot;isEnabled&quot;, &quot;(I)Z&quot;);</span><br><span class="line">            mw.visitJumpInsn(IFEQ, _direct);</span><br><span class="line"></span><br><span class="line">            mw.visitVarInsn(ALOAD, 0);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 1);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 2);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 3);</span><br><span class="line">            mw.visitVarInsn(ALOAD, 4);</span><br><span class="line">            mw.visitVarInsn(ILOAD, 5);</span><br><span class="line">            mw.visitMethodInsn(INVOKEVIRTUAL, classNameType, &quot;writeDirectNonContext&quot;,</span><br><span class="line">                                &quot;(L&quot; + JSONSerializer + &quot;;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/reflect/Type;I)V&quot;);</span><br><span class="line">            mw.visitInsn(RETURN);</span><br><span class="line"></span><br><span class="line">            mw.visitLabel(_direct);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        mw.visitVarInsn(ALOAD, Context.obj); // obj</span><br><span class="line">        mw.visitTypeInsn(CHECKCAST, type(clazz)); // serializer</span><br><span class="line">        mw.visitVarInsn(ASTORE, context.var(&quot;entity&quot;)); // obj</span><br><span class="line">        generateWriteMethod(clazz, mw, getters, context);</span><br><span class="line">        mw.visitInsn(RETURN);</span><br><span class="line">        mw.visitMaxs(7, context.variantIndex + 2);</span><br><span class="line">        mw.visitEnd();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (!nativeSorted) &#123;</span><br><span class="line">        // sortField support</span><br><span class="line">        Context context = new Context(getters, beanInfo, classNameType, false,</span><br><span class="line">                                        DisableCircularReferenceDetect);</span><br><span class="line"></span><br><span class="line">        mw = new MethodWriter(cw, ACC_PUBLIC, &quot;writeUnsorted&quot;,</span><br><span class="line">                                &quot;(L&quot; + JSONSerializer + &quot;;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/reflect/Type;I)V&quot;,</span><br><span class="line">                                null, new String[] &#123; &quot;java/io/IOException&quot; &#125;);</span><br><span class="line"></span><br><span class="line">        mw.visitVarInsn(ALOAD, Context.serializer);</span><br><span class="line">        mw.visitFieldInsn(GETFIELD, JSONSerializer, &quot;out&quot;, SerializeWriter_desc);</span><br><span class="line">        mw.visitVarInsn(ASTORE, context.var(&quot;out&quot;));</span><br><span class="line"></span><br><span class="line">        mw.visitVarInsn(ALOAD, Context.obj); // obj</span><br><span class="line">        mw.visitTypeInsn(CHECKCAST, type(clazz)); // serializer</span><br><span class="line">        mw.visitVarInsn(ASTORE, context.var(&quot;entity&quot;)); // obj</span><br><span class="line"></span><br><span class="line">        generateWriteMethod(clazz, mw, unsortedGetters, context);</span><br><span class="line"></span><br><span class="line">        mw.visitInsn(RETURN);</span><br><span class="line">        mw.visitMaxs(7, context.variantIndex + 2);</span><br><span class="line">        mw.visitEnd();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 0 writeAsArray</span><br><span class="line">    // 1 writeAsArrayNormal</span><br><span class="line">    // 2 writeAsArrayNonContext</span><br><span class="line">    for (int i = 0; i &lt; 3; ++i) &#123;</span><br><span class="line">        String methodName;</span><br><span class="line">        boolean nonContext = DisableCircularReferenceDetect;</span><br><span class="line">        boolean writeDirect = false;</span><br><span class="line">        if (i == 0) &#123;</span><br><span class="line">            methodName = &quot;writeAsArray&quot;;</span><br><span class="line">            writeDirect = true;</span><br><span class="line">        &#125; else if (i == 1) &#123;</span><br><span class="line">            methodName = &quot;writeAsArrayNormal&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            writeDirect = true;</span><br><span class="line">            nonContext = true;</span><br><span class="line">            methodName = &quot;writeAsArrayNonContext&quot;;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Context context = new Context(getters, beanInfo, classNameType, writeDirect,</span><br><span class="line">                                        nonContext);</span><br><span class="line"></span><br><span class="line">        mw = new MethodWriter(cw, ACC_PUBLIC, methodName,</span><br><span class="line">                                &quot;(L&quot; + JSONSerializer + &quot;;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/reflect/Type;I)V&quot;,</span><br><span class="line">                                null, new String[] &#123; &quot;java/io/IOException&quot; &#125;);</span><br><span class="line"></span><br><span class="line">        mw.visitVarInsn(ALOAD, Context.serializer);</span><br><span class="line">        mw.visitFieldInsn(GETFIELD, JSONSerializer, &quot;out&quot;, SerializeWriter_desc);</span><br><span class="line">        mw.visitVarInsn(ASTORE, context.var(&quot;out&quot;));</span><br><span class="line"></span><br><span class="line">        mw.visitVarInsn(ALOAD, Context.obj); // obj</span><br><span class="line">        mw.visitTypeInsn(CHECKCAST, type(clazz)); // serializer</span><br><span class="line">        mw.visitVarInsn(ASTORE, context.var(&quot;entity&quot;)); // obj</span><br><span class="line">        generateWriteAsArray(clazz, mw, getters, context);</span><br><span class="line">        mw.visitInsn(RETURN);</span><br><span class="line">        mw.visitMaxs(7, context.variantIndex + 2);</span><br><span class="line">        mw.visitEnd();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    byte[] code = cw.toByteArray();</span><br><span class="line"></span><br><span class="line">    Class&lt;?&gt; exampleClass = classLoader.defineClassPublic(classNameFull, code, 0, code.length);</span><br><span class="line">    Constructor&lt;?&gt; constructor = exampleClass.getConstructor(SerializeBeanInfo.class);</span><br><span class="line">    Object instance = constructor.newInstance(beanInfo);</span><br><span class="line"></span><br><span class="line">    return (JavaBeanSerializer) instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到这里为止，我们的分析就可以结束了，实际上这里是根据<code>fieldInfo</code>，通过CodeGen技术生成一个<code>writer</code>实例。而<code>getJson</code>被简单当作了<code>json</code>属性的<code>getter</code>，所以在<code>writer.write(object)</code>中调用了<code>getJson</code>从而出现了递归。那么这个问题的简单解决办法就是将<code>getJson</code>换个名字，比如<code>toJson</code>。最后，在github的issue中也翻到了一个对应的问题，作者给出的答案就是换个名字。</p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/5/2.png" alt="question"></p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/5/3.png" alt="answer"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Debug/" rel="tag"># Debug</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/07/C-C-调用约定/" rel="next" title="C/C++ 调用约定">
+                <i class="fa fa-chevron-left"></i> C/C++ 调用约定
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/17/链接/" rel="prev" title="链接">
+                链接 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Patrick</p>
+              <p class="site-description motion-element" itemprop="description">C++, Go, 编译器, 分布式, 存储, 操作系统</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Patrick</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.hashcoding.net/2017/05/13/FastJson-踩坑记录/';
+          this.page.identifier = '2017/05/13/FastJson-踩坑记录/';
+          this.page.title = 'FastJson 踩坑记录';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-coding.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("lMQDA5ivsWA2jcjJzTTImuvx-gzGzoHsz", "JIA0x48kG2WhEllWMb31Xt60");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

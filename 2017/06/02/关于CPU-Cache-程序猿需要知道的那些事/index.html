@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.0.0">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Blog, Hashcoding.net, C++, GO, Java, Destribute, 分布式, 存储" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="about me">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about me">
+<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="about me">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-05T15:25:54.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about me">
+<meta name="twitter:description" content="about me">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
+
+
+
+
+
+  <title>关于CPU Cache -- 程序猿需要知道的那些事 | Coding</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c84227c882bfc8efa4a1edc9bc8f47e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+
+            
+              首页
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+
+            
+              关于
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+
+            
+              标签
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+
+            
+              分类
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+
+            
+              归档
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+
+            
+              站点地图
+            
+
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hashcoding.net/2017/06/02/关于CPU-Cache-程序猿需要知道的那些事/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Patrick">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于CPU Cache -- 程序猿需要知道的那些事</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-02T20:02:22+08:00">2017-06-02</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/06/02/关于CPU-Cache-程序猿需要知道的那些事/" class="leancloud_visitors" data-flag-title="关于CPU Cache -- 程序猿需要知道的那些事">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>文章欢迎转载，但转载时请保留本段文字，并置于文章的顶部 作者：卢钧轶(cenalulu) 本文原文地址：<a href="http://cenalulu.github.io/linux/all-about-cpu-cache/" target="_blank" rel="noopener">http://cenalulu.github.io/linux/all-about-cpu-cache/</a></p>
+</blockquote>
+<p>写在开头：<strong>本文系转载，所以以原有博文为主，以斜体注：开头表示添加内容</strong>。</p>
+<p>先来看一张本文所有概念的一个思维导图</p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/6/mind_map.png" alt="mind map"></p>
+<h1 id="为什么要有CPU-Cache"><a href="#为什么要有CPU-Cache" class="headerlink" title="为什么要有CPU Cache"></a>为什么要有CPU Cache</h1><p>随着工艺的提升最近几十年CPU的频率不断提升，而受制于制造工艺和成本限制，目前计算机的内存主要是DRAM并且在访问速度上没有质的突破。因此，CPU的处理速度和内存的访问速度差距越来越大，甚至可以达到上万倍。这种情况下传统的CPU通过FSB直连内存的方式显然就会因为内存访问的等待，导致计算资源大量闲置，降低CPU整体吞吐量。同时又由于内存数据访问的热点集中性，在CPU和内存之间用较为快速而成本较高的SDRAM做一层缓存，就显得性价比极高了。</p>
+<h1 id="为什么要有多级CPU-Cache"><a href="#为什么要有多级CPU-Cache" class="headerlink" title="为什么要有多级CPU Cache"></a>为什么要有多级CPU Cache</h1><p>随着科技发展，热点数据的体积越来越大，单纯的增加一级缓存大小的性价比已经很低了。因此，就慢慢出现了在一级缓存(L1 Cache)和内存之间又增加一层访问速度和成本都介于两者之间的二级缓存(L2 Cache)。下面是一段从 <a href="http://cenalulu.github.io/linux/all-about-cpu-cache/(www.akkadia.org/drepper/cpumemory.pdf" target="_blank" rel="noopener">What Every Programmer Should Know About Memory</a>) 中摘录的解释：</p>
+<blockquote>
+<p>Soon after the introduction of the cache the system got more complicated. The speed difference between the cache and the main memory increased again, to a point that another level of cache was added, bigger and slower than the first-level cache. Only increasing the size of the first-level cache was not an option for economical rea- sons.</p>
+</blockquote>
+<p>此外，又由于程序指令和程序数据的行为和热点分布差异很大，因此L1 Cache也被划分成L1i (i for instruction)和L1d (d for data)两种专门用途的缓存。 下面一张图可以看出各级缓存之间的响应时间差距，以及内存到底有多慢！</p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/6/latency.png" alt="latency"></p>
+<h1 id="什么是Cache-Line"><a href="#什么是Cache-Line" class="headerlink" title="什么是Cache Line"></a>什么是Cache Line</h1><p>Cache Line可以简单的理解为CPU Cache中的最小缓存单位。目前主流的CPU Cache的Cache Line大小都是64Bytes。假设我们有一个512字节的一级缓存，那么按照64B的缓存单位大小来算，这个一级缓存所能存放的缓存个数就是 <code>512/64 = 8</code> 个。具体参见下图：</p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/6/cache_line.png" alt="cache line"></p>
+<p>为了更好的了解Cache Line，我们还可以在自己的电脑上做下面这个有趣的实验。</p>
+<p>下面这段C代码，会从命令行接收一个参数作为数组的大小创建一个数量为N的int数组。并依次循环的从这个数组中进行数组内容访问，循环10亿次。最终输出数组总大小和对应总执行时间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;sys/time.h&gt;</span><br><span class="line"></span><br><span class="line">long timediff(clock_t t1, clock_t t2) &#123;</span><br><span class="line">    long elapsed;</span><br><span class="line">    elapsed = ((double)t2 - t1) / CLOCKS_PER_SEC * 1000;</span><br><span class="line">    return elapsed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(int argc, char *argv[])</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">    int array_size=atoi(argv[1]);</span><br><span class="line">    int repeat_times = 1000000000;</span><br><span class="line">    long array[array_size];</span><br><span class="line">    for(int i=0; i&lt;array_size; i++)&#123;</span><br><span class="line">        array[i] = 0;</span><br><span class="line">    &#125;</span><br><span class="line">    int j=0;</span><br><span class="line">    int k=0;</span><br><span class="line">    int c=0;</span><br><span class="line">    clock_t start=clock();</span><br><span class="line">    while(j++&lt;repeat_times)&#123;</span><br><span class="line">        if(k==array_size)&#123;</span><br><span class="line">            k=0;</span><br><span class="line">        &#125;</span><br><span class="line">        c = array[k++];</span><br><span class="line">    &#125;</span><br><span class="line">    clock_t end =clock();</span><br><span class="line">    printf(&quot;%lu\n&quot;, timediff(start,end));</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们把这些数据做成折线图后就会发现：总执行时间在数组大小超过64Bytes时有较为明显的拐点（当然，由于博主是在自己的Mac笔记本上测试的，会受到很多其他程序的干扰，因此会有波动）。原因是当数组小于64Bytes时数组极有可能落在一条Cache Line内，而一个元素的访问就会使得整条Cache Line被填充，因而值得后面的若干个元素受益于缓存带来的加速。而当数组大于64Bytes时，必然至少需要两条Cache Line，继而在循环访问时会出现两次Cache Line的填充，由于缓存填充的时间远高于数据访问的响应时间，因此多一次缓存填充对于总执行的影响会被放大，最终得到下图的结果：</p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/6/cache_line_size2.png" alt="cache_line_size2"></p>
+<p>如果读者有兴趣的话也可以在自己的linux或者MAC上通过 <code>gcc cache_line_size.c -o cache_line_size</code> 编译，并通过 <code>./cache_line_size</code> 执行。</p>
+<p>了解Cache Line的概念对我们程序猿有什么帮助？ 我们来看下面这个C语言中常用的循环优化例子 下面两段代码中，第一段代码在C语言中总是比第二段代码的执行速度要快。具体的原因相信你仔细阅读了Cache Line的介绍后就很容易理解了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">    for(int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">        int num;    </span><br><span class="line">        //code</span><br><span class="line">        arr[i][j] = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">    for(int j = 0; j &lt; n; j++) &#123;</span><br><span class="line">        int num;    </span><br><span class="line">        //code</span><br><span class="line">        arr[j][i] = num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="CPU-Cache-是如何存放数据的"><a href="#CPU-Cache-是如何存放数据的" class="headerlink" title="CPU Cache 是如何存放数据的"></a>CPU Cache 是如何存放数据的</h1><h2 id="你会怎么设计Cache的存放规则"><a href="#你会怎么设计Cache的存放规则" class="headerlink" title="你会怎么设计Cache的存放规则"></a>你会怎么设计Cache的存放规则</h2><p>我们先来尝试回答一下那么这个问题：</p>
+<blockquote>
+<p>假设我们有一块4MB的区域用于缓存，每个缓存对象的唯一标识是它所在的物理内存地址。每个缓存对象大小是64Bytes，所有可以被缓存对象的大小总和（即物理内存总大小）为4GB。那么我们该如何设计这个缓存？</p>
+</blockquote>
+<p>如果你和博主<em>(注：原文博主)</em>一样是一个大学没有好好学习基础/数字电路的人的话，会觉得最靠谱的的一种方式就是：Hash表。把Cache设计成一个Hash数组。内存地址的Hash值作为数组的Index，缓存对象的值作为数组的Value。每次存取时，都把地址做一次Hash然后找到Cache中对应的位置操作即可。 这样的设计方式在高等语言中很常见，也显然很高效。因为Hash值得计算虽然耗时(10000个CPU Cycle左右)，但是相比程序中其他操作（上百万的CPU Cycle）来说可以忽略不计。而对于CPU Cache来说，本来其设计目标就是在几十CPU Cycle内获取到数据。如果访问效率是百万Cycle这个等级的话，还不如到Memory直接获取数据。当然，更重要的原因是在硬件上要实现Memory Address Hash的功能在成本上是非常高的。</p>
+<h2 id="为什么Cache不能做成Fully-Associative"><a href="#为什么Cache不能做成Fully-Associative" class="headerlink" title="为什么Cache不能做成Fully Associative"></a>为什么Cache不能做成Fully Associative</h2><p>Fully Associative 字面意思是全关联。在CPU Cache中的含义是：如果在一个Cache集内，任何一个内存地址的数据可以被缓存在任何一个Cache Line里，那么我们成这个cache是Fully Associative。从定义中我们可以得出这样的结论：给到一个内存地址，要知道他是否存在于Cache中，需要遍历所有Cache Line并比较缓存内容的内存地址。而Cache的本意就是为了在尽可能少得CPU Cycle内取到数据。那么想要设计一个快速的Fully Associative的Cache几乎是不可能的。</p>
+<h2 id="为什么Cache不能做成Direct-Mapped"><a href="#为什么Cache不能做成Direct-Mapped" class="headerlink" title="为什么Cache不能做成Direct Mapped"></a>为什么Cache不能做成Direct Mapped</h2><p>和Fully Associative完全相反，使用Direct Mapped模式的Cache给定一个内存地址，就唯一确定了一条Cache Line。设计复杂度低且速度快。那么为什么Cache不使用这种模式呢？让我们来想象这么一种情况：一个拥有1M L2 Cache的32位CPU，每条Cache Line的大小为64Bytes。那么整个L2Cache被划为了 <code>1M/64=16384</code> 条Cache Line。我们为每条Cache Line从0开始编上号。同时32位CPU所能管理的内存地址范围是 <code>2^32=4G</code>，那么Direct Mapped模式下，内存也被划为 <code>4G/16384=256K</code> 的小份。也就是说每256K的内存地址共享一条Cache Line。但是，这种模式下每条Cache Line的使用率如果要做到接近100%，就需要操作系统对于内存的分配和访问在地址上也是近乎平均的。而与我们的意愿相反，为了减少内存碎片和实现便捷，操作系统更多的是连续集中的使用内存。这样会出现的情况就是0-1000号这样的低编号Cache Line由于内存经常被分配并使用，而16000号以上的Cache Line由于内存鲜有进程访问，几乎一直处于空闲状态。这种情况下，本来就宝贵的1M二级CPU缓存，使用率也许50%都无法达到。</p>
+<h2 id="什么是N-Way-Set-Associative"><a href="#什么是N-Way-Set-Associative" class="headerlink" title="什么是N-Way Set Associative"></a>什么是N-Way Set Associative</h2><p>为了避免以上两种设计模式的缺陷，N-Way Set Associative <em>(注：也称为 N-Way M-Set Associative)</em>缓存就出现了。他的原理是把一个缓存按照N个Cache Line作为一组（set），缓存按组划为等分。</p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/6/set.jpg" alt="set"></p>
+<p><em>cache 由 set 组成， set 由 line 组成， line 由 vaild bit,tag,data组成。其中data是真正要缓存的内存地址中的数据，而tag则是用来搜索cache line的标签。</em></p>
+<p>这样一个64位系统的内存地址在4MB二级缓存中就划成了三个部分（见下图），低位6个bit表示在Cache Line中的偏移量，中间12bit表示Cache组号（set index），剩余的高位46bit就是内存地址的唯一id。这样的设计相较前两种设计有以下两点好处：<em>(注：此处原博主假设为16-Way组相连)</em></p>
+<ul>
+<li>给定一个内存地址可以唯一对应一个set，对于set中只需遍历16个元素就可以确定对象是否在缓存中（Full Associative中比较次数随内存大小线性增加）</li>
+<li>每 <code>2^18(256K)*16(way)=4M</code> 的连续热点数据才会导致一个set内的conflict（Direct Mapped中512K的连续热点数据就会出现conflict）</li>
+</ul>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/6/addr_bits.png" alt="addr_bits"></p>
+<p><em>注：此处相当于 16-Way 64K-set Associative</em></p>
+<h3 id="为什么N-Way-Set-Associative的Set段是从低位而不是高位开始的"><a href="#为什么N-Way-Set-Associative的Set段是从低位而不是高位开始的" class="headerlink" title="为什么N-Way Set Associative的Set段是从低位而不是高位开始的"></a>为什么N-Way Set Associative的Set段是从低位而不是高位开始的</h3><p>下面是一段从<a href="http://danluu.com/3c-conflict/#fn3" target="_blank" rel="noopener">How Misaligning Data Can Increase Performance 12x by Reducing Cache Misses</a>摘录的解释：</p>
+<blockquote>
+<p>The vast majority of accesses are close together, so moving the set index bits upwards would cause more conflict misses. You might be able to get away with a hash function that isn’t simply the least significant bits, but most proposed schemes hurt about as much as they help while adding extra complexity.</p>
+</blockquote>
+<p>由于内存的访问通常是大片连续的，或者是因为在同一程序中而导致地址接近的（即这些内存地址的高位都是一样的）。所以如果把内存地址的高位作为set index的话，那么短时间的大量内存访问都会因为set index相同而落在同一个set index中，从而导致cache conflicts使得L2, L3 Cache的命中率低下，影响程序的整体执行效率。</p>
+<h3 id="了解N-Way-Set-Associative的存储模式对我们有什么帮助"><a href="#了解N-Way-Set-Associative的存储模式对我们有什么帮助" class="headerlink" title="了解N-Way Set Associative的存储模式对我们有什么帮助"></a>了解N-Way Set Associative的存储模式对我们有什么帮助</h3><p>了解N-Way Set的概念后，我们不难得出以下结论：<code>2^(6Bits &lt;Cache Line Offset&gt; + 12Bits &lt;Set Index&gt;) = 2^18 = 256K</code>。即在连续的内存地址中每256K都会出现一个处于同一个Cache Set中的缓存对象。也就是说这些对象都会争抢一个仅有16个空位的缓存池（16-Way Set）。而如果我们在程序中又使用了所谓优化神器的“内存对齐”的时候，这种争抢就会越发增多。效率上的损失也会变得非常明显。具体的实际测试我们可以参考：<a href="http://danluu.com/3c-conflict/#fn3" target="_blank" rel="noopener">How Misaligning Data Can Increase Performance 12x by Reducing Cache Misses</a> 一文。 这里我们引用一张<a href="http://igoro.com/archive/gallery-of-processor-cache-effects/" target="_blank" rel="noopener">Gallery of Processor Cache Effects</a> 中的测试结果图，来解释下内存对齐在极端情况下带来的性能损失。</p>
+<p><img src="http://www.hashcoding.net/uploads/images/2017/6/assoc_big1.png" alt="assoc_big1"></p>
+<p>该图实际上是我们上文中第一个测试的一个变种。纵轴表示了测试对象数组的大小。横轴表示了每次数组元素访问之间的index间隔。而图中的颜色表示了响应时间的长短，蓝色越明显的部分表示响应时间越长。从这个图我们可以得到很多结论。当然这里我们只对内存带来的性能损失感兴趣。有兴趣的读者也可以阅读<a href="http://igoro.com/archive/gallery-of-processor-cache-effects/" target="_blank" rel="noopener">原文</a>分析理解其他从图中可以得到的结论。</p>
+<p>从图中我们不难看出图中每1024个步进，即每<code>1024*4</code>即4096Bytes，都有一条特别明显的蓝色竖线。也就是说，只要我们按照4K的步进去访问内存(内存根据4K对齐），无论热点数据多大它的实际效率都是非常低的！按照我们上文的分析，如果4KB的内存对齐，那么一个240MB的数组就含有61440个可以被访问到的数组元素；而对于一个每256K就会有set冲突的16Way二级缓存，总共有<code>256K/4K=64</code>个元素要去<em>(注：从整个缓存中)</em>争抢16个空位，总共有<code>61440/64=960</code>个这样的元素。那么缓存命中率只有1%，自然效率也就低了。</p>
+<p>除了这个例子，有兴趣的读者还可以查阅另一篇国人对Page Align导致效率低的实验：<a href="http://evol128.is-programmer.com/posts/35453.html" target="_blank" rel="noopener">http://evol128.is-programmer.com/posts/35453.html</a></p>
+<p>想要知道更多关于内存地址对齐在目前的这种CPU-Cache的架构下会出现的问题可以详细阅读以下两篇文章：</p>
+<ul>
+<li><a href="http://danluu.com/3c-conflict/" target="_blank" rel="noopener">How Misaligning Data Can Increase Performance 12x by Reducing Cache Misses</a></li>
+<li><a href="http://igoro.com/archive/gallery-of-processor-cache-effects/" target="_blank" rel="noopener">Gallery of Processor Cache Effects</a></li>
+</ul>
+<h1 id="Cache淘汰策略"><a href="#Cache淘汰策略" class="headerlink" title="Cache淘汰策略"></a>Cache淘汰策略</h1><p>在文章的最后我们顺带提一下CPU Cache的淘汰策略。常见的淘汰策略主要有LRU和Random两种。通常意义下LRU对于Cache的命中率会比Random更好，所以CPU Cache的淘汰策略选择的是LRU。当然也有些实验显示<a href="http://danluu.com/2choices-eviction/" target="_blank" rel="noopener">在Cache Size较大的时候Random策略会有更高的命中率</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>CPU Cache对于程序猿是透明的，所有的操作和策略都在CPU内部完成。但是，了解和理解CPU Cache的设计、工作原理有利于我们更好的利用CPU Cache，写出更多对CPU Cache友好的程序</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p><a href="http://igoro.com/archive/gallery-of-processor-cache-effects/" target="_blank" rel="noopener">Gallery of Processor Cache Effects</a><br><a href="http://danluu.com/3c-conflict/" target="_blank" rel="noopener">How Misaligning Data Can Increase Performance 12x by Reducing Cache Misses</a><br><a href="http://www.cs.umd.edu/class/sum2003/cmsc311/Notes/Memory/introCache.html" target="_blank" rel="noopener">Introduction to Caches</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Architecture/" rel="tag"># Architecture</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/26/Linux-TCP-编程/" rel="next" title="Linux TCP 编程">
+                <i class="fa fa-chevron-left"></i> Linux TCP 编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/04/SO-REUSEADDR-SO-REUSEPORT-异同/" rel="prev" title="SO_REUSEADDR & SO_REUSEPORT 异同">
+                SO_REUSEADDR & SO_REUSEPORT 异同 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Patrick</p>
+              <p class="site-description motion-element" itemprop="description">C++, Go, 编译器, 分布式, 存储, 操作系统</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要有CPU-Cache"><span class="nav-number">1.</span> <span class="nav-text">为什么要有CPU Cache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要有多级CPU-Cache"><span class="nav-number">2.</span> <span class="nav-text">为什么要有多级CPU Cache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Cache-Line"><span class="nav-number">3.</span> <span class="nav-text">什么是Cache Line</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU-Cache-是如何存放数据的"><span class="nav-number">4.</span> <span class="nav-text">CPU Cache 是如何存放数据的</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#你会怎么设计Cache的存放规则"><span class="nav-number">4.1.</span> <span class="nav-text">你会怎么设计Cache的存放规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么Cache不能做成Fully-Associative"><span class="nav-number">4.2.</span> <span class="nav-text">为什么Cache不能做成Fully Associative</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么Cache不能做成Direct-Mapped"><span class="nav-number">4.3.</span> <span class="nav-text">为什么Cache不能做成Direct Mapped</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是N-Way-Set-Associative"><span class="nav-number">4.4.</span> <span class="nav-text">什么是N-Way Set Associative</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么N-Way-Set-Associative的Set段是从低位而不是高位开始的"><span class="nav-number">4.4.1.</span> <span class="nav-text">为什么N-Way Set Associative的Set段是从低位而不是高位开始的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#了解N-Way-Set-Associative的存储模式对我们有什么帮助"><span class="nav-number">4.4.2.</span> <span class="nav-text">了解N-Way Set Associative的存储模式对我们有什么帮助</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cache淘汰策略"><span class="nav-number">5.</span> <span class="nav-text">Cache淘汰策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Patrick</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.hashcoding.net/2017/06/02/关于CPU-Cache-程序猿需要知道的那些事/';
+          this.page.identifier = '2017/06/02/关于CPU-Cache-程序猿需要知道的那些事/';
+          this.page.title = '关于CPU Cache -- 程序猿需要知道的那些事';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-coding.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("lMQDA5ivsWA2jcjJzTTImuvx-gzGzoHsz", "JIA0x48kG2WhEllWMb31Xt60");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

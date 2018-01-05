@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.0.0">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Blog, Hashcoding.net, C++, GO, Java, Destribute, 分布式, 存储" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="about me">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about me">
+<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="about me">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-05T15:25:54.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about me">
+<meta name="twitter:description" content="about me">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
+
+
+
+
+
+  <title>LL-Script implements | Coding</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c84227c882bfc8efa4a1edc9bc8f47e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+
+            
+              首页
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+
+            
+              关于
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+
+            
+              标签
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+
+            
+              分类
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+
+            
+              归档
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+
+            
+              站点地图
+            
+
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hashcoding.net/2016/11/28/LL-Script-implements/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Patrick">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">LL-Script implements</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-28T18:54:01+08:00">2016-11-28</time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编译器实现/" itemprop="url" rel="index">
+                    <span itemprop="name">编译器实现</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2016/11/28/LL-Script-implements/" class="leancloud_visitors" data-flag-title="LL-Script implements">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>LL-Script 是一个简单的脚本语言，最初写的时候是为了给游戏做脚本，后来还是使用lua替代。很久后又重新开始按照规范写了一次，这次整体流程走通了，但是设计杂乱无章。前些日子从新写了一次，采用了一些良好的设计，这就是先在这个版本。</p>
+<p>脚本源码在github上，访问<a href="https://github.com/thinkermao/LL-Script" target="_blank" rel="noopener">这里</a>。</p>
+<a id="more"></a> 
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>首先看整体流程：输入代码、输出opcode并执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Lexer(source code) =&gt; token stream</span><br><span class="line">Parser(token stream) =&gt; SSA (static single assginment form)</span><br><span class="line">CodeGen(SSA) =&gt; opcode</span><br><span class="line">VirtualMachine(opcode) =&gt; result</span><br></pre></td></tr></table></figure>
+<p>这里直接从源码构造中间代码，省去了语法树部分。另外Parser后应该为优化阶段，其输出为优化后的 SSA IR。</p>
+<h2 id="词法分析、语法分析"><a href="#词法分析、语法分析" class="headerlink" title="词法分析、语法分析"></a>词法分析、语法分析</h2><p>词法分析部分是简单的 ad-hoc 生成 token stream。Parser 按照 LL(1) 文法分析，并直接生成 SSA IR。</p>
+<p>Script 只有最基本的作用域，没有块级作用域，整个函数中的变量在函数任意位置均可访问。<code>FunctionScope</code> 表示一个函数作用域，其原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">struct FunctionScope &#123;</span><br><span class="line">    typedef std::unordered_map&lt;std::string, unsigned&gt; Symbols;</span><br><span class="line"></span><br><span class="line">    // symbol type</span><br><span class="line">    enum &#123; None, Define, Let &#125;;</span><br><span class="line"></span><br><span class="line">    FunctionScope()</span><br><span class="line">        : cfg_(nullptr)</span><br><span class="line">        , block_(nullptr)</span><br><span class="line">    &#123;&#125;</span><br><span class="line"></span><br><span class="line">    CFG *cfg_;</span><br><span class="line">    Symbols symbolTable_;</span><br><span class="line">    BasicBlock *block_;</span><br><span class="line">    std::unordered_set&lt;std::string&gt; captures_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>cfg</code> 表示函数对应 SSA 的控制流程图，主要用于提供源代码直接到IR的转换，<code>block_</code> 表示当前翻译过程中源代码对应IR所在的基本块。<code>Symbols</code> 使用 <code>unordered_map</code> 来表示符号容器，其中<code>first</code>表示符号名，<code>second</code>表示符号类别，由<code>enum { None, Define, Let };</code>决定。<code>symbolTable_</code> 就是主要的符号表，函数作用域中定义的符号均记录在此。<code>captures_</code>表示函数的捕获(c++名词)列表，记录在此，给翻译收尾工作提供必要的信息。</p>
+<p>在翻译过程中，主要用到查找符号原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bool tryToCatchID(std::string &amp;name);</span><br><span class="line">bool tryToCatchID(scope_iterator iter, std::string &amp;name);</span><br></pre></td></tr></table></figure>
+<p>首先通过原型1在当前作用域中查找，如果找到返回true，如果没有，则从里向外递归地遍历函数作用域栈。找到后，如果为外部符号，则加入捕获列表，否则返回false。</p>
+<h2 id="SSA-形式中间代码生成"><a href="#SSA-形式中间代码生成" class="headerlink" title="SSA 形式中间代码生成"></a>SSA 形式中间代码生成</h2><p>从源代码直接生成 SSA 形式代码可以参考论文：</p>
+<blockquote>
+<p>Simple and Efficient Construction of Static Single Assignment Form<br>Matthias Braun1, Sebastian Buchwald1, Sebastian Hack2, Roland Leißa2, Christoph Mallon2, and Andreas Zwinkau1</p>
+</blockquote>
+<p>Script 中涉及到的代码主要在 Parser 分析过程中以及 CFG 中，CFG 部分内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class CFG</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    // ....</span><br><span class="line">    // SSA form construction.</span><br><span class="line">    void sealOthersBlock();</span><br><span class="line">    void sealBlock(BasicBlock *block);</span><br><span class="line">    void saveVariableDef(std::string name, BasicBlock *block, Value *value);</span><br><span class="line">    Value *readVariableDef(std::string name, BasicBlock *block);</span><br><span class="line">protected:</span><br><span class="line">    // SSA</span><br><span class="line">    Value *readVariableRecurisive(std::string name, BasicBlock *block);</span><br><span class="line">    Value *addPhiOperands(std::string name, Phi *phi);</span><br><span class="line">    Value *tryRemoveTrivialPhi(const std::string &amp;name, Phi *phi);</span><br><span class="line">    // ....</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这部分代码详细使用请看论文或<a href="http://www.hashcoding.net/2016/08/18/Simple-and-Direction-SSA-Constriruction-Algorithm/">博客</a>。</p>
+<h3 id="SSA-IR"><a href="#SSA-IR" class="headerlink" title="SSA IR"></a>SSA IR</h3><p>SSA IR 的 use-def chain 主要参考 LLVM 2.0 源码。SSA IR 中基础数据结构有 <code>Use</code>、<code>Value</code>、<code>User</code>，每一条 <code>Instruction</code> 既是 <code>Value</code> 又是 <code>User</code>，<code>User</code> 和 <code>Value</code> 通过 <code>Use</code> 关联起来。一些列指令组成 <code>BasicBlock</code>，一些列 <code>BasicBlock</code> 组成 <code>CFG</code>。<code>IRContext</code>包装了<code>Instruction</code>创建的工作。每一个函数由一个 <code>CFG</code> 组成，所有函数一起组成 <code>IRModule</code>。也就是说 Parser 输出为 <code>IRModule</code>。 </p>
+<h3 id="函数处理"><a href="#函数处理" class="headerlink" title="函数处理"></a>函数处理</h3><p>生成 SSA IR 部分内容并不复杂，除了有关函数、Lambda部分。Script中无论函数定义可以看作如下替换(步骤1)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function bar() &#123;&#125;</span><br><span class="line">=&gt;</span><br><span class="line">function $lambda_1_bar() &#123;&#125;</span><br><span class="line">define bar = $lambda_1_bar;</span><br></pre></td></tr></table></figure>
+<p>因为闭包对于普通变量通过拷贝、对于复合变量通过引用(实际实现为指针)实现。所以可以通过类似于C++<code>std::bind</code>的机制实现 closure(步骤2)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let a = 10;</span><br><span class="line">define call = lambda(x) &#123;</span><br><span class="line">    return x + a;</span><br><span class="line">&#125;</span><br><span class="line">=&gt;</span><br><span class="line">let call_tmp = lambda(a, x) ....</span><br><span class="line"> define call = call_tmp(a);</span><br></pre></td></tr></table></figure>
+<p>不过这样处理就会涉及到函数中访问其自己名字的问题，或者说叫访问lambda函数自己。这个问题可以通过 Y combinator 解决。Script 中使用的办法比较简单(步骤3)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">let fib = lambda(n) &#123;</span><br><span class="line">    if (n &lt; 2)	return 0;</span><br><span class="line">    return fib(n-1) + fib(n-2);</span><br><span class="line">&#125;</span><br><span class="line">=&gt;</span><br><span class="line">let tmp = lambda(fib, n) &#123;</span><br><span class="line">    fib = fib(fib);</span><br><span class="line">    if (n &lt; 2) return 0;</span><br><span class="line">    return fib(n-1) + fib(n-2);</span><br><span class="line">&#125;</span><br><span class="line">let fib = tmp(fib);</span><br></pre></td></tr></table></figure>
+<p>有了上述基础，就可以看相关代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Value *Parser::parseFunctionCommon(const std::string &amp;name)</span><br><span class="line">&#123;</span><br><span class="line">    // create function and generate parallel invoke.</span><br><span class="line">    // for module require, need insert file name</span><br><span class="line">    IRFunction *function = module_.createFunction(</span><br><span class="line">        Combinator(lexer_.filename(), name));</span><br><span class="line">    pushFunctionScopeAndInit(function);</span><br><span class="line"></span><br><span class="line">    Strings params;</span><br><span class="line">    getFunctionParamsAndBody(params, function);</span><br><span class="line"></span><br><span class="line">    // save current captures.</span><br><span class="line">    std::vector&lt;std::string&gt; prototype;</span><br><span class="line">    getFunctionPrototype(name, prototype, params);</span><br><span class="line">    function-&gt;setParams(std::move(prototype));</span><br><span class="line"></span><br><span class="line">    std::unordered_set&lt;std::string&gt; captures;</span><br><span class="line">    std::swap(captures, scope-&gt;captures_);</span><br><span class="line">    if (captures.find(name) != captures.end())</span><br><span class="line">        dealRecursiveDecl(name);</span><br><span class="line">    popFunctionScope(function);</span><br><span class="line"></span><br><span class="line">    // create closure for function.</span><br><span class="line">    return createClosureForFunction(name, captures);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>parseFunctionCommon</code> 首先分析函数参数和函数体，然后获取函数原型(步骤2)，根据函数是否递归调用自身，调用<code>dealRecursiveDecl</code>(步骤3)，最后为函数创建闭包(步骤1)。</p>
+<p>在函数原型部分，Script 将自身的名字放到 capture 列表的最后部分位置，这样使得处理递归调用变得简单。</p>
+<h2 id="目标代码生成"><a href="#目标代码生成" class="headerlink" title="目标代码生成"></a>目标代码生成</h2><p>代码生成流程如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void CodeGen::runOnFunction(IRFunction *func)</span><br><span class="line">&#123;</span><br><span class="line">    std::list&lt;LiveInterval&gt; intervals;</span><br><span class="line">    &#123;</span><br><span class="line">        LiveIntervalAnalysis analysis;</span><br><span class="line">        analysis.runOnFunction(func);</span><br><span class="line">        analysis.swapIntervals(intervals);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    SimpleRegisterAllocation RA(255, intervals);</span><br><span class="line">    RA.runOnFunction(func);</span><br><span class="line">    PhiElimination PE;</span><br><span class="line">    PE.runOnFunction(func);</span><br><span class="line"></span><br><span class="line">    numOfRegister = RA.totalRegister();</span><br><span class="line">    genFunction(func);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先是分析变量活性区间，然后通过活性区间进行寄存器分配，最后消除 Phi 结点，此时 IR 退出 SSA 形式。然后在这个基础上以函数为单位进行代码生成。</p>
+<p>CodeGen 目标为opcode，而opcode相关操作包装在OPBuilder中。具体逻辑比较简单，请直接看源码。</p>
+<h3 id="活性区间计算与寄存器分配"><a href="#活性区间计算与寄存器分配" class="headerlink" title="活性区间计算与寄存器分配"></a>活性区间计算与寄存器分配</h3><p>活性区间及寄存器分配以:</p>
+<blockquote>
+<p>Linear Scan Register Allocation for the Java HotSpot™ Client Compiler - Christian Wimmer</p>
+</blockquote>
+<p>论文为基础，详细逻辑可以参考该论文。</p>
+<p>活性区间计算涉及到函数如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">void buildIntervals(IRFunction *func);</span><br><span class="line">void computeLocalLiveSet(IRFunction *func);</span><br><span class="line">void computeGlobalLiveSet(IRFunction *func);</span><br></pre></td></tr></table></figure>
+<p>按照论文，首先计算 <code>BasicBlock</code> 顺序并编号，然后依次计算本地活性集和全局活性集，最后才建立活性区间。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">void LiveIntervalAnalysis::runOnFunction(IRFunction *func)</span><br><span class="line">&#123;</span><br><span class="line">    func-&gt;computeBlockOrder();</span><br><span class="line">    computeLocalLiveSet(func);</span><br><span class="line">    computeGlobalLiveSet(func);</span><br><span class="line">    buildIntervals(func);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>寄存器分配部分，原先的想法是使用线性扫描寄存器分配方法，在实现过程中，部分细节不知道怎么处理，所以就使用了比较简单的分配方式，将所有变量放到栈上，所有临时变量才分配寄存器，由 VM 约定最多255个寄存器。在 <code>SimpleRegisterAllocation</code> 中具体操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">void initAndSortIntervals();</span><br><span class="line">void assignRegister(IRFunction *func);</span><br><span class="line">void allocateNewRegister(LiveInterval &amp;interval);</span><br><span class="line">void expiredOldIntervals(unsigned current, ActiveSet &amp;active, ActiveSet &amp;inactive);</span><br><span class="line">bool tryToAllocateRegister(LiveInterval &amp;interval, ActiveSet &amp;active, ActiveSet &amp;inactive);</span><br></pre></td></tr></table></figure>
+<p>具体实现过程，参考<a href="http://www.hashcoding.net/2016/09/06/Linear-Scan-Register-Allocation/">博客</a>;</p>
+<h2 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h2><p>虚拟机的数据对象采用 Tagging 标记方式，整个 Runtime 以 C 语言为主实现，封装后供 C++ 使用。对象基本结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">enum Tag &#123;</span><br><span class="line">    TagNot = 0,</span><br><span class="line">    TagFixnum = 1,</span><br><span class="line">    TagReal = 2,</span><br><span class="line">    TagSpec = 3,</span><br><span class="line"></span><br><span class="line">    TagNil = 7,</span><br><span class="line"></span><br><span class="line">    TagShift = 2,</span><br><span class="line">    TagMask = 3,</span><br><span class="line"></span><br><span class="line">    TagSpecalMask = 0xf,</span><br><span class="line">    TagSpecalShift = 4,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 8bits</span><br><span class="line">enum Type &#123;</span><br><span class="line">    TypeString = 0,</span><br><span class="line">    TypeArray = TypeString + 1,</span><br><span class="line">    TypeClosure = TypeString + 2,</span><br><span class="line">    TypeUserFunc = TypeString + 3,</span><br><span class="line">    TypeHashNode = TypeString + 4,</span><br><span class="line">    TypeUserData = TypeString + 5,</span><br><span class="line">    TypeHashTable = TypeString + 6,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// common property of heap object</span><br><span class="line">// obType_ is the type of object</span><br><span class="line">#define HEAP_OBJECT_HEAD   \</span><br><span class="line">    int8_t obType;         \</span><br><span class="line">    int8_t resv1;          \</span><br><span class="line">    int8_t resv2;          \</span><br><span class="line">    int8_t resv3</span><br><span class="line"></span><br><span class="line">typedef struct &#123;</span><br><span class="line">    HEAP_OBJECT_HEAD;</span><br><span class="line">&#125; CommonObject;</span><br></pre></td></tr></table></figure>
+<p><code>Tag</code> 用于标记简单对象类型，复合对象继承自 <code>CommonObject</code>，使用 <code>obType</code> 表示具体对象类型即 <code>Type</code> 中对应的类型。</p>
+<p>以String为例 ：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    HEAP_OBJECT_HEAD;</span><br><span class="line">    size_t length;</span><br><span class="line">    char str[];</span><br><span class="line">&#125; String;</span><br></pre></td></tr></table></figure>
+<p>任何一个 String 对象长度为 <code>sizeof(String) + String.length</code>。所有数据结构中，最为复杂的是 Hash 表的设计。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typedef struct HashNodeList</span><br><span class="line">&#123;</span><br><span class="line">    HEAP_OBJECT_HEAD;</span><br><span class="line">    size_t capacity;</span><br><span class="line">    HashNode content[0];</span><br><span class="line">&#125; HashNodeList;</span><br><span class="line"></span><br><span class="line">typedef struct Hash</span><br><span class="line">&#123;</span><br><span class="line">    HEAP_OBJECT_HEAD;</span><br><span class="line">    size_t capacity;</span><br><span class="line">    size_t size;</span><br><span class="line">    size_t max_idx;</span><br><span class="line">    HashNodeList *content;</span><br><span class="line">&#125; Hash;</span><br></pre></td></tr></table></figure>
+<p>Hash 是 Hash 表的数据结构，其中数据存放在 HashNodeList 部分，这样设计是用于后面的 Expand 以及 Shrink 操作。这里说明 hash 表 set 操作：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">static void HashSet(Object self, uintptr_t key, Object value)</span><br><span class="line">&#123;</span><br><span class="line">    assert(IsFixnum(value));</span><br><span class="line"></span><br><span class="line">    Hash *hash = (Hash*)self;</span><br><span class="line">    uintptr_t index = key % hash-&gt;capacity;</span><br><span class="line">    uintptr_t slot = hash-&gt;capacity;</span><br><span class="line"></span><br><span class="line">    if (IsNil(value)) &#123;</span><br><span class="line">        value = CreateUndef();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    HashNodeList *list = hash-&gt;content;</span><br><span class="line">    while (list-&gt;content[index].key != key</span><br><span class="line">        &amp;&amp; !IsNil(list-&gt;content[index].value)) &#123;</span><br><span class="line">        if (slot == hash-&gt;capacity</span><br><span class="line">            &amp;&amp; IsUndef(list-&gt;content[index].value)) &#123;</span><br><span class="line">            slot = index;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        index = HashNextIndex(index, hash-&gt;capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (list-&gt;content[index].key == key)</span><br><span class="line">        slot = index;</span><br><span class="line">    if (slot == hash-&gt;capacity)</span><br><span class="line">        slot = index;</span><br><span class="line"></span><br><span class="line">    if (!IsUndef(value) &amp;&amp; (IsNil(list-&gt;content[slot].value)</span><br><span class="line">        || IsUndef(list-&gt;content[slot].value))) &#123;</span><br><span class="line">        assert(hash-&gt;size != hash-&gt;capacity);</span><br><span class="line">        if (key == HashKey(CreateFixnum(hash-&gt;max_idx)))</span><br><span class="line">            hash-&gt;max_idx++;</span><br><span class="line">        hash-&gt;size++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (IsUndef(value) &amp;&amp; !IsUndef(list-&gt;content[slot].value)</span><br><span class="line">        &amp;&amp; !IsNil(list-&gt;content[slot].value)) &#123;</span><br><span class="line">        assert(hash-&gt;size);</span><br><span class="line">        if (key == HashKey(CreateFixnum(hash-&gt;max_idx - 1)))</span><br><span class="line">            hash-&gt;max_idx--;</span><br><span class="line">        hash-&gt;size--;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    list-&gt;content[slot].value = value;</span><br><span class="line">    list-&gt;content[slot].key = key;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先计算hash对象所在 HashNodeList 中的 slot，如果当前位置已经被占用，则计算下一个 slot 所在位置。找到位置后，根据是否 nil 判断是否删除结点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Object HashFind(Object self, Object key)</span><br><span class="line">&#123;</span><br><span class="line">    assert(IsHash(self));</span><br><span class="line">    Hash *hash = (Hash*)self; </span><br><span class="line">    uint32_t hash_key = HashKey(key);</span><br><span class="line">    uintptr_t index = hash_key % hash-&gt;capacity;</span><br><span class="line"></span><br><span class="line">    HashNodeList *list = hash-&gt;content;</span><br><span class="line">    while (list-&gt;content[index].key != hash_key</span><br><span class="line">        &amp;&amp; !IsNil(list-&gt;content[index].value)) &#123;</span><br><span class="line">        if (IsUndef(list-&gt;content[index].value))</span><br><span class="line">            break;</span><br><span class="line">        index = HashNextIndex(index, list-&gt;capacity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (IsNil(list-&gt;content[index].value))</span><br><span class="line">        return CreateUndef();</span><br><span class="line">    else</span><br><span class="line">        return list-&gt;content[index].value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>find 操作查找部分与 set 类似，最后直接返回对象值。实际上对外暴露的接口是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">void HashSetAndUpdate(Object self, Object key, Object value)</span><br><span class="line">&#123;</span><br><span class="line">    assert(IsHash(self));</span><br><span class="line"></span><br><span class="line">    if (key == CreateFixnum(-1))</span><br><span class="line">        key = CreateFixnum(((Hash*)self)-&gt;max_idx);</span><br><span class="line">    uint32_t hash_key = HashKey(key);</span><br><span class="line">    HashSet(self, hash_key, value);</span><br><span class="line">    if (HashNeedExpand(self)) </span><br><span class="line">        HashExpand(self);</span><br><span class="line">    else if (HashNeedShrink(self)) </span><br><span class="line">        HashShrink(self);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里对 set 后的表进行判断，并根据结果伸展或者收缩表。伸展表时，目标容积为原容积的 3/2，收缩时，目标容积为原容积的 2/3。</p>
+<p>需要注意的是 Runtime 中申请内存也必须在 Runtime 中，保证 GC 能够访问到该内存。所以 Runtime 设计中出现的内存分配必须使用 GC 提供的接口。另外，如果分配过程中发生了 GC，也需要保证所有指针均指向正确的位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// </span><br><span class="line">// just expand content.</span><br><span class="line">static void HashExpand(Object self)</span><br><span class="line">&#123;</span><br><span class="line">    assert(IsHash(self));</span><br><span class="line">    Hash *hash = (Hash*)self;</span><br><span class="line">    size_t future_capacity = HashExpandSize(hash-&gt;capacity);</span><br><span class="line"></span><br><span class="line">    // before gc, save it as global object</span><br><span class="line">    GlobalObjectBuffer = &amp;self;</span><br><span class="line">    HashNodeList *cap = (HashNodeList*)HashNewNodeList(future_capacity);</span><br><span class="line">    GlobalObjectBuffer = NULL;</span><br><span class="line"></span><br><span class="line">    HashRehash(self, cap);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此，在 Runtime 中提供了一个特殊的对象 <code>GlobalObjectBuffer</code>来保证内存指针始终指向正确的位置。</p>
+<h2 id="Virtual-Machine-amp-GC"><a href="#Virtual-Machine-amp-GC" class="headerlink" title="Virtual Machine &amp; GC"></a>Virtual Machine &amp; GC</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">typedef int8_t Byte;</span><br><span class="line"></span><br><span class="line">enum Opcode &#123;</span><br><span class="line">    OK_Goto = 0,    // goto lable@_addr</span><br><span class="line"></span><br><span class="line">    // operator</span><br><span class="line">    // single </span><br><span class="line">    OK_Not,         // temp = !temp</span><br><span class="line">    // binary </span><br><span class="line">    OK_Add,         // temp = temp + temp</span><br><span class="line">    OK_Sub,         // temp = temp - temp</span><br><span class="line">    OK_Mul,         // temp = temp * temp</span><br><span class="line">    OK_Div,         // temp = temp / temp</span><br><span class="line">    // relop</span><br><span class="line">    OK_Great,       // temp = temp &gt; temp</span><br><span class="line">    OK_GreatThan,   // temp = temp &gt;= temp</span><br><span class="line">    OK_Less,        // temp = temp &lt; temp</span><br><span class="line">    OK_LessThan,    // temp = temp &lt;= temp</span><br><span class="line">    OK_Equal,       // temp = temp == temp</span><br><span class="line">    OK_NotEqual,    // temp = temp != temp</span><br><span class="line"></span><br><span class="line">    // move</span><br><span class="line">    OK_MoveS,       // temp = string index</span><br><span class="line">    OK_MoveI,       // temp = constant</span><br><span class="line">    OK_MoveF,		// temp = float</span><br><span class="line">    OK_MoveN,		// temp = null</span><br><span class="line">    OK_Move,        // temp = temp</span><br><span class="line"></span><br><span class="line">    // memory</span><br><span class="line">    OK_Load,        // load id to temp</span><br><span class="line">    OK_Index,       // load id [ temp ] to temp</span><br><span class="line">    OK_Store,       // store id from temp</span><br><span class="line">    OK_SetIndex,      // store id [ temp ] from temp</span><br><span class="line"></span><br><span class="line">    // condition jmp</span><br><span class="line">    OK_If,          // if temp goto label</span><br><span class="line"></span><br><span class="line">    // call </span><br><span class="line">    OK_Param,       // push temp</span><br><span class="line">    OK_Call,        // temp = call Label in num params</span><br><span class="line">    OK_TailCall,</span><br><span class="line">    OK_Return,      // return temp</span><br><span class="line">    OK_NewHash,		// tmp = new hash</span><br><span class="line">    OK_NewClosure,	// tmp = new string(idx)</span><br><span class="line">    OK_UserClosure, // tmp = new user closure</span><br><span class="line">    OK_Halt,        // stop</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>opcode 设计如上，VM 对其加以解释执行。</p>
+<p>VM 中有三个重要的数据结构，VMFrame、VMScene、VMState，VMFrame 是运行时的一个调用栈帧，保存了当前所在位置的运行时数据。VMScene是一个运行场景，每一个程序一个运行场景，当前场景运行不会影响到后续场景的运行。VMState是opcode解释器，绑定VMScene运行。在同一时刻，只能有一个VMState运行，因为需要涉及到Runtime中的设计。当然这中设计导致了这种缺陷，但是目前是最简单的实现方式。</p>
+<p>GC 采用了semi-space swap算法，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">struct Semispace</span><br><span class="line">&#123;</span><br><span class="line">    Object allocateMemory(size_t size);</span><br><span class="line">    bool contains(Object obj);</span><br><span class="line">    void reset();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class GarbageCollector</span><br><span class="line">&#123;</span><br><span class="line">public:</span><br><span class="line">    Object allocate(size_t size);</span><br><span class="line"></span><br><span class="line">    void bindReference(std::function&lt;VariableReference&gt; call);</span><br><span class="line">    void bindGlobals(std::function&lt;GloablVariable&gt; call);</span><br><span class="line">    void processReference(Object *slot);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">    void garbageCollect();</span><br><span class="line"></span><br><span class="line">    void swapSpace();</span><br><span class="line">    void cleanSpace(Semispace *space);</span><br><span class="line"></span><br><span class="line">    bool isForwarded(Object obj);</span><br><span class="line">    void forwardTo(Object obj, Object new_addr);</span><br><span class="line">    Object forwardee(Object obj);</span><br><span class="line"></span><br><span class="line">    Object swap(Object obj, size_t size);</span><br><span class="line"></span><br><span class="line">    Semispace *from_space_;</span><br><span class="line">    Semispace *to_space_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>主要数据结构如上。其中有两个回掉函数，其中<code>GloablVariable</code>用于与VM沟通，获取根结点数据;<code>VariableReference</code>用于与Runtime沟通，处理变量引用，这样将GC与VM和Runtime解耦，以后修改GC更为方便。GC详细介绍可以看<a href="http://hllvm.group.iteye.com/group/topic/39376" target="_blank" rel="noopener">文章</a>。</p>
+<p>在 buildin.cpp 中提供了 Runtime 涉及到的操作和 GC 耦合部分内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">void ProcessGlobals(void *scene)</span><br><span class="line">&#123;</span><br><span class="line">    using script::VMFrame;</span><br><span class="line">    using script::VMScene;</span><br><span class="line">    using script::GarbageCollector;</span><br><span class="line"></span><br><span class="line">    VMScene *vmscene = static_cast&lt;VMScene*&gt;(scene);</span><br><span class="line">    GarbageCollector *GC = &amp;vmscene-&gt;GC;</span><br><span class="line">    for (auto &amp;frame : vmscene-&gt;frames) &#123;</span><br><span class="line">        GC-&gt;processReference(&amp;frame.params);</span><br><span class="line">        GC-&gt;processReference(&amp;frame.registers);</span><br><span class="line">    &#125;</span><br><span class="line">    for (auto &amp;object : vmscene-&gt;paramsStack) &#123;</span><br><span class="line">        GC-&gt;processReference(&amp;object);</span><br><span class="line">    &#125;</span><br><span class="line">    if (GlobalObjectBuffer != NULL)</span><br><span class="line">        GC-&gt;processReference(GlobalObjectBuffer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void ProcessVariableReference(void *scene, Object *object)</span><br><span class="line">&#123;</span><br><span class="line">    using script::VMScene;</span><br><span class="line">    using script::GarbageCollector;</span><br><span class="line"></span><br><span class="line">    VMScene *vmscene = static_cast&lt;VMScene*&gt;(scene);</span><br><span class="line">    GarbageCollector *GC = &amp;vmscene-&gt;GC;</span><br><span class="line">    if (IsClosure(*object)) &#123;</span><br><span class="line">        size_t hold = ClosureHold(*object);</span><br><span class="line">        Object *params = ClosureParams(*object);</span><br><span class="line">        for (size_t idx = 0; idx &lt; hold; ++idx) &#123;</span><br><span class="line">            GC-&gt;processReference(&amp;(params[idx]));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (IsArray(*object)) &#123;</span><br><span class="line">        size_t length = ArraySize(*object);</span><br><span class="line">        Object *array = ArrayPointer(*object);</span><br><span class="line">        for (size_t idx = 0; idx &lt; length; ++idx) &#123;</span><br><span class="line">            GC-&gt;processReference(&amp;array[idx]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    else if (IsHash(*object)) &#123;</span><br><span class="line">        GC-&gt;processReference(HashNodeListGet(*object));</span><br><span class="line">    &#125;</span><br><span class="line">    else if (IsHashNodeList(*object)) &#123;</span><br><span class="line">        size_t size = NodeListElementCapacity(*object);</span><br><span class="line">        HashNode *nodes = HashNodeListElement(*object);</span><br><span class="line">        for (size_t idx = 0; idx &lt; size; ++idx) &#123;</span><br><span class="line">            GC-&gt;processReference(&amp;nodes[idx].value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码就是用于处理 GC 的回掉工作。</p>
+<p>在 VM 当中提供了 tailCall 指令用于尾调用(并不局限与尾递归)优化，对于那些在返回语句中调用了其他函数的调用语句均可以优化。具体VM中则是重复利用当前 VMFrame ，达到尾调用的目的。</p>
+<p>仍然需要注意的是使用 GC 出现的具有迷惑性的问题，如果某条指令执行过程中，创建了对象，就要保证创建前后指针值的位置正确。</p>
+<h2 id="FFI-支持"><a href="#FFI-支持" class="headerlink" title="FFI 支持"></a>FFI 支持</h2><p>在Runtime和VM中提供了FFI支持：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">///</span><br><span class="line">/// user func object</span><br><span class="line">///</span><br><span class="line">typedef struct</span><br><span class="line">&#123;</span><br><span class="line">    HEAP_OBJECT_HEAD;</span><br><span class="line">    void *content;</span><br><span class="line">&#125; UserClosure;</span><br></pre></td></tr></table></figure>
+<p>该结构用于包装用户函数，然后 VM 中可以使用 callUserClosure 与用户定义函数进行交互。</p>
+<p>这些用户定义函数需要在编译器中先进行注册后才能被编译器识别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">Object lib_require(VMState *state, size_t paramsNums)</span><br><span class="line">&#123;</span><br><span class="line">    assert(globalReguireCallback);</span><br><span class="line">    if (paramsNums != 1) &#123;</span><br><span class="line">        state-&gt;runtimeError(&quot;require only takes one parameter&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Object res = state-&gt;getScene()-&gt;paramsStack.back();</span><br><span class="line">    if (IsString(res)) &#123;</span><br><span class="line">        // save it.</span><br><span class="line">        std::string filename = StringGet(res); </span><br><span class="line">        VMScene *scene = state-&gt;getScene();</span><br><span class="line">        unsigned resReg = static_cast&lt;unsigned&gt;(scene-&gt;lastValue);</span><br><span class="line">        globalReguireCallback(filename.c_str(), resReg);</span><br><span class="line">    &#125;</span><br><span class="line">    return CreateUndef();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static Lib libs[] = &#123;</span><br><span class="line">    &#123; &quot;require&quot;, lib_require &#125;,</span><br><span class="line">    &#123; nullptr, nullptr &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">void RegisterLibrary(LibRegister lib_register)</span><br><span class="line">&#123;</span><br><span class="line">    Lib *lib = libs;</span><br><span class="line">    while (lib-&gt;name) &#123;</span><br><span class="line">        lib_register(lib-&gt;name, lib-&gt;closure);</span><br><span class="line">        lib++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void RegisterRequire(RequireCallback require)</span><br><span class="line">&#123;</span><br><span class="line">    globalReguireCallback = require;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里是对脚本提供了模块加载功能，首先用用户提供自定义函数(原型与lib_require一致)，然后保存在<code>libs[]</code>中，编译器初始化时，会将具体的注册函数传递给RegisterLibrary并一一注册。</p>
+<p>对于一个C函数的定义，在注册过程中需要向Parser和opcode中注册，方便符号查找。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Compile/" rel="tag"># Compile</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/21/OpenGL-traceball/" rel="next" title="OpenGL traceball">
+                <i class="fa fa-chevron-left"></i> OpenGL traceball
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/01/15/C-对象线程安全/" rel="prev" title="C++对象线程安全">
+                C++对象线程安全 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Patrick</p>
+              <p class="site-description motion-element" itemprop="description">C++, Go, 编译器, 分布式, 存储, 操作系统</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#词法分析、语法分析"><span class="nav-number">2.</span> <span class="nav-text">词法分析、语法分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSA-形式中间代码生成"><span class="nav-number">3.</span> <span class="nav-text">SSA 形式中间代码生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSA-IR"><span class="nav-number">3.1.</span> <span class="nav-text">SSA IR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数处理"><span class="nav-number">3.2.</span> <span class="nav-text">函数处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目标代码生成"><span class="nav-number">4.</span> <span class="nav-text">目标代码生成</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#活性区间计算与寄存器分配"><span class="nav-number">4.1.</span> <span class="nav-text">活性区间计算与寄存器分配</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Runtime"><span class="nav-number">5.</span> <span class="nav-text">Runtime</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Virtual-Machine-amp-GC"><span class="nav-number">6.</span> <span class="nav-text">Virtual Machine &amp; GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FFI-支持"><span class="nav-number">7.</span> <span class="nav-text">FFI 支持</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Patrick</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.hashcoding.net/2016/11/28/LL-Script-implements/';
+          this.page.identifier = '2016/11/28/LL-Script-implements/';
+          this.page.title = 'LL-Script implements';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-coding.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("lMQDA5ivsWA2jcjJzTTImuvx-gzGzoHsz", "JIA0x48kG2WhEllWMb31Xt60");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

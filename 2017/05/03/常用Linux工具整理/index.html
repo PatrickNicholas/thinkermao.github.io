@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.0.0">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Blog, Hashcoding.net, C++, GO, Java, Destribute, 分布式, 存储" />
+
+
+
+
+  
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="about me">
+<meta property="og:type" content="website">
+<meta property="og:title" content="about me">
+<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="about me">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-01-05T15:25:54.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="about me">
+<meta name="twitter:description" content="about me">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
+
+
+
+
+
+  <title>常用Linux工具整理 | Coding</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?4c84227c882bfc8efa4a1edc9bc8f47e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Coding</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+
+            
+              首页
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+
+            
+              关于
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+
+            
+              标签
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+
+            
+              分类
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+
+            
+              归档
+            
+
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+
+            
+              站点地图
+            
+
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.hashcoding.net/2017/05/03/常用Linux工具整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Patrick">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">常用Linux工具整理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-03T17:31:54+08:00">2017-05-03</time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/05/03/常用Linux工具整理/" class="leancloud_visitors" data-flag-title="常用Linux工具整理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>记录本人常用Linux命令</p>
+<a id="more"></a>
+<h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><h2 id="Cloc"><a href="#Cloc" class="headerlink" title="Cloc"></a>Cloc</h2><p>Cloc是一款使用Perl语言开发的开源代码统计工具，支持多平台使用、多语言识别，能够计算指定目标文件或文件夹中的文件数（files）、空白行数（blank）、注释行数（comment）和代码行数（code）。</p>
+<p>Cloc具备很多特性以致于让它更方便于使用、完善、拓展和便携。</p>
+<ul>
+<li>作为一个单一的独立形式存在的文件，Cloc只需要下载相应文件并运行这样最少的安装工作即可。</li>
+<li>能够从源码文件中识别编程语言注释定义；</li>
+<li>允许通过语言和项目来分开统计计算；</li>
+<li>能够以纯文本、SQL、XML、YAML、逗号分隔等多样化的格式生成统计结果；</li>
+<li>能够统计诸如tar、Zip等格式的压缩文件中的代码数；</li>
+<li>有许多排除式的指令；</li>
+<li>能够使用空格或者不常用的字符处理文件名和目录名；</li>
+<li>不需要依赖外部标准的Perl语言配置；</li>
+<li>支持多平台使用。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Usage: cloc [options] &lt;file(s)/dir(s)&gt; | &lt;set 1&gt; &lt;set 2&gt; | &lt;report files&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>// TODO: </p>
+<h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><h2 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h2><h3 id="开始和停止"><a href="#开始和停止" class="headerlink" title="开始和停止"></a>开始和停止</h3><p><code>quit</code>: 退出GDB<br><code>run</code>: 运行程序（在此给出命令行参数）<br><code>kill</code>: 停止程序</p>
+<h3 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h3><p><code>break sum</code>: 在函数 sum 入口设置断点<br><code>break *0x8048394</code>: 在地址 0x8048394 处设置断点<br><code>delete 1</code>: 删除断点1<br><code>delete</code>: 删除所有断点</p>
+<h3 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h3><p><code>stepi</code>: 执行一条指令<br><code>stepi 4</code>: 执行四条指令<br><code>nexti</code>: 类似<code>stepi</code>，但是以函数调用为单位<br><code>continue</code>: 继续执行<br><code>finish</code>: 运行到当前函数返回</p>
+<h3 id="检查代码"><a href="#检查代码" class="headerlink" title="检查代码"></a>检查代码</h3><p><code>disas</code>: 反汇编当前函数<br><code>disas sum</code>: 反汇编函数<code>sum</code><br><code>disas 0x000001</code>: 反汇编位于地址 0x000001 附近的函数<br><code>disas 0x000000 0x000001</code>: 反汇编指定范围的代码<br><code>print /x $eip</code>: 以十六进制输出程序计数器的内容</p>
+<h3 id="检查数据"><a href="#检查数据" class="headerlink" title="检查数据"></a>检查数据</h3><p><code>print $eax</code>: 以十进制数出 $eax 的内容<br><code>print /x $eax</code>: 以十六进制输出<br><code>print /t $eax</code>: 以二进制输出<br><code>print sum</code>: 输出sum的值<br><code>print *(int*)sum</code>: 输出sum指向int的值<br><code>x/20b sum</code>: 检查函数sum的前20个字节<br><code>x/2w 0xfff076b0</code>: 检查0xfff076b0开始的4字节</p>
+<h3 id="有用的信息"><a href="#有用的信息" class="headerlink" title="有用的信息"></a>有用的信息</h3><p><code>info frame</code>: 有关与当前栈帧的信息<br><code>info registers</code>: 所有寄存器的值<br><code>help</code>: 显示GDB的帮助信息</p>
+<h1 id="O"><a href="#O" class="headerlink" title="O"></a>O</h1><h2 id="Objdump"><a href="#Objdump" class="headerlink" title="Objdump"></a>Objdump</h2><h3 id="info"><a href="#info" class="headerlink" title="info"></a>info</h3><p>Display infomation from object files.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int main(void) &#123;</span><br><span class="line">  printf(&quot;hello world&quot;);</span><br><span class="line">  return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用<code>gcc hello.c</code>生成<code>hello.o</code>文件，下面使用<code>hello.o</code>作为源文件使用objdump。</p>
+<h3 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h3><p><code>-f, --file-headers</code> 显示整个文件头部的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/mnt/d/tmp$ objdump -f hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line">architecture: i386:x86-64, flags 0x00000011:</span><br><span class="line">HAS_RELOC, HAS_SYMS</span><br><span class="line">start address 0x0000000000000000</span><br></pre></td></tr></table></figure>
+<p><code>-h, --[section]-headers</code> 显示文件的<code>section</code>头信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/mnt/d/tmp$ objdump -h hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line">Sections:</span><br><span class="line">Idx Name          Size      VMA               LMA               File off  Algn</span><br><span class="line">  0 .text         0000001a  0000000000000000  0000000000000000  00000040  2**0</span><br><span class="line">                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, CODE</span><br><span class="line">  1 .data         00000000  0000000000000000  0000000000000000  0000005a  2**0</span><br><span class="line">                  CONTENTS, ALLOC, LOAD, DATA</span><br><span class="line">  2 .bss          00000000  0000000000000000  0000000000000000  0000005a  2**0</span><br><span class="line">                  ALLOC</span><br><span class="line">  3 .rodata       0000000c  0000000000000000  0000000000000000  0000005a  2**0</span><br><span class="line">                  CONTENTS, ALLOC, LOAD, READONLY, DATA</span><br><span class="line">  4 .comment      00000035  0000000000000000  0000000000000000  00000066  2**0</span><br><span class="line">                  CONTENTS, READONLY</span><br><span class="line">  5 .note.GNU-stack 00000000  0000000000000000  0000000000000000  0000009b  2**0</span><br><span class="line">                  CONTENTS, READONLY</span><br><span class="line">  6 .eh_frame     00000038  0000000000000000  0000000000000000  000000a0  2**3</span><br><span class="line">                  CONTENTS, ALLOC, LOAD, RELOC, READONLY, DATA</span><br></pre></td></tr></table></figure>
+<p>Idx 是编号，Name 是节点名称，Size 是节大小，VMA 是在虚拟内存中的起点，LMA 是节的装载地址（除了ROM之外，通常与 VMA 相同），File off 是在文件中的具体偏移，Algn 是对齐地址。各节第二行描述了节的属性。CONTENTS 表示节在文件中占用了内存空间，ALLOC 则表示需要分配内存，RELOC 表示需要重定位。</p>
+<p><code>-d, --disassemble</code> 显示可执行<code>section</code>的反汇编代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/mnt/d/tmp$ objdump --disassemble hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line">0000000000000000 &lt;main&gt;:</span><br><span class="line">   0:   55                      push   %rbp</span><br><span class="line">   1:   48 89 e5                mov    %rsp,%rbp</span><br><span class="line">   4:   bf 00 00 00 00          mov    $0x0,%edi</span><br><span class="line">   9:   b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">   e:   e8 00 00 00 00          callq  13 &lt;main+0x13&gt;</span><br><span class="line">  13:   b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">  18:   5d                      pop    %rbp</span><br><span class="line">  19:   c3                      retq</span><br></pre></td></tr></table></figure>
+<p><code>-D, --disassemble-all</code> 显示所有<code>section</code>的反汇编</p>
+<p>NOTICE: <strong>反汇编过程中使用 <code>-M</code> 可以设置反汇编格式：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">(multiple options should be separated by commas):</span><br><span class="line">  x86-64      Disassemble in 64bit mode</span><br><span class="line">  i386        Disassemble in 32bit mode</span><br><span class="line">  i8086       Disassemble in 16bit mode</span><br><span class="line">  att         Display instruction in AT&amp;T syntax</span><br><span class="line">  intel       Display instruction in Intel syntax</span><br><span class="line">  att-mnemonic</span><br><span class="line">              Display instruction in AT&amp;T mnemonic</span><br><span class="line">  intel-mnemonic</span><br><span class="line">              Display instruction in Intel mnemonic</span><br><span class="line">  addr64      Assume 64bit address size</span><br><span class="line">  addr32      Assume 32bit address size</span><br><span class="line">  addr16      Assume 16bit address size</span><br><span class="line">  data32      Assume 32bit data size</span><br><span class="line">  data16      Assume 16bit data size</span><br><span class="line">  suffix      Always display instruction suffix in AT&amp;T syntax</span><br><span class="line">  amd64       Display instruction in AMD64 ISA</span><br><span class="line">  intel64     Display instruction in Intel64 ISA</span><br></pre></td></tr></table></figure>
+<p>比如要显示 Intel 格式的汇编代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/mnt/d/tmp$ objdump --disassemble -M intel hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line">0000000000000000 &lt;main&gt;:</span><br><span class="line">   0:   55                      push   rbp</span><br><span class="line">   1:   48 89 e5                mov    rbp,rsp</span><br><span class="line">   4:   bf 00 00 00 00          mov    edi,0x0</span><br><span class="line">   9:   b8 00 00 00 00          mov    eax,0x0</span><br><span class="line">   e:   e8 00 00 00 00          call   13 &lt;main+0x13&gt;</span><br><span class="line">  13:   b8 00 00 00 00          mov    eax,0x0</span><br><span class="line">  18:   5d                      pop    rbp</span><br><span class="line">  19:   c3                      ret</span><br></pre></td></tr></table></figure>
+<p><code>-t, --syms</code> 显示符号表内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/mnt/d/tmp$ objdump -t hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line">SYMBOL TABLE:</span><br><span class="line">0000000000000000 l    df *ABS*  0000000000000000 hello.c</span><br><span class="line">0000000000000000 l    d  .text  0000000000000000 .text</span><br><span class="line">0000000000000000 l    d  .data  0000000000000000 .data</span><br><span class="line">0000000000000000 l    d  .bss   0000000000000000 .bss</span><br><span class="line">0000000000000000 l    d  .rodata        0000000000000000 .rodata</span><br><span class="line">0000000000000000 l    d  .note.GNU-stack        0000000000000000 .note.GNU-stack</span><br><span class="line">0000000000000000 l    d  .eh_frame      0000000000000000 .eh_frame</span><br><span class="line">0000000000000000 l    d  .comment       0000000000000000 .comment</span><br><span class="line">0000000000000000 g     F .text  000000000000001a main</span><br><span class="line">0000000000000000         *UND*  0000000000000000 printf</span><br></pre></td></tr></table></figure>
+<p>各列分别是界内偏移，标记位，所在节，对齐方式和符号名。<code>*ABS*</code> 表示这是一个不和任何节相关的绝对符号，<code>*UND*</code>则这个符号不在本文件中定义，<code>*COM*</code> 表示还未分配位置的未初始化数据目标。</p>
+<p><code>-T, --dynamic-syms</code> 显示文件的动态符号表入口,仅仅对动态目标文件有意义，比如共享库。</p>
+<p><code>-r, --reloc</code> 显示重定位入口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">:/mnt/d/tmp$ objdump -r hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line">RELOCATION RECORDS FOR [.text]:</span><br><span class="line">OFFSET           TYPE              VALUE</span><br><span class="line">0000000000000005 R_X86_64_32       .rodata</span><br><span class="line">000000000000000f R_X86_64_PC32     printf-0x0000000000000004</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">RELOCATION RECORDS FOR [.eh_frame]:</span><br><span class="line">OFFSET           TYPE              VALUE</span><br><span class="line">0000000000000020 R_X86_64_PC32     .text</span><br></pre></td></tr></table></figure>
+<p>分别表示 text 和 eh_frame 节的重定位表。所谓重定位表是指代码中需要回填地址的表，链接器重定位算法大概如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">foreach section s &#123;</span><br><span class="line">  foreach relocation entry r &#123;</span><br><span class="line">    refptr = s + r.offset;</span><br><span class="line">    if (r.type == XXXX_PC32) &#123;</span><br><span class="line">      refaddr = ADDR(s) + r.offset;</span><br><span class="line">      *refptr = ADDR(r.symbol) + *refptr - refaddr;</span><br><span class="line">    &#125;</span><br><span class="line">    if (r.type == XXXX_32) &#123;</span><br><span class="line">      *refptr = ADDR(r.symbol) + *refptr;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果配合<code>d D</code>使用,则以反汇编以后的格式显示:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/mnt/d/tmp$ objdump -rd hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line">0000000000000000 &lt;main&gt;:</span><br><span class="line">   0:   55                      push   %rbp</span><br><span class="line">   1:   48 89 e5                mov    %rsp,%rbp</span><br><span class="line">   4:   bf 00 00 00 00          mov    $0x0,%edi</span><br><span class="line">                        5: R_X86_64_32  .rodata</span><br><span class="line">   9:   b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">   e:   e8 00 00 00 00          callq  13 &lt;main+0x13&gt;</span><br><span class="line">                        f: R_X86_64_PC32        printf-0x4</span><br><span class="line">  13:   b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">  18:   5d                      pop    %rbp</span><br><span class="line">  19:   c3                      retq</span><br></pre></td></tr></table></figure>
+<p><code>-R, --dynamic-reloc</code> 显示动态重定位入口，仅仅对动态文件起作用。</p>
+<h1 id="T"><a href="#T" class="headerlink" title="T"></a>T</h1><h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><p>来自: <a href="http://man.linuxde.net/time" target="_blank" rel="noopener">Linux Man 手册</a><br>time命令用于统计给定命令所花费的总时间。 </p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 参数</span><br></pre></td></tr></table></figure>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>指令：指定需要运行的额指令及其参数。<br>实例 当测试一个程序或比较不同算法时，执行时间是非常重要的，一个好的算法应该是用时最短的。所有类UNIX系统都包含time命令，使用这个命令可以统计时间消耗。例如： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# time ls </span><br><span class="line">anaconda-ks.cfg install.log install.log.syslog satools text </span><br><span class="line"></span><br><span class="line">real 0m0.009s </span><br><span class="line">user 0m0.002s </span><br><span class="line">sys 0m0.007s</span><br></pre></td></tr></table></figure>
+<p>输出的信息分别显示了该命令所花费的real时间、user时间和sys时间。 </p>
+<p>real时间是指挂钟时间，也就是命令开始执行到结束的时间。这个短时间包括其他进程所占用的时间片，和进程被阻塞时所花费的时间。 </p>
+<p>user时间是指进程花费在用户模式中的CPU时间，这是唯一真正用于执行进程所花费的时间，其他进程和花费阻塞状态中的时间没有计算在内。 sys时间是指花费在内核模式中的CPU时间，代表在内核中执系统调用所花费的时间，这也是真正由进程使用的CPU时间。 </p>
+<p>shell内建也有一个time命令，当运行time时候是调用的系统内建命令，应为系统内建的功能有限，所以需要时间其他功能需要使用time命令可执行二进制文件/usr/bin/time。 </p>
+<p>使用-o选项将执行时间写入到文件中： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/time -o outfile.txt ls</span><br></pre></td></tr></table></figure>
+<p>使用-a选项追加信息： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/time -a -o outfile.txt ls</span><br></pre></td></tr></table></figure>
+<p>使用-f选项格式化时间输出： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/time -f &quot;time: %U&quot; ls</span><br></pre></td></tr></table></figure>
+<p>-f选项后的参数：<br>参数    描述<br>%E    real时间，显示格式为[小时:]分钟:秒<br>%U    user时间。<br>%S    sys时间。<br>%C    进行计时的命令名称和命令行参数。<br>%D    进程非共享数据区域，以KB为单位。<br>%x    命令退出状态。<br>%k    进程接收到的信号数量。<br>%w    进程被交换出主存的次数。<br>%Z    系统的页面大小，这是一个系统常量，不用系统中常量值也不同。<br>%P    进程所获取的CPU时间百分百，这个值等于user+system时间除以总共的运行时间。<br>%K    进程的平均总内存使用量（data+stack+text），单位是KB。<br>%w    进程主动进行上下文切换的次数，例如等待I/O操作完成。<br>%c    进程被迫进行上下文切换的次数（由于时间片到期）。</p>
+<h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><h4 id="APT-安装"><a href="#APT-安装" class="headerlink" title="APT 安装"></a>APT 安装</h4><p>普通安装：<code>apt install softname1 softname2 ...</code><br>修复安装: <code>apt -f install softname1 softname2 ...</code><br>重新安装: <code>apt --reinstall install ....</code></p>
+<h4 id="DPKG-安装"><a href="#DPKG-安装" class="headerlink" title="DPKG 安装"></a>DPKG 安装</h4><p><code>dpkg -i package_name.deb</code></p>
+<h4 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h4><p>通过tar解压，然后configure后make install</p>
+<p>tar: <code>tar method filename</code></p>
+<p>.tar.gz, .tar.Z, .tgz: <code>zxf</code><br>.tar: <code>xf</code></p>
+<p>.bz2: <code>bunzip xx.bz2</code></p>
+<h3 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h3><h4 id="APT方式"><a href="#APT方式" class="headerlink" title="APT方式"></a>APT方式</h4><p>移除式卸载：<code>apt-get remove softname1 softname2 …</code>;（移除软件包，当包尾部有+时，意为安装）</p>
+<p>清除式卸载 ：<code>apt-get --purge remove softname1 softname2...</code>;(同时清除配置)</p>
+<p>清除式卸载：<code>apt-get purge sofname1 softname2...</code>;(同上，也清除配置文件)</p>
+<h4 id="Dpkg方式"><a href="#Dpkg方式" class="headerlink" title="Dpkg方式"></a>Dpkg方式</h4><p>移除式卸载：<code>dpkg -r pkg1 pkg2 ...</code>;</p>
+<p>清除式卸载：<code>dpkg -P pkg1 pkg2...</code>;</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/13/LeetCode-32-Longest-Valid-Parenthess/" rel="next" title="LeetCode - 32 Longest Valid Parenthess">
+                <i class="fa fa-chevron-left"></i> LeetCode - 32 Longest Valid Parenthess
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/03/C语言格式化输出/" rel="prev" title="C语言格式化输出">
+                C语言格式化输出 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Patrick</p>
+              <p class="site-description motion-element" itemprop="description">C++, Go, 编译器, 分布式, 存储, 操作系统</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#C"><span class="nav-number">1.</span> <span class="nav-text">C</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloc"><span class="nav-number">1.1.</span> <span class="nav-text">Cloc</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Usage"><span class="nav-number">1.1.1.</span> <span class="nav-text">Usage</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#G"><span class="nav-number">2.</span> <span class="nav-text">G</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GDB"><span class="nav-number">2.1.</span> <span class="nav-text">GDB</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始和停止"><span class="nav-number">2.1.1.</span> <span class="nav-text">开始和停止</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#断点"><span class="nav-number">2.1.2.</span> <span class="nav-text">断点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行"><span class="nav-number">2.1.3.</span> <span class="nav-text">执行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查代码"><span class="nav-number">2.1.4.</span> <span class="nav-text">检查代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查数据"><span class="nav-number">2.1.5.</span> <span class="nav-text">检查数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有用的信息"><span class="nav-number">2.1.6.</span> <span class="nav-text">有用的信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#O"><span class="nav-number">3.</span> <span class="nav-text">O</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Objdump"><span class="nav-number">3.1.</span> <span class="nav-text">Objdump</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#info"><span class="nav-number">3.1.1.</span> <span class="nav-text">info</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#usage"><span class="nav-number">3.1.2.</span> <span class="nav-text">usage</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#T"><span class="nav-number">4.</span> <span class="nav-text">T</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#time"><span class="nav-number">4.1.</span> <span class="nav-text">time</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">4.1.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">4.1.2.</span> <span class="nav-text">参数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统"><span class="nav-number">5.</span> <span class="nav-text">系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu"><span class="nav-number">5.1.</span> <span class="nav-text">Ubuntu</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#软件安装"><span class="nav-number">5.1.1.</span> <span class="nav-text">软件安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#APT-安装"><span class="nav-number">5.1.1.1.</span> <span class="nav-text">APT 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DPKG-安装"><span class="nav-number">5.1.1.2.</span> <span class="nav-text">DPKG 安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码安装"><span class="nav-number">5.1.1.3.</span> <span class="nav-text">源码安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载"><span class="nav-number">5.1.2.</span> <span class="nav-text">卸载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#APT方式"><span class="nav-number">5.1.2.1.</span> <span class="nav-text">APT方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Dpkg方式"><span class="nav-number">5.1.2.2.</span> <span class="nav-text">Dpkg方式</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Patrick</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+
+
+
+  
+
+
+  
+
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://www.hashcoding.net/2017/05/03/常用Linux工具整理/';
+          this.page.identifier = '2017/05/03/常用Linux工具整理/';
+          this.page.title = '常用Linux工具整理';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://blog-coding.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("lMQDA5ivsWA2jcjJzTTImuvx-gzGzoHsz", "JIA0x48kG2WhEllWMb31Xt60");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
