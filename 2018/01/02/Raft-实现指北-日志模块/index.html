@@ -73,17 +73,17 @@
 
 
 
-<meta name="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+<meta name="description" content="about me">
 <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://www.hashcoding.net/tags/index.html">
+<meta property="og:title" content="about me">
+<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+<meta property="og:description" content="about me">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2016-07-03T02:53:17.202Z">
+<meta property="og:updated_time" content="2018-01-05T15:25:54.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+<meta name="twitter:title" content="about me">
+<meta name="twitter:description" content="about me">
 
 
 
@@ -115,7 +115,7 @@
 
 
 
-  <link rel="canonical" href="http://www.hashcoding.net/tags/"/>
+  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
 
 
 
@@ -439,20 +439,39 @@
         <p>在真正开始设计之前，需要考虑好 Raft 框架的搭建。如下图所示，一个服务器由三部分组成：共识算法、状态机以及日志系统。共识算法控制多副本之间日志的同步、广播。Raft 算法主要的工作是管理日志复制，所以在 Raft 应该有一个可操作的日志模块。</p>
 <p><img src="https://camo.githubusercontent.com/ad683fbaefbc0bc0fcb31b1d6ca6ca8f715c12cd/68747470733a2f2f646e2d307830312d696f2e71626f782e6d652f726166742d254535253942254245312d30312e706e67" alt="图一：复制状态机的结构"></p>
 <h1 id="Write-Ahead-Log"><a href="#Write-Ahead-Log" class="headerlink" title="Write Ahead Log"></a>Write Ahead Log</h1><p>在设计日志模块之前，需要先说说<strong>预写式日志</strong>（Write Ahead Log, WAL）。预写式日志通常出现在存储系统中，以保证数据的持久性[1]。WAL 的中心思想是对数据文件进行修改前，需要保证操作日志已经同步到稳定存储介质中。如果在进行操作时出现了错误导致程序崩溃，重启的程序可以通过读取日志重建原有状态。</p>
-<p>Raft 算法中也需要 WAL 配合工作，比如领导人得知某条日志已经有超过半数的人相应，便将其应用到状态机并将其应用结果返回给客户端。状态机将数据保存在内存中，等待系统写入磁盘。此时如果发生错误，客户端的操作日志丢失，而它又接收到了应用成功的消息，便出现了不一致。</p>
+<p>Raft 算法中也需要 WAL 配合工作，比如领导人得知某条日志已经有超过半数的人响应，便将其应用到状态机并将其应用结果返回给客户端。状态机将数据保存在内存中，等待系统写入磁盘。此时如果发生错误，客户端的操作日志丢失，而它又接收到了应用成功的消息，便出现了不一致。</p>
 <h1 id="日志模块"><a href="#日志模块" class="headerlink" title="日志模块"></a>日志模块</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LogHolder</span> &#123;</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Entry&gt; entries;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>日志的存储结构可以简单如上设计，<code>Entry</code> 表示一套操作日志记录。所有已经通过 WAL 持久化的操作日志保存在 Raft 的 <code>LogHolder</code> 中做缓存。IO 操作非常耗时，在实际的项目中每次操作先进行 IO 操作，效率不高。通常考虑 Batch 操作，将结构修改为：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LogHolder</span> &#123;</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Entry&gt; entries;</span><br><span class="line">    <span class="keyword">size_t</span> stabled_to;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>这样操作日志和已经持久化的日志保存在一起，并通过 <code>stable_to</code> 区分开。这样将多个日志 <code>Entry</code> 一起写入 WAL，Batch 的方法可以提升系统整体的吞吐量，不过对于单条数据，会有部分延迟，与提升比起来是非常值得的。</p>
 <p>当某条日志被成功复制到集群中过半数的节点中时，Raft 变认为这条日志可以被应用到状态机中，并标记这部分日志为提交状态。提交的日志采用追加的方式，那么原有数据将一直占用存储空间，而对于系统而言，已经被应用了的日志是无用的，所以 Raft 也提出了日志压缩思想。和存储系统中的日志压缩思路一致，都是通过选取某个时间点的日志创建状态机的快照，将时间点之前的日志全部丢弃。[2]</p>
 <p>这里将上述的思想也设计到日志系统中：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LogHolder</span> &#123;</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Entry&gt; entries;</span><br><span class="line">    <span class="keyword">size_t</span> offset;</span><br><span class="line">    <span class="keyword">size_t</span> last_applied;</span><br><span class="line">    <span class="keyword">size_t</span> last_committed;</span><br><span class="line">    <span class="keyword">size_t</span> last_stabled;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>offset</code> 表示日志压缩后日志系统里存储的第一条日志在整个日志中的偏移。整个模块需要保证 $0 \le offset \le last_applied \lt last_committed \lt entreis.size()$。需要注意，<code>last_stabled</code> 和 <code>last_committed</code> 之前不一定存在着先后顺序，比如一个出现了网络隔离的节点在一段时间后上线，领导者将将其日志复制给该节点并告知其已经全部提交了，那么就会出现日志属于已经提交的状态，但是还未持久化。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// +--------------+--------------+-------------+-------------+</span></span><br><span class="line"><span class="comment">// | wait compact |  wait apply  | wait commit | wait stable |</span></span><br><span class="line"><span class="comment">// +--------------+--------------+-------------+-------------+</span></span><br><span class="line"><span class="comment">// ^ offset       ^ Applied      ^ committed   ^ stabled     ^ last</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LogHolder</span> &#123;</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;Entry&gt; entries;</span><br><span class="line">    <span class="keyword">size_t</span> offset;</span><br><span class="line">    <span class="keyword">size_t</span> last_applied;</span><br><span class="line">    <span class="keyword">size_t</span> last_committed;</span><br><span class="line">    <span class="keyword">size_t</span> last_stabled;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>offset</code> 表示日志压缩后日志系统里存储的第一条日志在整个日志中的偏移。整个模块需要保证 $0 \le offset \le last\_applied \lt last\_committed \lt entreis.size()$。需要注意，<code>last_stabled</code> 和 <code>last_committed</code> 之前不一定存在着先后顺序，比如一个出现了网络隔离的节点在一段时间后上线，领导者将将其日志复制给该节点并告知其已经全部提交了，那么就会出现日志属于已经提交的状态，但是还未持久化。</p>
+<p>在 Raft 论文中提到，在生成日志快照时，需要保存快照最后一条日志的 <code>index</code> 和 <code>term</code> 作为元信息。也有很多访问该元信息的需求，因此可以在 <code>entries</code> 中保留一个空白（dummy）日志作为快照元信息，那么 <code>offset</code> 完全可以被该日志项替代。</p>
 <p>整个 <code>LogHolder</code> 只负责维护日志在内存中的缓存，提供日志追加、应用、提交、持久化以及压缩的基本功能，至于具体的操作实际由使用者负责管理。</p>
 <h2 id="API-设计"><a href="#API-设计" class="headerlink" title="API 设计"></a>API 设计</h2><p>API 设计是一个模块好用与否的关键，良好的 API 设计可以减少内部设计的暴露，减少模块间的耦合，同时提供最大程度的灵活性。这里希望 API 设计简单易用，接口数量少，粒度适中。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">trait LogHolder &#123;</span><br><span class="line">    <span class="keyword">uint64_t</span> term(<span class="keyword">uint64_t</span> index);</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">compactTo</span><span class="params">(<span class="keyword">uint64_t</span> index)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">commitTo</span><span class="params">(<span class="keyword">uint64_t</span> index)</span></span>;</span><br><span class="line">    <span class="built_in">vector</span>&lt;Entry&gt; applyTo(uint64 index);</span><br><span class="line">    <span class="built_in">vector</span>&lt;Entry&gt; stableTo(uint64 index);</span><br><span class="line">    <span class="built_in">vector</span>&lt;Entry&gt; slice(<span class="keyword">uint64_t</span> lo, hi);</span><br><span class="line">    <span class="keyword">uint64_t</span> tryAppend(<span class="built_in">vector</span>&lt;Entry&gt; entries);</span><br><span class="line">    <span class="keyword">uint64_t</span> append(<span class="built_in">vector</span>&lt;Entry&gt; entries);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>其中 <code>compactTo</code>、<code>commitTo</code>、<code>applyTo</code> 和 <code>stableTo</code> 分别负责操作、维护 <code>LogHolder</code> 中的几个属性。<code>term</code> 用于访问日志系统中某条日志的对应领导人的任期。<code>slice</code>、<code>tryAppend</code> 和 <code>append</code> 都是对 <code>LogHolder</code> 中的 <code>entries</code> 属性的操作。剩余需要的操作均可以在上述接口基础上组合得到。</p>
-<p>未完待续…</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> LogHolder <span class="keyword">interface</span> &#123;</span><br><span class="line">    compactTo(to, term <span class="keyword">uint64</span>)</span><br><span class="line">    commitTo(<span class="keyword">uint64</span>)</span><br><span class="line">    applyEntries() []Entry</span><br><span class="line">    stableEntries() []Entry</span><br><span class="line">    term(<span class="keyword">uint64</span>) <span class="keyword">uint64</span></span><br><span class="line">    isUpToDate(idx, term <span class="keyword">uint64</span>) <span class="keyword">bool</span></span><br><span class="line">    tryAppend(idx, term, commitIdx <span class="keyword">uint64</span>, entries []Entry) (<span class="keyword">uint64</span>, <span class="keyword">bool</span>)</span><br><span class="line">    <span class="built_in">append</span>(entries []Entry) <span class="keyword">uint64</span></span><br><span class="line">    slice(lo, hi <span class="keyword">uint64</span>) []Entry</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>compactTo</code>: 当应用生成了快照后，需要对冗余的日志进行压缩；</li>
+<li><code>commitTo</code>: 日志复制到集群中半数节点中或跟随者接收到领导人提交日志的命令时调用，修改 <code>last_commit</code> 属性；</li>
+<li><code>stableEntries</code>: 读取待持久化的日志，并将这部分日志标记为已经持久化；</li>
+<li><code>applyEntries</code>: 读取待应用到状态机的日志，同时将其日志标记为已经应用；</li>
+<li><code>term</code>: 返回某个日志提交到集群中的 <code>term</code>；</li>
+<li><code>isUpToDate</code>: 用于判断候选人是否拥有最新的日志；</li>
+<li><code>tryAppend</code>: 跟随者添加日志，会将冲突的日志丢弃；</li>
+<li><code>append</code>: 领导添加日志，只有追加功能；</li>
+<li><code>slice</code>: 分片</li>
+</ul>
+<p><code>compactTo</code>，<code>commitTo</code> 负责修改其只修改日志模块属性信息。<code>compactTo</code> 对日志进行压缩，其可用范围为 $[offset, last\_applied]$，范围内的数据均已经应用到状态机中。实际上在跟随者从网络隔离中恢复或新加入集群时，领导人会选择发送日志来加速跟随者的同步，此时快照并没有落到可用范围内，或者日志与快照的元信息冲突（跟随者在一个少数派的网络中增加了很多日志），因此需要对整个日志系统进行重建。<code>commitTo</code> 只需要对 <code>to</code> 范围进行验证，修改 <code>last_commit</code> 即可。</p>
+<p><code>stableEntries</code> 和 <code>applyEntries</code> 不需要任何参数，根据属性设置对应的 <code>slice</code>，并返回需要持久化、应用的日志队列。</p>
+<p><code>isUpToDate</code> 比较给出的日志项和日志模块谁更新。根据 Raft 论文中给出了谁<strong>比较新</strong>的定义：如果两份日志最后的条目的任期号不同，那么任期号大的日志更加新；如果两份日志最后的条目任期号相同，那么日志比较长的那个就更加新。</p>
+<p><code>tryAppend</code> 是用于提交领导人复制给候选人的日志，由于网络分化或者节点的加入退出，获选人的日志可能落后、冲突于领导人提供的日志，日志模块需要对待追加的日志进行检查，并找出冲突项目并替换。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p><code>compactTo</code> 设计如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">func (holder *LogHolder) CompactTo(to, term uint64) &#123;</span><br><span class="line">	if holder.Term(to) != term || to &lt;= holder.offset() || to &gt; holder.lastApplied &#123;</span><br><span class="line">		// log entry conflict with exists, or less than offset, or great than applied</span><br><span class="line">		// so need to rebuild log</span><br><span class="line">		entries := make([]raftpd.Entry, 1)</span><br><span class="line">		entries[0].Index = to</span><br><span class="line">		entries[0].Term = term</span><br><span class="line">		holder.entries = entries</span><br><span class="line">		holder.lastApplied = to</span><br><span class="line">		holder.commitIndex = to</span><br><span class="line">		holder.lastStabled = to</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		offset := holder.offset()</span><br><span class="line">		utils.Assert(offset &lt;= to, &quot;%d compact idx: %d less than first index: %d&quot;,</span><br><span class="line">			holder.id, to, offset)</span><br><span class="line">		holder.entries = drain(holder.entries, int(to-offset))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先检查是否存在冲突、或者没有在范围之内，都不存在才对日志队列进行压缩；否则重建日志模块，清空日志队列。因为使用了 dummy 日志项的缘故，这里也要把快照元信息作为一个 dummy log 保存。</p>
+<p>和 <code>compactTo</code> 比起来，<code>commitTo</code> 的实现就容易得多。</p>
+<p>未完待续。。。</p>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol>
 <li><a href="https://zh.wikipedia.org/wiki/%E9%A2%84%E5%86%99%E5%BC%8F%E6%97%A5%E5%BF%97" target="_blank" rel="noopener">预写式日志</a></li>
 <li><a href="https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf" target="_blank" rel="noopener">寻找一种易于理解的一致性算法（扩展版）</a></li>
@@ -660,7 +679,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Write-Ahead-Log"><span class="nav-number">1.</span> <span class="nav-text">Write Ahead Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志模块"><span class="nav-number">2.</span> <span class="nav-text">日志模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#API-设计"><span class="nav-number">2.1.</span> <span class="nav-text">API 设计</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Write-Ahead-Log"><span class="nav-number">1.</span> <span class="nav-text">Write Ahead Log</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#日志模块"><span class="nav-number">2.</span> <span class="nav-text">日志模块</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#API-设计"><span class="nav-number">2.1.</span> <span class="nav-text">API 设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">2.2.</span> <span class="nav-text">实现</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">3.</span> <span class="nav-text">References</span></a></li></ol></div>
             
 
           </div>

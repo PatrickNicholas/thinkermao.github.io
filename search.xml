@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Raft 实现指北-日志模块]]></title>
     <url>%2F2018%2F01%2F02%2FRaft-%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8C%97-%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97%2F</url>
-    <content type="text"><![CDATA[在真正开始设计之前，需要考虑好 Raft 框架的搭建。如下图所示，一个服务器由三部分组成：共识算法、状态机以及日志系统。共识算法控制多副本之间日志的同步、广播。Raft 算法主要的工作是管理日志复制，所以在 Raft 应该有一个可操作的日志模块。 Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Write Ahead Log, WAL）。预写式日志通常出现在存储系统中，以保证数据的持久性[1]。WAL 的中心思想是对数据文件进行修改前，需要保证操作日志已经同步到稳定存储介质中。如果在进行操作时出现了错误导致程序崩溃，重启的程序可以通过读取日志重建原有状态。 Raft 算法中也需要 WAL 配合工作，比如领导人得知某条日志已经有超过半数的人相应，便将其应用到状态机并将其应用结果返回给客户端。状态机将数据保存在内存中，等待系统写入磁盘。此时如果发生错误，客户端的操作日志丢失，而它又接收到了应用成功的消息，便出现了不一致。 日志模块123struct LogHolder &#123; vector&lt;Entry&gt; entries;&#125; 日志的存储结构可以简单如上设计，Entry 表示一套操作日志记录。所有已经通过 WAL 持久化的操作日志保存在 Raft 的 LogHolder 中做缓存。IO 操作非常耗时，在实际的项目中每次操作先进行 IO 操作，效率不高。通常考虑 Batch 操作，将结构修改为： 1234struct LogHolder &#123; vector&lt;Entry&gt; entries; size_t stabled_to;&#125; 这样操作日志和已经持久化的日志保存在一起，并通过 stable_to 区分开。这样将多个日志 Entry 一起写入 WAL，Batch 的方法可以提升系统整体的吞吐量，不过对于单条数据，会有部分延迟，与提升比起来是非常值得的。 当某条日志被成功复制到集群中过半数的节点中时，Raft 变认为这条日志可以被应用到状态机中，并标记这部分日志为提交状态。提交的日志采用追加的方式，那么原有数据将一直占用存储空间，而对于系统而言，已经被应用了的日志是无用的，所以 Raft 也提出了日志压缩思想。和存储系统中的日志压缩思路一致，都是通过选取某个时间点的日志创建状态机的快照，将时间点之前的日志全部丢弃。[2] 这里将上述的思想也设计到日志系统中： 1234567struct LogHolder &#123; vector&lt;Entry&gt; entries; size_t offset; size_t last_applied; size_t last_committed; size_t last_stabled;&#125; offset 表示日志压缩后日志系统里存储的第一条日志在整个日志中的偏移。整个模块需要保证 $0 \le offset \le last_applied \lt last_committed \lt entreis.size()$。需要注意，last_stabled 和 last_committed 之前不一定存在着先后顺序，比如一个出现了网络隔离的节点在一段时间后上线，领导者将将其日志复制给该节点并告知其已经全部提交了，那么就会出现日志属于已经提交的状态，但是还未持久化。 整个 LogHolder 只负责维护日志在内存中的缓存，提供日志追加、应用、提交、持久化以及压缩的基本功能，至于具体的操作实际由使用者负责管理。 API 设计API 设计是一个模块好用与否的关键，良好的 API 设计可以减少内部设计的暴露，减少模块间的耦合，同时提供最大程度的灵活性。这里希望 API 设计简单易用，接口数量少，粒度适中。 12345678910trait LogHolder &#123; uint64_t term(uint64_t index); void compactTo(uint64_t index); void commitTo(uint64_t index); vector&lt;Entry&gt; applyTo(uint64 index); vector&lt;Entry&gt; stableTo(uint64 index); vector&lt;Entry&gt; slice(uint64_t lo, hi); uint64_t tryAppend(vector&lt;Entry&gt; entries); uint64_t append(vector&lt;Entry&gt; entries);&#125; 其中 compactTo、commitTo、applyTo 和 stableTo 分别负责操作、维护 LogHolder 中的几个属性。term 用于访问日志系统中某条日志的对应领导人的任期。slice、tryAppend 和 append 都是对 LogHolder 中的 entries 属性的操作。剩余需要的操作均可以在上述接口基础上组合得到。 未完待续… References 预写式日志 寻找一种易于理解的一致性算法（扩展版）]]></content>
+    <content type="text"><![CDATA[在真正开始设计之前，需要考虑好 Raft 框架的搭建。如下图所示，一个服务器由三部分组成：共识算法、状态机以及日志系统。共识算法控制多副本之间日志的同步、广播。Raft 算法主要的工作是管理日志复制，所以在 Raft 应该有一个可操作的日志模块。 Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Write Ahead Log, WAL）。预写式日志通常出现在存储系统中，以保证数据的持久性[1]。WAL 的中心思想是对数据文件进行修改前，需要保证操作日志已经同步到稳定存储介质中。如果在进行操作时出现了错误导致程序崩溃，重启的程序可以通过读取日志重建原有状态。 Raft 算法中也需要 WAL 配合工作，比如领导人得知某条日志已经有超过半数的人响应，便将其应用到状态机并将其应用结果返回给客户端。状态机将数据保存在内存中，等待系统写入磁盘。此时如果发生错误，客户端的操作日志丢失，而它又接收到了应用成功的消息，便出现了不一致。 日志模块123struct LogHolder &#123; vector&lt;Entry&gt; entries;&#125; 日志的存储结构可以简单如上设计，Entry 表示一套操作日志记录。所有已经通过 WAL 持久化的操作日志保存在 Raft 的 LogHolder 中做缓存。IO 操作非常耗时，在实际的项目中每次操作先进行 IO 操作，效率不高。通常考虑 Batch 操作，将结构修改为： 1234struct LogHolder &#123; vector&lt;Entry&gt; entries; size_t stabled_to;&#125; 这样操作日志和已经持久化的日志保存在一起，并通过 stable_to 区分开。这样将多个日志 Entry 一起写入 WAL，Batch 的方法可以提升系统整体的吞吐量，不过对于单条数据，会有部分延迟，与提升比起来是非常值得的。 当某条日志被成功复制到集群中过半数的节点中时，Raft 变认为这条日志可以被应用到状态机中，并标记这部分日志为提交状态。提交的日志采用追加的方式，那么原有数据将一直占用存储空间，而对于系统而言，已经被应用了的日志是无用的，所以 Raft 也提出了日志压缩思想。和存储系统中的日志压缩思路一致，都是通过选取某个时间点的日志创建状态机的快照，将时间点之前的日志全部丢弃。[2] 这里将上述的思想也设计到日志系统中： 1234567891011// +--------------+--------------+-------------+-------------+// | wait compact | wait apply | wait commit | wait stable |// +--------------+--------------+-------------+-------------+// ^ offset ^ Applied ^ committed ^ stabled ^ laststruct LogHolder &#123; vector&lt;Entry&gt; entries; size_t offset; size_t last_applied; size_t last_committed; size_t last_stabled;&#125; offset 表示日志压缩后日志系统里存储的第一条日志在整个日志中的偏移。整个模块需要保证 $0 \le offset \le last\_applied \lt last\_committed \lt entreis.size()$。需要注意，last_stabled 和 last_committed 之前不一定存在着先后顺序，比如一个出现了网络隔离的节点在一段时间后上线，领导者将将其日志复制给该节点并告知其已经全部提交了，那么就会出现日志属于已经提交的状态，但是还未持久化。 在 Raft 论文中提到，在生成日志快照时，需要保存快照最后一条日志的 index 和 term 作为元信息。也有很多访问该元信息的需求，因此可以在 entries 中保留一个空白（dummy）日志作为快照元信息，那么 offset 完全可以被该日志项替代。 整个 LogHolder 只负责维护日志在内存中的缓存，提供日志追加、应用、提交、持久化以及压缩的基本功能，至于具体的操作实际由使用者负责管理。 API 设计API 设计是一个模块好用与否的关键，良好的 API 设计可以减少内部设计的暴露，减少模块间的耦合，同时提供最大程度的灵活性。这里希望 API 设计简单易用，接口数量少，粒度适中。 1234567891011type LogHolder interface &#123; compactTo(to, term uint64) commitTo(uint64) applyEntries() []Entry stableEntries() []Entry term(uint64) uint64 isUpToDate(idx, term uint64) bool tryAppend(idx, term, commitIdx uint64, entries []Entry) (uint64, bool) append(entries []Entry) uint64 slice(lo, hi uint64) []Entry&#125; compactTo: 当应用生成了快照后，需要对冗余的日志进行压缩； commitTo: 日志复制到集群中半数节点中或跟随者接收到领导人提交日志的命令时调用，修改 last_commit 属性； stableEntries: 读取待持久化的日志，并将这部分日志标记为已经持久化； applyEntries: 读取待应用到状态机的日志，同时将其日志标记为已经应用； term: 返回某个日志提交到集群中的 term； isUpToDate: 用于判断候选人是否拥有最新的日志； tryAppend: 跟随者添加日志，会将冲突的日志丢弃； append: 领导添加日志，只有追加功能； slice: 分片 compactTo，commitTo 负责修改其只修改日志模块属性信息。compactTo 对日志进行压缩，其可用范围为 $[offset, last\_applied]$，范围内的数据均已经应用到状态机中。实际上在跟随者从网络隔离中恢复或新加入集群时，领导人会选择发送日志来加速跟随者的同步，此时快照并没有落到可用范围内，或者日志与快照的元信息冲突（跟随者在一个少数派的网络中增加了很多日志），因此需要对整个日志系统进行重建。commitTo 只需要对 to 范围进行验证，修改 last_commit 即可。 stableEntries 和 applyEntries 不需要任何参数，根据属性设置对应的 slice，并返回需要持久化、应用的日志队列。 isUpToDate 比较给出的日志项和日志模块谁更新。根据 Raft 论文中给出了谁比较新的定义：如果两份日志最后的条目的任期号不同，那么任期号大的日志更加新；如果两份日志最后的条目任期号相同，那么日志比较长的那个就更加新。 tryAppend 是用于提交领导人复制给候选人的日志，由于网络分化或者节点的加入退出，获选人的日志可能落后、冲突于领导人提供的日志，日志模块需要对待追加的日志进行检查，并找出冲突项目并替换。 实现compactTo 设计如下： 123456789101112131415161718func (holder *LogHolder) CompactTo(to, term uint64) &#123; if holder.Term(to) != term || to &lt;= holder.offset() || to &gt; holder.lastApplied &#123; // log entry conflict with exists, or less than offset, or great than applied // so need to rebuild log entries := make([]raftpd.Entry, 1) entries[0].Index = to entries[0].Term = term holder.entries = entries holder.lastApplied = to holder.commitIndex = to holder.lastStabled = to &#125; else &#123; offset := holder.offset() utils.Assert(offset &lt;= to, &quot;%d compact idx: %d less than first index: %d&quot;, holder.id, to, offset) holder.entries = drain(holder.entries, int(to-offset)) &#125;&#125; 首先检查是否存在冲突、或者没有在范围之内，都不存在才对日志队列进行压缩；否则重建日志模块，清空日志队列。因为使用了 dummy 日志项的缘故，这里也要把快照元信息作为一个 dummy log 保存。 和 compactTo 比起来，commitTo 的实现就容易得多。 未完待续。。。 References 预写式日志 寻找一种易于理解的一致性算法（扩展版）]]></content>
       <categories>
         <category>Destribution</category>
       </categories>
@@ -148,8 +148,8 @@
         <category>C++</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>C</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -173,8 +173,8 @@
         <category>C++</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>C</tag>
+        <tag>C++</tag>
       </tags>
   </entry>
   <entry>
@@ -340,8 +340,8 @@
     <url>%2F2017%2F02%2F23%2FMysql-ERROR-2002-HY000-Can%E2%80%99t-connect-to-local-MySQL-server-through-socket-%E2%80%98-var-lib-mysql-mysql-sock%E2%80%99-2%2F</url>
     <content type="text"><![CDATA[使用 mysql -uroot -p 连接 Mysql 时出现了下面的错误: 12ERROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/var/run/mysqld/mysqld.sock’ (2) 经过排查，发现是权限问题，使用: 1chown -R mysql:mysql /var/run/mysqld 修改权限，然后启动，成功。]]></content>
       <tags>
-        <tag>Mysql</tag>
         <tag>Linux</tag>
+        <tag>Mysql</tag>
       </tags>
   </entry>
   <entry>
@@ -349,8 +349,8 @@
     <url>%2F2017%2F02%2F23%2FLinux-%E6%9F%A5%E7%9C%8B3306%E7%AB%AF%E5%8F%A3%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[查看3306端口被什么程序占用 lsof -i :3306 查看3306端口是被哪个服务使用着 netstat -tunlp | grep :3306 查看3306端口的是否已在使用中，可验证使用该端口的服务是否已正常运行 netstat -an | grep :3306]]></content>
       <tags>
-        <tag>Mysql</tag>
         <tag>Linux</tag>
+        <tag>Mysql</tag>
       </tags>
   </entry>
   <entry>
