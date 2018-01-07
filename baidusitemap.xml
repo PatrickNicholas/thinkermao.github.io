@@ -3,6 +3,32 @@
 
 
     
+  <url>
+    <loc>http://www.hashcoding.net/2018/01/07/Raft-%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8C%97-%E9%A2%86%E5%AF%BC%E9%80%89%E4%B8%BE/</loc>
+    <lastmod>2018-01-07T07:28:19.690Z</lastmod>
+    <data>
+        <display>
+        <title>Raft-实现指北-领导选举</title>
+        <pubTime>2018-01-07T05:31:18.000Z</pubTime>
+        
+        <tag>Raft</tag>
+         
+        <tag>Consensus</tag>
+         
+        <tag>Practice</tag>
+         
+        <tag>Destribution</tag>
+         
+         
+           
+             
+              <breadCrumb title="Destribution" url="http://www.hashcoding.net/categories/Destribution/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
     
   <url>
     <loc>http://www.hashcoding.net/2018/01/02/Raft-%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8C%97-%E6%97%A5%E5%BF%97%E6%A8%A1%E5%9D%97/</loc>
@@ -709,9 +735,9 @@
         <title>C语言格式化输出</title>
         <pubTime>2017-05-03T13:19:45.000Z</pubTime>
         
-        <tag>C</tag>
-         
         <tag>C++</tag>
+         
+        <tag>C</tag>
          
          
            
@@ -731,9 +757,9 @@
         <title>C/C++ 调用约定</title>
         <pubTime>2017-05-07T10:42:50.000Z</pubTime>
         
-        <tag>C</tag>
-         
         <tag>C++</tag>
+         
+        <tag>C</tag>
          
          
            
@@ -773,9 +799,9 @@
         <title>Android asynchronized programming summary</title>
         <pubTime>2016-10-16T13:47:48.000Z</pubTime>
         
-        <tag>Android</tag>
-         
         <tag>Java</tag>
+         
+        <tag>Android</tag>
          
          
            

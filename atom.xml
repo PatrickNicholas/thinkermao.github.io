@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.hashcoding.net/"/>
-  <updated>2018-01-07T04:11:06.867Z</updated>
+  <updated>2018-01-07T07:28:19.690Z</updated>
   <id>http://www.hashcoding.net/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Raft-实现指北-领导选举</title>
+    <link href="http://www.hashcoding.net/2018/01/07/Raft-%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8C%97-%E9%A2%86%E5%AF%BC%E9%80%89%E4%B8%BE/"/>
+    <id>http://www.hashcoding.net/2018/01/07/Raft-实现指北-领导选举/</id>
+    <published>2018-01-07T05:31:18.000Z</published>
+    <updated>2018-01-07T07:28:19.690Z</updated>
+    
+    <content type="html"><![CDATA[<p>和其他一致性算法相比，Raft 使用一种更强的领导能力形式。比如，日志条目只从领导者发送给其他的服务器。在选举上，Raft 算法使用一个随机计时器来选举领导者，这种方式只是在任何一致性算法都必须实现的心跳机制上增加了一点机制。[1]</p><p><img src="https://camo.githubusercontent.com/f9b80d45d67996bb9ce63ba6e5d37b6a03150097/68747470733a2f2f646e2d307830312d696f2e71626f782e6d652f726166742d254535253942254245352e706e67" alt="时间被划分成一个个的任期，每个任期开始都是一次选举"></p><p>Raft 把时间分割任意长度的任期（term），并使用连续整数标记，每个任期都从一次选举开始。每次选举有一个或多个候选人参选，如果一个候选人赢得选举，其就会在该任期充当领导人的职责。某些情况下会出现选票瓜分的现象，那么该任期无法选出领导人，所以进入下一期选举，其中 Raft 通过随机计时来保证选举成功。[1]</p><h1 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h1><p>实现领导人选举之前，先看到上一节提到的纯函数式的状态机，将 Raft 实现成为一个无副作用的纯函数状态机。Raft 算法可以看作一个角色状态机，通过其他节点传递的消息、计时器、客户端的提交请求和快照等输入消息，从一个状态转移到另一个状态、或修改部分内部状态并返回一个发送给外部的信息。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(state, message) -&gt; state machine -&gt; message</span><br></pre></td></tr></table></figure><p>state machine 是一个纯函数式的状态机，负责处理消息，并将改动写入到 state 里，然后返回给外部的消息。</p><p>根据 Raft 论文，一个 state 几部分组成：</p><table><thead><tr><th>状态</th><th>所有服务器上持久存在的</th></tr></thead><tbody><tr><td>currentTerm</td><td>服务器最后一次知道的任期号（初始化为 0，持续递增）</td></tr><tr><td>votedFor</td><td>在当前获得选票的候选人的 Id</td></tr><tr><td>log[]</td><td>日志条目集；每一个条目包含一个用户状态机执行的指令，和收到时的任期号</td></tr></tbody></table><table><thead><tr><th>状态</th><th>所有服务器上经常变的</th></tr></thead><tbody><tr><td>commitIndex</td><td>已知的最大的已经被提交的日志条目的索引值</td></tr><tr><td>lastApplied</td><td>最后被应用到状态机的日志条目索引值（初始化为 0，持续递增）</td></tr></tbody></table><table><thead><tr><th>状态</th><th>在领导人里经常改变的 （选举后重新初始化）</th></tr></thead><tbody><tr><td>nextIndex[]</td><td>对于每一个服务器，需要发送给他的下一个日志条目的索引值（初始化为领导人最后索引值加一）</td></tr><tr><td>matchIndex[]</td><td>对于每一个服务器，已经复制给他的日志的最高索引值</td></tr></tbody></table><p>实现大体是类似的，不过以后需要加入流量控制、成员加入退出等，所以将 state 中保存的其他服务器的信息抽象一下：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> node <span class="keyword">struct</span> &#123;</span><br><span class="line">    id <span class="keyword">uint64</span> </span><br><span class="line">    nextIdx <span class="keyword">uint64</span> </span><br><span class="line">    matched <span class="keyword">uint64</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>id</code> 表示其他服务器在 Raft 中的唯一 ID，<code>nextIdx</code> 与 <code>matched</code> 分别是 <code>nextIndex</code> 数组和 <code>matchIndex</code> 数据中第 <code>id</code> 个元素。</p><p>Raft 通过超时来驱动心跳和选举，一共由两种超时：1、心跳超时，领导人定期给跟随者发送心跳信息宣布自己的领导权；2、选举超时，超时时间是随机选择的。</p><p>整个 state 如下：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> core <span class="keyword">struct</span> &#123;</span><br><span class="line">    id <span class="keyword">uint64</span> </span><br><span class="line">    leaderId <span class="keyword">uint64</span></span><br><span class="line">    state StateRole</span><br><span class="line"></span><br><span class="line">    term <span class="keyword">uint64</span> </span><br><span class="line">    vote <span class="keyword">uint64</span> </span><br><span class="line">    log *LogHolder </span><br><span class="line"></span><br><span class="line">    nodes []node </span><br><span class="line"></span><br><span class="line">    timeElapsed <span class="keyword">int</span> </span><br><span class="line">    randomizedElectionTimtout <span class="keyword">int</span> </span><br><span class="line">    electionTimeout <span class="keyword">int</span> </span><br><span class="line">    heartbeatTimeout <span class="keyword">int</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>id</code> 是 Raft weiyiqueding d  <code>term</code> 和 <code>vote</code> 分别是 <code>currentTerm</code> 和 <code>voteFor</code> 的实现，而日志由应用负责持久化。<code>lastApplied</code> 和 <code>commitIndex</code> 由 <code>log</code> 负责管理。<code>nodes</code> 表示该 Raft 集群的其他服务器的状态。<code>timeElapsed</code> 表示从时间累积，<code>randomizedElectionTimeout</code> 表示随机生成的选举超时阈值，每次转为跟随者、候选人状态时都会改变。<code>heartbeatTimeout</code> 表示领导人两次心跳的间隔。<code>electionTimeout</code> 用来表示领导人选举超时基准，其用于计算<code>randomizedElectionTimeout</code>，使用公式：$electionTimeout + rand() \% electionTimeout$ 计算得到。另外还有 <code>leaderId</code> 和 <code>state</code> 状态，<code>leaderId</code> 表示当前领导人的 ID，<code>state</code> 则是 Raft 目前所处的角色。</p><p>此外，还需要设计消息结构作为外部应用、服务器和 Raft 状态机进行数据交换。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Message <span class="keyword">struct</span> &#123;</span><br><span class="line">    From <span class="keyword">uint64</span> </span><br><span class="line">    To <span class="keyword">uint64</span> </span><br><span class="line">    Term <span class="keyword">uint64</span> </span><br><span class="line">    Index <span class="keyword">uint64</span></span><br><span class="line">    LogIndex <span class="keyword">uint64</span> </span><br><span class="line">    LogTerm <span class="keyword">uint64</span> </span><br><span class="line">    Reject <span class="keyword">uint64</span> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>该结构不仅仅用于发起请求，也用于状态机返回数据，所以需要 <code>Reject</code> 字段表示拒绝请求，比如拒绝给某个候选人投票。</p><p>最后，状态机需要返回消息给消息发送者，由于希望将 Raft 设计为一个纯函数式状态机，消息的接受发送交给了应用处理，所以还得提供一个 <code>Application</code> 接口，供 Raft 和应用交互。</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Application <span class="keyword">interface</span> &#123;</span><br><span class="line">    send(msg *raftpd.Message)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当应用接收到消息后，将其输入到 Raft 状态机，处理完后，调用 <code>send</code> 发送回复消息，并保存信息到机中。整个状态机由消息驱动，所以 Raft 接口如下：</p><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Raft <span class="keyword">interface</span> &#123;</span><br><span class="line">    Step(msg *raftpd.Message)</span><br><span class="line">    Periodic(millsSinceLastPeriod <span class="keyword">int</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>当应用接受到外部传递的消息后，调用 <code>Step</code> 驱动状态机改变状态。Raft 中通过超时进行心跳或选举，外部应用需要通过某个固定的定时源隔一段时间调用 <code>Periodic</code> 驱动状态机进行心跳、选举等。</p><h1 id="选举过程"><a href="#选举过程" class="headerlink" title="选举过程"></a>选举过程</h1><p><img src="https://camo.githubusercontent.com/6396d99ee401327500ef9eafe92617d7812ecd4d/68747470733a2f2f646e2d307830312d696f2e71626f782e6d652f726166742d254535253942254245342d30312e706e67" alt="服务器状态变化图"></p><p>系统进行初始化时，每个节点都处于跟随者状态，由于没有领导人定期广播心跳，所以一段时间后部分跟随者成为候选人并进行下一届选举。</p><p>当某个候选人获得了超过半数的投票后，成为领导人，并向所有节点广播自己成功的信息。当候选人接收到其他候选人成为领导人的信息后，一届只能选出一个领导人（<strong>选举安全特性</strong>），该候选人退回到跟随者的状态，并投票给该领导人。</p><p>如果到了下一个选举超时，仍然没有候选人成为领导人，就会跳过这一届，开始下一届的领导人选举。</p><p>由于<strong>选举安全特性</strong>的限制，成员会忽略已经过期的信息时，并返回自己所在的任期，用于发送者更新自己。由于这一特性的存在，在一个存在网络延迟的网络中，某个节点由于延迟进入了选举，而实际上大多数节点都能接收到领导人的心跳，也会进入选举。Raft 原论文 9.6 节中提出了 Prevote 算法：在选举前可以选询问其他节点是否愿意参与选举，如果节点能够感知到领导人的心跳，那么它就不会参与选举，否则参与选举。只有过半的节点参与选举，才能开始下一届领导人选举。</p><h1 id="领导人选举实现"><a href="#领导人选举实现" class="headerlink" title="领导人选举实现"></a>领导人选举实现</h1><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><ol><li><a href="https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf" target="_blank" rel="noopener">寻找一种易于理解的一致性算法（扩展版）</a></li><li><a href="http://blog.neverchanje.com/2017/01/30/etcd_raft_core/" target="_blank" rel="noopener">Etcd-raft-core 阅读</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;和其他一致性算法相比，Raft 使用一种更强的领导能力形式。比如，日志条目只从领导者发送给其他的服务器。在选举上，Raft 算法使用一个随机计时器来选举领导者，这种方式只是在任何一致性算法都必须实现的心跳机制上增加了一点机制。[1]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;htt
+      
+    
+    </summary>
+    
+      <category term="Destribution" scheme="http://www.hashcoding.net/categories/Destribution/"/>
+    
+    
+      <category term="Raft" scheme="http://www.hashcoding.net/tags/Raft/"/>
+    
+      <category term="Consensus" scheme="http://www.hashcoding.net/tags/Consensus/"/>
+    
+      <category term="Practice" scheme="http://www.hashcoding.net/tags/Practice/"/>
+    
+      <category term="Destribution" scheme="http://www.hashcoding.net/tags/Destribution/"/>
+    
+  </entry>
   
   <entry>
     <title>Raft 实现指北-日志模块</title>
@@ -407,9 +439,9 @@
       <category term="C++" scheme="http://www.hashcoding.net/categories/C/"/>
     
     
-      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
-    
       <category term="C++" scheme="http://www.hashcoding.net/tags/C/"/>
+    
+      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
     
   </entry>
   
@@ -480,9 +512,9 @@
       <category term="C++" scheme="http://www.hashcoding.net/categories/C/"/>
     
     
-      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
-    
       <category term="C++" scheme="http://www.hashcoding.net/tags/C/"/>
+    
+      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
     
   </entry>
   
@@ -1051,9 +1083,9 @@
       <category term="Android" scheme="http://www.hashcoding.net/categories/Android/"/>
     
     
-      <category term="Android" scheme="http://www.hashcoding.net/tags/Android/"/>
-    
       <category term="Java" scheme="http://www.hashcoding.net/tags/Java/"/>
+    
+      <category term="Android" scheme="http://www.hashcoding.net/tags/Android/"/>
     
   </entry>
   
