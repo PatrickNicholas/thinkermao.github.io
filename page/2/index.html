@@ -419,9 +419,11 @@
       
         
           
-          写在前面，本文转载自网络：http://blog.chinaunix.net/uid-28587158-id-4006500.html ，请保留出处。
-文章内容来源于stackoverflow上的回答，写的很详细http://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t
-虽然不同的系统上socket的实现方式有一
+          2018-1-15 日更新：这里贴上 man 7 socket 中对 SO_REUSEADDR 和 SO_REUSEPORT 的说明，大有裨益。
+
+SO_REUSEADDR
+
+Indicates  that  the rules used in validating addresses supplied in a bind(2) call should allowreuse of local addresses.  For AF_INET sockets this means that a so
           ...
           <!--noindex-->
           <div class="post-button text-center">

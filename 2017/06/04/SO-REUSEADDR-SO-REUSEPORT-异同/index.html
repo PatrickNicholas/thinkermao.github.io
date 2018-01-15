@@ -414,7 +414,18 @@
       
 
       
-        <p><strong>写在前面，本文转载自网络：<a href="http://blog.chinaunix.net/uid-28587158-id-4006500.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-28587158-id-4006500.html</a> ，请保留出处。</strong></p>
+        <p>2018-1-15 日更新：这里贴上 <code>man 7 socket</code> 中对 <code>SO_REUSEADDR</code> 和 <code>SO_REUSEPORT</code> 的说明，大有裨益。</p>
+<ul>
+<li><code>SO_REUSEADDR</code></li>
+</ul>
+<p>Indicates  that  the rules used in validating addresses supplied in a <code>bind</code>(2) call should allow<br>reuse of local addresses.  For <code>AF_INET</code> sockets this means that a socket may bind,  except  when<br>there  is  an active listening socket bound to the address.  When the listening socket is bound<br>to <code>INADDR_ANY</code> with a specific port then it is not possible to bind to this port for  any  local<br>address.  Argument is an integer boolean flag.</p>
+<ul>
+<li><code>SO_REUSEPORT</code> (since Linux 3.9)</li>
+</ul>
+<p>Permits  multiple <code>AF_INET</code> or <code>AF_INET6</code> sockets to be bound to an identical socket address.  <strong>This<br>option must be set on each socket (including the first socket) prior to calling <code>bind</code>(2) on  the<br>socket</strong>.   To prevent port hijacking, all of the processes binding to the same address must have<br>the same effective UID.  This option can be employed with both TCP and UDP sockets.</p>
+<p>For TCP sockets, this option allows <code>accept</code>(2) load distribution in a multi-threaded  server  to<br>be  improved  by using a distinct listener socket for each thread.  This provides improved load<br>distribution as compared to traditional techniques such using a single <code>accept</code>(2)ing thread that<br>distributes  connections,  or  having  multiple threads that compete to <code>accept</code>(2) from the same<br>socket.</p>
+<p>For UDP sockets, the use of this option can provide better distribution of  incoming  datagrams<br>to  multiple processes (or threads) as compared to the traditional technique of having multiple<br>processes compete to receive datagrams on the same socket.</p>
+<p><strong>写在前面，本文转载自网络：<a href="http://blog.chinaunix.net/uid-28587158-id-4006500.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-28587158-id-4006500.html</a> ，请保留出处。</strong></p>
 <p>文章内容来源于stackoverflow上的回答，写的很详细<a href="http://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t" target="_blank" rel="noopener">http://stackoverflow.com/questions/14388706/socket-options-so-reuseaddr-and-so-reuseport-how-do-they-differ-do-they-mean-t</a></p>
 <p>虽然不同的系统上socket的实现方式有一些差异，但都来源于对BSD socket的实现，因此在讨论其它系统之前了解BSD socket的实现是非常有益的。首先我们需要了解一些基本知识，一个TCP/UDP连接是被一个五元组确定的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&lt;protocol&gt;, &lt;src addr&gt;, &lt;src port&gt;, &lt;dest addr&gt;, &lt;dest port&gt;&#125;</span><br></pre></td></tr></table></figure>
