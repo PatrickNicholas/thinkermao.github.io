@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -9,8 +18,11 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -46,44 +58,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.0.0">
-
-
-
-
-
-
-
-  <meta name="keywords" content="Blog, Hashcoding.net, C++, GO, Java, Destribute, 分布式, 存储" />
-
-
-
-
-  
-
-
-  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
 
 
 
 
 
 
-<meta name="description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about me">
-<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
-<meta property="og:site_name" content="Coding">
-<meta property="og:description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-07T04:13:55.884Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about me">
-<meta name="twitter:description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
+
+
 
 
 
@@ -92,17 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.0.0',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,15 +97,42 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
-
+  
 
 
 
+
+  <meta name="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coding">
+<meta property="og:url" content="http://www.hashcoding.net/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coding">
+<meta name="twitter:description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Coding</title>
   
+
 
 
 
@@ -141,6 +151,33 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -155,24 +192,26 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Coding</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -180,110 +219,77 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-
-            
-              首页
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-
-            
-              关于
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-
-            
-              标签
-            
-
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home menu-item-active">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-
-            
-              分类
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-
-            
-              归档
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Tentang</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategori</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />Sitemap</a>
+  </li>
 
-            
-              站点地图
-            
-
-          </a>
-        </li>
       
-
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Pencarian</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -299,7 +305,7 @@
     </span>
     <div class="local-search-input-wrapper">
       <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
+             placeholder="Searching..." spellcheck="false"
              type="text" id="local-search-input">
     </div>
   </div>
@@ -314,12 +320,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -343,7 +357,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -358,23 +372,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/07/Raft-实现指北-领导选举/" itemprop="url">Raft-实现指北-领导选举</a></h1>
+                <a class="post-title-link" href="/2018/01/07/Raft-实现指北-领导选举/" itemprop="url">
+                  Raft-实现指北-领导选举
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-07T13:31:18+08:00">2018-01-07</time>
+
+              
+                
+              
+
+              <time title="Post created: 2018-01-07 13:31:18" itemprop="dateCreated datePublished" datetime="2018-01-07T13:31:18+08:00">2018-01-07</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-01-13 17:21:30" itemprop="dateModified" datetime="2018-01-13T17:21:30+08:00">2018-01-13</time>
+              
             
           </span>
 
@@ -387,14 +430,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Destribution/" itemprop="url" rel="index">
-                    <span itemprop="name">Destribution</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Destribution/" itemprop="url" rel="index"><span itemprop="name">Destribution</span></a></span>
 
                 
                 
@@ -414,7 +453,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -448,13 +487,16 @@ Raft 把时间分割任意长度的任期（term），并使用连续整数标�
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/07/Raft-实现指北-领导选举/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -504,7 +546,7 @@ Raft 把时间分割任意长度的任期（term），并使用连续整数标�
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -519,23 +561,52 @@ Raft 把时间分割任意长度的任期（term），并使用连续整数标�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/02/Raft-实现指北-日志模块/" itemprop="url">Raft 实现指北-日志模块</a></h1>
+                <a class="post-title-link" href="/2018/01/02/Raft-实现指北-日志模块/" itemprop="url">
+                  Raft 实现指北-日志模块
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T21:14:14+08:00">2018-01-02</time>
+
+              
+                
+              
+
+              <time title="Post created: 2018-01-02 21:14:14" itemprop="dateCreated datePublished" datetime="2018-01-02T21:14:14+08:00">2018-01-02</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-01-07 12:11:06" itemprop="dateModified" datetime="2018-01-07T12:11:06+08:00">2018-01-07</time>
+              
             
           </span>
 
@@ -548,14 +619,10 @@ Raft 把时间分割任意长度的任期（term），并使用连续整数标�
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Destribution/" itemprop="url" rel="index">
-                    <span itemprop="name">Destribution</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Destribution/" itemprop="url" rel="index"><span itemprop="name">Destribution</span></a></span>
 
                 
                 
@@ -575,7 +642,7 @@ Raft 把时间分割任意长度的任期（term），并使用连续整数标�
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -609,13 +676,16 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/02/Raft-实现指北-日志模块/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -665,7 +735,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -680,23 +750,52 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/01/Raft-实现指北-开篇/" itemprop="url">Raft 实现指北-开篇</a></h1>
+                <a class="post-title-link" href="/2018/01/01/Raft-实现指北-开篇/" itemprop="url">
+                  Raft 实现指北-开篇
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T09:34:16+08:00">2018-01-01</time>
+
+              
+                
+              
+
+              <time title="Post created: 2018-01-01 09:34:16" itemprop="dateCreated datePublished" datetime="2018-01-01T09:34:16+08:00">2018-01-01</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-01-02 21:15:43" itemprop="dateModified" datetime="2018-01-02T21:15:43+08:00">2018-01-02</time>
+              
             
           </span>
 
@@ -709,14 +808,10 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Destribution/" itemprop="url" rel="index">
-                    <span itemprop="name">Destribution</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Destribution/" itemprop="url" rel="index"><span itemprop="name">Destribution</span></a></span>
 
                 
                 
@@ -736,7 +831,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -770,13 +865,16 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/01/Raft-实现指北-开篇/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -826,7 +924,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -841,23 +939,40 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/07/Mysql 事务隔离级别的使用/" itemprop="url">Mysql 事务隔离级别的使用</a></h1>
+                <a class="post-title-link" href="/2017/12/07/Mysql 事务隔离级别的使用/" itemprop="url">
+                  Mysql 事务隔离级别的使用
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-07T15:00:00+08:00">2017-12-07</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-12-07 15:00:00 / Updated at: 20:05:34" itemprop="dateCreated datePublished" datetime="2017-12-07T15:00:00+08:00">2017-12-07</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -870,14 +985,10 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/总结/" itemprop="url" rel="index"><span itemprop="name">总结</span></a></span>
 
                 
                 
@@ -897,7 +1008,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -940,13 +1051,16 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/07/Mysql 事务隔离级别的使用/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -996,7 +1110,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1011,23 +1125,40 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/07/个人站点：Mysql-5-6-内存占用配置/" itemprop="url">个人站点：Mysql 5.6 内存占用配置</a></h1>
+                <a class="post-title-link" href="/2017/09/07/个人站点：Mysql-5-6-内存占用配置/" itemprop="url">
+                  个人站点：Mysql 5.6 内存占用配置
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T22:58:09+08:00">2017-09-07</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-09-07 22:58:09 / Updated at: 23:14:59" itemprop="dateCreated datePublished" datetime="2017-09-07T22:58:09+08:00">2017-09-07</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1040,14 +1171,10 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux-服务器/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux 服务器</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Linux-服务器/" itemprop="url" rel="index"><span itemprop="name">Linux 服务器</span></a></span>
 
                 
                 
@@ -1067,7 +1194,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1101,13 +1228,16 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/09/07/个人站点：Mysql-5-6-内存占用配置/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1157,7 +1287,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1172,23 +1302,40 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/26/CSKS-三-、设计模式/" itemprop="url">CSKS-(三)、设计模式</a></h1>
+                <a class="post-title-link" href="/2017/08/26/CSKS-三-、设计模式/" itemprop="url">
+                  CSKS-(三)、设计模式
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T10:00:49+08:00">2017-08-26</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-08-26 10:00:49 / Updated at: 10:01:47" itemprop="dateCreated datePublished" datetime="2017-08-26T10:00:49+08:00">2017-08-26</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1201,14 +1348,10 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/总结/" itemprop="url" rel="index"><span itemprop="name">总结</span></a></span>
 
                 
                 
@@ -1228,7 +1371,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1266,13 +1409,16 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/26/CSKS-三-、设计模式/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1322,7 +1468,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1337,23 +1483,40 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/26/CSKS-二-、数据库系统/" itemprop="url">CSKS-(二)、数据库系统</a></h1>
+                <a class="post-title-link" href="/2017/08/26/CSKS-二-、数据库系统/" itemprop="url">
+                  CSKS-(二)、数据库系统
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T09:58:09+08:00">2017-08-26</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-08-26 09:58:09 / Updated at: 18:37:38" itemprop="dateCreated datePublished" datetime="2017-08-26T09:58:09+08:00">2017-08-26</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1366,14 +1529,10 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/总结/" itemprop="url" rel="index"><span itemprop="name">总结</span></a></span>
 
                 
                 
@@ -1393,7 +1552,7 @@ Write Ahead Log在设计日志模块之前，需要先说说预写式日志（Wr
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1435,13 +1594,16 @@ SQL 语言SQL 语言共分为四大类：
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/26/CSKS-二-、数据库系统/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1491,7 +1653,7 @@ SQL 语言SQL 语言共分为四大类：
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1506,23 +1668,40 @@ SQL 语言SQL 语言共分为四大类：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/08/26/CSKS-一-、数据结构和算法/" itemprop="url">CSKS-(一)、数据结构和算法</a></h1>
+                <a class="post-title-link" href="/2017/08/26/CSKS-一-、数据结构和算法/" itemprop="url">
+                  CSKS-(一)、数据结构和算法
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-26T09:54:05+08:00">2017-08-26</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-08-26 09:54:05 / Updated at: 09:58:32" itemprop="dateCreated datePublished" datetime="2017-08-26T09:54:05+08:00">2017-08-26</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1535,14 +1714,10 @@ SQL 语言SQL 语言共分为四大类：
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/总结/" itemprop="url" rel="index"><span itemprop="name">总结</span></a></span>
 
                 
                 
@@ -1562,7 +1737,7 @@ SQL 语言SQL 语言共分为四大类：
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1603,13 +1778,16 @@ SQL 语言SQL 语言共分为四大类：
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/26/CSKS-一-、数据结构和算法/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1659,7 +1837,7 @@ SQL 语言SQL 语言共分为四大类：
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1674,23 +1852,52 @@ SQL 语言SQL 语言共分为四大类：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/13/Computer-Science-Knowledge-System/" itemprop="url">Computer Science Knowledge System</a></h1>
+                <a class="post-title-link" href="/2017/06/13/Computer-Science-Knowledge-System/" itemprop="url">
+                  Computer Science Knowledge System
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-13T23:52:08+08:00">2017-06-13</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-13 23:52:08" itemprop="dateCreated datePublished" datetime="2017-06-13T23:52:08+08:00">2017-06-13</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-09-08 10:45:19" itemprop="dateModified" datetime="2017-09-08T10:45:19+08:00">2017-09-08</time>
+              
             
           </span>
 
@@ -1703,14 +1910,10 @@ SQL 语言SQL 语言共分为四大类：
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/总结/" itemprop="url" rel="index">
-                    <span itemprop="name">总结</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/总结/" itemprop="url" rel="index"><span itemprop="name">总结</span></a></span>
 
                 
                 
@@ -1730,7 +1933,7 @@ SQL 语言SQL 语言共分为四大类：
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1766,13 +1969,16 @@ SQL 语言SQL 语言共分为四大类：
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/13/Computer-Science-Knowledge-System/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1822,7 +2028,7 @@ SQL 语言SQL 语言共分为四大类：
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1837,23 +2043,40 @@ SQL 语言SQL 语言共分为四大类：
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/12/LeetCode-85-Maximal-Rectangle/" itemprop="url">LeetCode - 85 Maximal Rectangle</a></h1>
+                <a class="post-title-link" href="/2017/06/12/LeetCode-85-Maximal-Rectangle/" itemprop="url">
+                  LeetCode - 85 Maximal Rectangle
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T19:33:29+08:00">2017-06-12</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-06-12 19:33:29 / Updated at: 19:53:23" itemprop="dateCreated datePublished" datetime="2017-06-12T19:33:29+08:00">2017-06-12</time>
             
 
             
+              
 
+              
             
           </span>
 
@@ -1866,14 +2089,10 @@ SQL 语言SQL 语言共分为四大类：
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -1893,7 +2112,7 @@ SQL 语言SQL 语言共分为四大类：
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1930,13 +2149,16 @@ SQL 语言SQL 语言共分为四大类：
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/06/12/LeetCode-85-Maximal-Rectangle/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1971,15 +2193,12 @@ SQL 语言SQL 语言共分为四大类：
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -2018,7 +2237,7 @@ SQL 语言SQL 语言共分为四大类：
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">63</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-name">posting</span>
                   </a>
                 </div>
               
@@ -2028,8 +2247,28 @@ SQL 语言SQL 语言共分为四大类：
                 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">9</span>
-                    <span class="site-state-item-name">分类</span>
+                    <span class="site-state-item-name">kategori</span>
                   </a>
                 </div>
               
@@ -2039,8 +2278,54 @@ SQL 语言SQL 语言共分为四大类：
                 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">标签</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -2058,13 +2343,12 @@ SQL 语言SQL 语言共分为四大类：
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i></a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/thinkermao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
             </div>
           
 
@@ -2074,6 +2358,9 @@ SQL 语言SQL 语言共分为四大类：
           
           
 
+          
+            
+          
           
 
         </div>
@@ -2094,7 +2381,7 @@ SQL 语言SQL 语言共分为四大类：
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Patrick</span>
@@ -2105,7 +2392,9 @@ SQL 语言SQL 语言共分为四大类：
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.4</div>
 
 
 
@@ -2113,12 +2402,13 @@ SQL 语言SQL 语言共分为四大类：
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+  <div class="theme-info">Tema &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
 
 
 
 
         
+
 
 
 
@@ -2138,7 +2428,10 @@ SQL 语言SQL 语言共分为四大类：
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -2193,53 +2486,46 @@ SQL 语言SQL 语言共分为四大类：
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
   
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
 
 
   
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
 
     
 
     
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
 
 
 
@@ -2297,6 +2583,8 @@ SQL 语言SQL 语言共分为四大类：
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -2330,6 +2618,7 @@ SQL 语言SQL 语言共分为四大类：
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -2629,35 +2918,24 @@ SQL 语言SQL 语言共分为四大类：
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
           }
         },
         error: function(error) {
@@ -2702,27 +2980,66 @@ SQL 语言SQL 语言共分为四大类：
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
+    
+      
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
         for (i=0; i < all.length; i += 1) {
           all[i].SourceElement().parentNode.className += ' has-jax';
         }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
+
+  
+  
+
+  
+
+  
+
+  
 
   
 

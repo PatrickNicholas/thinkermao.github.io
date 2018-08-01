@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -9,8 +18,11 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -46,44 +58,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.0.0">
-
-
-
-
-
-
-
-  <meta name="keywords" content="Blog, Hashcoding.net, C++, GO, Java, Destribute, 分布式, 存储" />
-
-
-
-
-  
-
-
-  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
 
 
 
 
 
 
-<meta name="description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about me">
-<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
-<meta property="og:site_name" content="Coding">
-<meta property="og:description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-07T04:13:55.884Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about me">
-<meta name="twitter:description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
+
+
 
 
 
@@ -92,17 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.0.0',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,15 +97,44 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
-
+  
 
 
 
+
+  <meta name="description" content="这是图形学的一个作业，记录在此。 这次作业要求实现一个 traceball，需求如下：  鼠标按住滑动，物体跟随鼠标转动 滑动后释放鼠标，则物体保持最后旋转方向继续转动 直接点击则可以停止旋转  现在需要把三个要求转换为程序实现，这里使用 freeglut 库开发。">
+<meta name="keywords" content="OpenGL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenGL traceball">
+<meta property="og:url" content="http://www.hashcoding.net/2016/11/21/OpenGL-traceball/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="这是图形学的一个作业，记录在此。 这次作业要求实现一个 traceball，需求如下：  鼠标按住滑动，物体跟随鼠标转动 滑动后释放鼠标，则物体保持最后旋转方向继续转动 直接点击则可以停止旋转  现在需要把三个要求转换为程序实现，这里使用 freeglut 库开发。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2016-11-21T14:01:49.600Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenGL traceball">
+<meta name="twitter:description" content="这是图形学的一个作业，记录在此。 这次作业要求实现一个 traceball，需求如下：  鼠标按住滑动，物体跟随鼠标转动 滑动后释放鼠标，则物体保持最后旋转方向继续转动 直接点击则可以停止旋转  现在需要把三个要求转换为程序实现，这里使用 freeglut 库开发。">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/2016/11/21/OpenGL-traceball/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>OpenGL traceball | Coding</title>
   
+
 
 
 
@@ -141,6 +153,33 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -154,24 +193,26 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Coding</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -179,110 +220,77 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-
-            
-              首页
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-
-            
-              关于
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-
-            
-              标签
-            
-
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-
-            
-              分类
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-
-            
-              归档
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Tentang</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategori</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />Sitemap</a>
+  </li>
 
-            
-              站点地图
-            
-
-          </a>
-        </li>
       
-
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Pencarian</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -298,7 +306,7 @@
     </span>
     <div class="local-search-input-wrapper">
       <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
+             placeholder="Searching..." spellcheck="false"
              type="text" id="local-search-input">
     </div>
   </div>
@@ -313,12 +321,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -342,7 +358,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -355,29 +371,54 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">OpenGL traceball</h1>
+          <h1 class="post-title" itemprop="name headline">OpenGL traceball
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-21T20:48:43+08:00">2016-11-21</time>
+
+              
+                
+              
+
+              <time title="Post created: 2016-11-21 20:48:43 / Updated at: 22:01:49" itemprop="dateCreated datePublished" datetime="2016-11-21T20:48:43+08:00">2016-11-21</time>
             
 
             
+              
 
+              
             
           </span>
 
           
 
           
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/21/OpenGL-traceball/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2016/11/21/OpenGL-traceball/" itemprop="commentsCount"></span>
+                </a>
+              </span>
             
           
 
@@ -389,7 +430,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -432,6 +473,9 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;math.h&gt;</span><br><span class="line">#include &lt;stdlib.h&gt;</span><br><span class="line">#include &lt;GL/glut.h&gt;</span><br><span class="line"></span><br><span class="line">#define PI 3.1415926</span><br><span class="line"></span><br><span class="line">#define ORITHOGRAPHIC 1</span><br><span class="line">#define PERSPECTIVE   2</span><br><span class="line"></span><br><span class="line">typedef GLfloat Point3f[3];</span><br><span class="line"></span><br><span class="line">void Idle(void);</span><br><span class="line">void Gasket(void);</span><br><span class="line">void Render(void);</span><br><span class="line">void Initialize(void);</span><br><span class="line">void Reshape(int w, int h);</span><br><span class="line">void Perspective(int w, int h);</span><br><span class="line">void MouseMotion(int x, int y);</span><br><span class="line">void Orthographic(int w, int h);</span><br><span class="line">void Keyboard(unsigned char key, int x, int y);</span><br><span class="line">void MouseEvent(int button, int state, int x, int y);</span><br><span class="line"></span><br><span class="line">int gProjectStyle;</span><br><span class="line">int gWindowWidth, gWindowHeight;</span><br><span class="line">int gCurrentX, gCurrentY;</span><br><span class="line">int gStartX, gStartY;</span><br><span class="line">int gGasketLevel;</span><br><span class="line"></span><br><span class="line">// lookAt 相关</span><br><span class="line">GLfloat gZNear = 3.f, gZFar = 10.f;</span><br><span class="line">GLfloat gZeye = 5.f;</span><br><span class="line"></span><br><span class="line">// trackball 相关</span><br><span class="line">GLfloat gLastPosition[3] = &#123; 0.f, 0.f, 0.f &#125;;</span><br><span class="line">GLfloat gAxis[3] = &#123; 0.f, 0.f, 0.1f &#125;;</span><br><span class="line">GLfloat gAngle = 0.f;</span><br><span class="line">bool gIsRedrawContinue = false;</span><br><span class="line"></span><br><span class="line">// 保存矩阵</span><br><span class="line">GLfloat CompositeTransMatrix[4][4];</span><br><span class="line"></span><br><span class="line">int main(int argc, char **argv)</span><br><span class="line">&#123;</span><br><span class="line">    gWindowWidth = gWindowHeight = 600;</span><br><span class="line"></span><br><span class="line">    glutInit(&amp;argc, argv);</span><br><span class="line">    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);</span><br><span class="line">    glutInitWindowSize(gWindowWidth, gWindowHeight);</span><br><span class="line">    glutCreateWindow(&quot;trackball Color Gasket&quot;);</span><br><span class="line"></span><br><span class="line">    Initialize();</span><br><span class="line"></span><br><span class="line">    glutMainLoop();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Identity(GLfloat matrix[4][4])</span><br><span class="line">&#123;</span><br><span class="line">    for (int i = 0; i &lt; 4; ++i) &#123;</span><br><span class="line">        for (int j = 0; j &lt; 4; ++j) &#123;</span><br><span class="line">            matrix[i][j] = i == j ? 1.f : 0.f;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MenuSelect(int item)</span><br><span class="line">&#123;</span><br><span class="line">    if (item == ORITHOGRAPHIC) &#123;</span><br><span class="line">        Orthographic(gWindowWidth, gWindowHeight);</span><br><span class="line">        gProjectStyle = ORITHOGRAPHIC;</span><br><span class="line">        glutPostRedisplay();</span><br><span class="line">    &#125;</span><br><span class="line">    else if (item == PERSPECTIVE) &#123;</span><br><span class="line">        Perspective(gWindowWidth, gWindowHeight);</span><br><span class="line">        gProjectStyle = PERSPECTIVE;</span><br><span class="line">        glutPostRedisplay();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void InitMenu(void)</span><br><span class="line">&#123;</span><br><span class="line">    glutCreateMenu(MenuSelect);</span><br><span class="line">    glutAddMenuEntry(&quot;Orthographic&quot;, ORITHOGRAPHIC);</span><br><span class="line">    glutAddMenuEntry(&quot;Perspective&quot;, PERSPECTIVE);</span><br><span class="line">    glutAttachMenu(GLUT_RIGHT_BUTTON);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void InitCallback(void)</span><br><span class="line">&#123;</span><br><span class="line">    glutReshapeFunc(Reshape);</span><br><span class="line">    glutDisplayFunc(Render);</span><br><span class="line">    glutIdleFunc(Idle);</span><br><span class="line">    glutMouseFunc(MouseEvent);</span><br><span class="line">    glutMotionFunc(MouseMotion);</span><br><span class="line">    glutKeyboardFunc(Keyboard);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Initialize(void)</span><br><span class="line">&#123;</span><br><span class="line">    InitCallback();</span><br><span class="line">    InitMenu();</span><br><span class="line"></span><br><span class="line">    gGasketLevel = 3;</span><br><span class="line">    Identity(CompositeTransMatrix);</span><br><span class="line"></span><br><span class="line">    glEnable(GL_DEPTH_TEST);</span><br><span class="line">    glShadeModel(GL_FLAT);</span><br><span class="line">    glClearColor(1.0, 1.0, 1.0, 1.0);</span><br><span class="line"></span><br><span class="line">    gProjectStyle = ORITHOGRAPHIC;</span><br><span class="line">    Orthographic(gWindowWidth, gWindowHeight);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Reshape(int w, int h)</span><br><span class="line">&#123;</span><br><span class="line">    if (gProjectStyle == ORITHOGRAPHIC)</span><br><span class="line">        Orthographic(w, h);</span><br><span class="line">    else</span><br><span class="line">        Perspective(w, h);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Idle(void)</span><br><span class="line">&#123;</span><br><span class="line">    if (gIsRedrawContinue == true) &#123;</span><br><span class="line">        gAngle = 0.01f;</span><br><span class="line">        glutPostRedisplay();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// </span><br><span class="line">// 计算透视窗口</span><br><span class="line">// </span><br><span class="line">void CalView(int w, int h, GLfloat *left, GLfloat *right, GLfloat *bottom, GLfloat *top)</span><br><span class="line">&#123;</span><br><span class="line">    if (w &lt;= h) &#123;</span><br><span class="line">        *left = -2.0f;</span><br><span class="line">        *right = 2.0f;</span><br><span class="line">        *bottom = -2.0f * h / w;</span><br><span class="line">        *top = 2.0f * h / w;</span><br><span class="line">    &#125; </span><br><span class="line">    else &#123;</span><br><span class="line">        *left = -2.0f * w / h;</span><br><span class="line">        *right = 2.0f * w / h;</span><br><span class="line">        *bottom = -2.0f;</span><br><span class="line">        *top = 2.0f;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Perspective(int w, int h)</span><br><span class="line">&#123;</span><br><span class="line">    GLfloat left, right, bottom, top;</span><br><span class="line">    CalView(w, h, &amp;left, &amp;right, &amp;bottom, &amp;top);</span><br><span class="line"></span><br><span class="line">    glViewport(0, 0, w, h);</span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line">    glFrustum(left, right, bottom, top, gZNear, gZFar);</span><br><span class="line">    glutPostRedisplay();</span><br><span class="line"></span><br><span class="line">    gWindowWidth = w;</span><br><span class="line">    gWindowHeight = h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Orthographic(int w, int h)</span><br><span class="line">&#123;</span><br><span class="line">    GLfloat left, right, bottom, top;</span><br><span class="line">    CalView(w, h, &amp;left, &amp;right, &amp;bottom, &amp;top);</span><br><span class="line"></span><br><span class="line">    glViewport(0, 0, w, h);</span><br><span class="line">    glMatrixMode(GL_PROJECTION);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line">    glOrtho(left, right, bottom, top, gZNear, gZFar);</span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line">    glutPostRedisplay();</span><br><span class="line"></span><br><span class="line">    gWindowWidth = w;</span><br><span class="line">    gWindowHeight = h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// </span><br><span class="line">// 将屏幕坐标转换到 vector3f</span><br><span class="line">// </span><br><span class="line">void TrackballPToV(int x, int y, int w, int h, GLfloat v[3])</span><br><span class="line">&#123;</span><br><span class="line">    v[0] = (2.0f*x - w) / w;</span><br><span class="line">    v[1] = (h - 2.0f*y) / h;</span><br><span class="line">    float d = sqrtf(v[0] * v[0] + v[1] * v[1]);</span><br><span class="line">    v[2] = cosf((PI / 2.0f) * ((d &lt; 1.0f) ? d : 1.0f));</span><br><span class="line">    float a = 1.0f / sqrtf(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);</span><br><span class="line">    v[0] *= a;</span><br><span class="line">    v[1] *= a;</span><br><span class="line">    v[2] *= a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MouseMotion(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">    float curPos[3], dx, dy, dz;</span><br><span class="line">    TrackballPToV(x, y, gWindowWidth, gWindowHeight, curPos);</span><br><span class="line"></span><br><span class="line">    dx = curPos[0] - gLastPosition[0];</span><br><span class="line">    dy = curPos[1] - gLastPosition[1];</span><br><span class="line">    dz = curPos[2] - gLastPosition[2];</span><br><span class="line"></span><br><span class="line">    if (dx || dy || dz) &#123;</span><br><span class="line">        gAngle = 90.0F * sqrtf(dx*dx + dy*dy + dz*dz);</span><br><span class="line"></span><br><span class="line">        gAxis[0] = gLastPosition[1] * curPos[2] - gLastPosition[2] * curPos[1];</span><br><span class="line">        gAxis[1] = gLastPosition[2] * curPos[0] - gLastPosition[0] * curPos[2];</span><br><span class="line">        gAxis[2] = gLastPosition[0] * curPos[1] - gLastPosition[1] * curPos[0];</span><br><span class="line"></span><br><span class="line">        gLastPosition[0] = curPos[0];</span><br><span class="line">        gLastPosition[1] = curPos[1];</span><br><span class="line">        gLastPosition[2] = curPos[2];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    glutPostRedisplay();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void StartMotion(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">    gIsRedrawContinue = false;</span><br><span class="line">    gStartX = x; </span><br><span class="line">    gStartY = y;</span><br><span class="line">    gCurrentX = x;</span><br><span class="line">    gCurrentY = y;</span><br><span class="line">    TrackballPToV(x, y, gWindowWidth, gWindowHeight, gLastPosition);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void StopMotion(int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">    if (gStartX != x &amp;&amp; gStartY != y) &#123;</span><br><span class="line">        gIsRedrawContinue = true;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        gAngle = 0.0f;</span><br><span class="line">        gIsRedrawContinue = false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MouseEvent(int Botton, int State, int MouseX, int MouseY)</span><br><span class="line">&#123;</span><br><span class="line">    if (Botton == GLUT_LEFT_BUTTON) &#123;</span><br><span class="line">        switch (State)</span><br><span class="line">        &#123;</span><br><span class="line">        case GLUT_DOWN:</span><br><span class="line">            StartMotion(MouseX, MouseY);</span><br><span class="line">            break;</span><br><span class="line">        case GLUT_UP:</span><br><span class="line">            StopMotion(MouseX, MouseY);</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Render(void)</span><br><span class="line">&#123;</span><br><span class="line">    GLfloat *pCompositeTransMatrix = *CompositeTransMatrix;</span><br><span class="line"></span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);</span><br><span class="line"></span><br><span class="line">    /* 多个旋转组合 */</span><br><span class="line">    glMatrixMode(GL_MODELVIEW);</span><br><span class="line">    glLoadIdentity();</span><br><span class="line">    glRotatef(gAngle, gAxis[0], gAxis[1], gAxis[2]);</span><br><span class="line">    glMultMatrixf(pCompositeTransMatrix);</span><br><span class="line">    glGetFloatv(GL_MODELVIEW_MATRIX, pCompositeTransMatrix);</span><br><span class="line"></span><br><span class="line">    // 设置 lookAtMatrix 应该在最开始的位置</span><br><span class="line">    glLoadIdentity();</span><br><span class="line">    gluLookAt(0, 0, gZeye, 0, 0, 0, 0, 1, 0);</span><br><span class="line">    glMultMatrixf(pCompositeTransMatrix);</span><br><span class="line"></span><br><span class="line">    Gasket();</span><br><span class="line"></span><br><span class="line">    glutSwapBuffers();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Keyboard(unsigned char key, int x, int y)</span><br><span class="line">&#123;</span><br><span class="line">    if (&apos;0&apos; &lt;= key &amp;&amp; key &lt;= &apos;3&apos;) &#123;</span><br><span class="line">        gGasketLevel = key - &apos;0&apos;;</span><br><span class="line">        glutPostRedisplay();</span><br><span class="line">    &#125;</span><br><span class="line">    else if (key == &apos;q&apos; || key == &apos;Q&apos;) &#123;</span><br><span class="line">        exit(0);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Triangle(const Point3f p1, const Point3f p2, const Point3f p3, const Point3f color)</span><br><span class="line">&#123;</span><br><span class="line">    glBegin(GL_POLYGON);</span><br><span class="line">    &#123;</span><br><span class="line">        glColor3fv(color);</span><br><span class="line">        glVertex3fv(p1);</span><br><span class="line">        glVertex3fv(p2);</span><br><span class="line">        glVertex3fv(p3);</span><br><span class="line">    &#125;</span><br><span class="line">    glEnd();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Tetrahedron(const Point3f p1, const Point3f p2, const Point3f p3, const Point3f p4)</span><br><span class="line">&#123;</span><br><span class="line">    const static Point3f Color[] = &#123;</span><br><span class="line">        &#123; 1.f, 0.f, 0.f &#125;,</span><br><span class="line">        &#123; 0.f, 1.f, 0.f &#125;,</span><br><span class="line">        &#123; 0.f, 0.f, 1.f &#125;,</span><br><span class="line">        &#123; 1.f, 1.f, 0.1f &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    Triangle(p1, p2, p3, Color[0]);</span><br><span class="line">    Triangle(p1, p2, p4, Color[1]);</span><br><span class="line">    Triangle(p1, p3, p4, Color[2]);</span><br><span class="line">    Triangle(p2, p4, p3, Color[3]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void DivideVertices(Point3f p1, Point3f p2, Point3f p3, Point3f p4, int level)</span><br><span class="line">&#123;</span><br><span class="line">    Point3f v0, v1, v2, v3, v4, v5;</span><br><span class="line">    if (level &gt; 0) &#123;</span><br><span class="line">        for (int j = 0; j&lt;3; j++) v0[j] = (p1[j] + p2[j]) / 2;</span><br><span class="line">        for (int j = 0; j&lt;3; j++) v1[j] = (p1[j] + p3[j]) / 2;</span><br><span class="line">        for (int j = 0; j&lt;3; j++) v2[j] = (p1[j] + p4[j]) / 2;</span><br><span class="line">        for (int j = 0; j&lt;3; j++) v3[j] = (p2[j] + p3[j]) / 2;</span><br><span class="line">        for (int j = 0; j&lt;3; j++) v4[j] = (p2[j] + p4[j]) / 2;</span><br><span class="line">        for (int j = 0; j&lt;3; j++) v5[j] = (p4[j] + p3[j]) / 2;</span><br><span class="line">        DivideVertices(p1, v0, v1, v2, level - 1);</span><br><span class="line">        DivideVertices(v0, p2, v3, v4, level - 1);</span><br><span class="line">        DivideVertices(v1, v3, p3, v5, level - 1);</span><br><span class="line">        DivideVertices(v2, v4, v5, p4, level - 1);</span><br><span class="line">    &#125; </span><br><span class="line">    else &#123;</span><br><span class="line">        Tetrahedron(p1, p2, p3, p4);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void Gasket(void)</span><br><span class="line">&#123;</span><br><span class="line">    static Point3f Vertices[] = &#123;</span><br><span class="line">        &#123; -1.f, -1.f, 0.5773f &#125;,</span><br><span class="line">        &#123; 0.f, -1.f, -1.15475 &#125;,</span><br><span class="line">        &#123; 1.0f, -1.0f, 0.5773f &#125;,</span><br><span class="line">        &#123; 0.0f, 1.0f, 0.0f &#125;,</span><br><span class="line">    &#125;;</span><br><span class="line">    DivideVertices(Vertices[0], Vertices[1], Vertices[2], Vertices[3], gGasketLevel);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
+
+    
+
     
     
     
@@ -487,27 +531,18 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
           
 
-
-          
-
   
     <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
+      
+        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
+        <div id="gitment-container" style="display:none"></div>
+      
     </div>
 
   
@@ -535,10 +570,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+            Daftar Isi
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
+            Ikhtisar
           </li>
         </ul>
       
@@ -559,7 +594,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">63</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-name">posting</span>
                   </a>
                 </div>
               
@@ -569,8 +604,28 @@
                 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">9</span>
-                    <span class="site-state-item-name">分类</span>
+                    <span class="site-state-item-name">kategori</span>
                   </a>
                 </div>
               
@@ -580,8 +635,54 @@
                 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">标签</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -599,13 +700,12 @@
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i></a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/thinkermao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
             </div>
           
 
@@ -615,6 +715,9 @@
           
           
 
+          
+            
+          
           
 
         </div>
@@ -651,7 +754,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Patrick</span>
@@ -662,7 +765,9 @@
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.4</div>
 
 
 
@@ -670,12 +775,13 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+  <div class="theme-info">Tema &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
 
 
 
 
         
+
 
 
 
@@ -695,7 +801,10 @@
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -750,69 +859,78 @@
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
   
+  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
   
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
 
     
 
     
       <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://www.hashcoding.net/2016/11/21/OpenGL-traceball/';
-          this.page.identifier = '2016/11/21/OpenGL-traceball/';
-          this.page.title = 'OpenGL traceball';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://blog-coding.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'thinerkmao',
+            repo: 'thinkermao.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'cb84897d09ba53f3c37f9244556c6998fb5017ea',
+            
+                client_id: 'a09944366bdbb5736e67'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
       </script>
     
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
 
 
 
@@ -870,6 +988,8 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -903,6 +1023,7 @@
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -1202,35 +1323,24 @@
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
           }
         },
         error: function(error) {
@@ -1275,27 +1385,18 @@
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
+
+  
+  
+
+  
+
+  
+
+  
 
   
 

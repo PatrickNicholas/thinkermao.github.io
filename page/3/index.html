@@ -2,6 +2,15 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
@@ -9,8 +18,11 @@
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
+
+
+
 
 
 
@@ -46,44 +58,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=6.0.0" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
 
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.0.0">
-
-
-
-
-
-
-
-  <meta name="keywords" content="Blog, Hashcoding.net, C++, GO, Java, Destribute, 分布式, 存储" />
-
-
-
-
-  
-
-
-  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
 
 
 
 
 
 
-<meta name="description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about me">
-<meta property="og:url" content="http://www.hashcoding.net/about/index.html">
-<meta property="og:site_name" content="Coding">
-<meta property="og:description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-07T04:13:55.884Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about me">
-<meta name="twitter:description" content="一个不务正业的程序员，研究编译器, 分布式, 存储, 操作系统。 欢迎志同道合的小伙伴联系我。">
+
+
 
 
 
@@ -92,17 +79,13 @@
   var CONFIG = {
     root: '/',
     scheme: 'Muse',
-    version: '6.0.0',
+    version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
     algolia: {
       applicationID: '',
       apiKey: '',
@@ -114,15 +97,42 @@
 </script>
 
 
-
-  <link rel="canonical" href="http://www.hashcoding.net/about/"/>
-
+  
 
 
 
+
+  <meta name="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Coding">
+<meta property="og:url" content="http://www.hashcoding.net/page/3/index.html">
+<meta property="og:site_name" content="Coding">
+<meta property="og:description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Coding">
+<meta name="twitter:description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/page/3/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>Coding</title>
   
+
 
 
 
@@ -141,6 +151,33 @@
 
 
 
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -155,24 +192,26 @@
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"> <div class="site-brand-wrapper">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Coding</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -180,110 +219,77 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-
-            
-              首页
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-
-            
-              关于
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-
-            
-              标签
-            
-
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Beranda</a>
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-
-            
-              分类
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-
-            
-              归档
-            
-
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-sitemap">
-          <a href="/sitemap.xml" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
-            
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Tentang</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategori</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Arsip</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />Sitemap</a>
+  </li>
 
-            
-              站点地图
-            
-
-          </a>
-        </li>
       
-
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            搜索
-          </a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />Pencarian</a>
         </li>
       
     </ul>
+  
+
+  
+    
+
   
 
   
@@ -299,7 +305,7 @@
     </span>
     <div class="local-search-input-wrapper">
       <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
+             placeholder="Searching..." spellcheck="false"
              type="text" id="local-search-input">
     </div>
   </div>
@@ -314,12 +320,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -343,7 +357,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -358,23 +372,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/13/LeetCode-32-Longest-Valid-Parenthess/" itemprop="url">LeetCode - 32 Longest Valid Parenthess</a></h1>
+                <a class="post-title-link" href="/2017/03/13/LeetCode-32-Longest-Valid-Parenthess/" itemprop="url">
+                  LeetCode - 32 Longest Valid Parenthess
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-13T12:55:22+08:00">2017-03-13</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-13 12:55:22" itemprop="dateCreated datePublished" datetime="2017-03-13T12:55:22+08:00">2017-03-13</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:57:53" itemprop="dateModified" datetime="2017-06-12T19:57:53+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -387,14 +430,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -414,7 +453,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -444,13 +483,16 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/13/LeetCode-32-Longest-Valid-Parenthess/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -500,7 +542,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -515,23 +557,52 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/12/Effective-Modern-C-Type-deduction/" itemprop="url">Effective Modern C++ - Type deduction</a></h1>
+                <a class="post-title-link" href="/2017/03/12/Effective-Modern-C-Type-deduction/" itemprop="url">
+                  Effective Modern C++ - Type deduction
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T21:54:36+08:00">2017-03-12</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-12 21:54:36" itemprop="dateCreated datePublished" datetime="2017-03-12T21:54:36+08:00">2017-03-12</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:59:19" itemprop="dateModified" datetime="2017-06-12T19:59:19+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -544,14 +615,10 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
 
                 
                 
@@ -571,7 +638,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -616,13 +683,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/12/Effective-Modern-C-Type-deduction/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -672,7 +742,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -687,23 +757,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/12/LeetCode-28-Implement-strStr/" itemprop="url">LeetCode - 28 Implement strStr()</a></h1>
+                <a class="post-title-link" href="/2017/03/12/LeetCode-28-Implement-strStr/" itemprop="url">
+                  LeetCode - 28 Implement strStr()
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T15:28:14+08:00">2017-03-12</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-12 15:28:14" itemprop="dateCreated datePublished" datetime="2017-03-12T15:28:14+08:00">2017-03-12</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:57:50" itemprop="dateModified" datetime="2017-06-12T19:57:50+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -716,14 +815,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -743,7 +838,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -773,13 +868,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/12/LeetCode-28-Implement-strStr/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -829,7 +927,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -844,23 +942,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/08/LeetCode-15-3-Sum/" itemprop="url">LeetCode - 15-3 Sum</a></h1>
+                <a class="post-title-link" href="/2017/03/08/LeetCode-15-3-Sum/" itemprop="url">
+                  LeetCode - 15-3 Sum
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-08T12:53:40+08:00">2017-03-08</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-08 12:53:40" itemprop="dateCreated datePublished" datetime="2017-03-08T12:53:40+08:00">2017-03-08</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:57:46" itemprop="dateModified" datetime="2017-06-12T19:57:46+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -873,14 +1000,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -900,7 +1023,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -930,13 +1053,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/08/LeetCode-15-3-Sum/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -986,7 +1112,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1001,23 +1127,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/07/LeetCode-11-Container-With-Most-Water/" itemprop="url">LeetCode - 11-Container With Most Water</a></h1>
+                <a class="post-title-link" href="/2017/03/07/LeetCode-11-Container-With-Most-Water/" itemprop="url">
+                  LeetCode - 11-Container With Most Water
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-07T12:41:38+08:00">2017-03-07</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-07 12:41:38" itemprop="dateCreated datePublished" datetime="2017-03-07T12:41:38+08:00">2017-03-07</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:57:42" itemprop="dateModified" datetime="2017-06-12T19:57:42+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -1030,14 +1185,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -1057,7 +1208,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1087,13 +1238,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/07/LeetCode-11-Container-With-Most-Water/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1143,7 +1297,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1158,23 +1312,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/06/LeetCode-10-Regular-Expression/" itemprop="url">LeetCode - 10-Regular-Expression-Matching</a></h1>
+                <a class="post-title-link" href="/2017/03/06/LeetCode-10-Regular-Expression/" itemprop="url">
+                  LeetCode - 10-Regular-Expression-Matching
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-06T23:37:28+08:00">2017-03-06</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-06 23:37:28" itemprop="dateCreated datePublished" datetime="2017-03-06T23:37:28+08:00">2017-03-06</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:57:38" itemprop="dateModified" datetime="2017-06-12T19:57:38+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -1187,14 +1370,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a></span>
 
                 
                 
@@ -1214,7 +1393,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1244,13 +1423,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/06/LeetCode-10-Regular-Expression/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1300,7 +1482,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1315,23 +1497,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/05/Effective-C-Exception-safe-code/" itemprop="url">Effective C++: Exception-safe code</a></h1>
+                <a class="post-title-link" href="/2017/03/05/Effective-C-Exception-safe-code/" itemprop="url">
+                  Effective C++: Exception-safe code
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T15:12:43+08:00">2017-03-05</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-05 15:12:43" itemprop="dateCreated datePublished" datetime="2017-03-05T15:12:43+08:00">2017-03-05</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:59:13" itemprop="dateModified" datetime="2017-06-12T19:59:13+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -1344,14 +1555,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
 
                 
                 
@@ -1371,7 +1578,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1405,13 +1612,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/05/Effective-C-Exception-safe-code/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1461,7 +1671,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1476,23 +1686,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/05/Effective-C-Designs-Implements/" itemprop="url">Effective C++: Designs & Implements</a></h1>
+                <a class="post-title-link" href="/2017/03/05/Effective-C-Designs-Implements/" itemprop="url">
+                  Effective C++: Designs & Implements
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T14:45:50+08:00">2017-03-05</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-05 14:45:50" itemprop="dateCreated datePublished" datetime="2017-03-05T14:45:50+08:00">2017-03-05</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:59:08" itemprop="dateModified" datetime="2017-06-12T19:59:08+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -1505,14 +1744,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
 
                 
                 
@@ -1532,7 +1767,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1562,13 +1797,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/05/Effective-C-Designs-Implements/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1618,7 +1856,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1633,23 +1871,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/05/Effective-C-Resource-management/" itemprop="url">Effective C++:Resource management</a></h1>
+                <a class="post-title-link" href="/2017/03/05/Effective-C-Resource-management/" itemprop="url">
+                  Effective C++:Resource management
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-05T13:31:06+08:00">2017-03-05</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-05 13:31:06" itemprop="dateCreated datePublished" datetime="2017-03-05T13:31:06+08:00">2017-03-05</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-09-23 11:10:54" itemprop="dateModified" datetime="2017-09-23T11:10:54+08:00">2017-09-23</time>
+              
             
           </span>
 
@@ -1662,14 +1929,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
 
                 
                 
@@ -1689,7 +1952,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1719,13 +1982,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/05/Effective-C-Resource-management/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1775,7 +2041,7 @@ ParamType 非引用
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="">
+      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
@@ -1790,23 +2056,52 @@ ParamType 非引用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/03/02/Effective-c-Constructors-Destructors-and-Assignment-Operators/" itemprop="url">Effective c++:Constructors,Destructors,and Assignment Operators</a></h1>
+                <a class="post-title-link" href="/2017/03/02/Effective-c-Constructors-Destructors-and-Assignment-Operators/" itemprop="url">
+                  Effective c++:Constructors,Destructors,and Assignment Operators
+                </a>
+              
+            
+          </h1>
         
 
         <div class="post-meta">
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Diposting di</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-02T17:05:47+08:00">2017-03-02</time>
+
+              
+                
+              
+
+              <time title="Post created: 2017-03-02 17:05:47" itemprop="dateCreated datePublished" datetime="2017-03-02T17:05:47+08:00">2017-03-02</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2017-06-12 19:59:04" itemprop="dateModified" datetime="2017-06-12T19:59:04+08:00">2017-06-12</time>
+              
             
           </span>
 
@@ -1819,14 +2114,10 @@ ParamType 非引用
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">分类于</span>
+                <span class="post-meta-item-text">Di</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C/" itemprop="url" rel="index">
-                    <span itemprop="name">C++</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a></span>
 
                 
                 
@@ -1846,7 +2137,7 @@ ParamType 非引用
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
+                 <span class="post-meta-item-text">Views: </span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -1876,13 +2167,16 @@ ParamType 非引用
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/02/Effective-c-Constructors-Destructors-and-Assignment-Operators/#more" rel="contents">
-              阅读全文 &raquo;
+              Baca lebih &raquo;
             </a>
           </div>
           <!--/noindex-->
         
       
     </div>
+
+    
+
     
     
     
@@ -1917,15 +2211,12 @@ ParamType 非引用
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
 
           </div>
-          
-
-
           
 
         </div>
@@ -1964,7 +2255,7 @@ ParamType 非引用
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">63</span>
-                    <span class="site-state-item-name">日志</span>
+                    <span class="site-state-item-name">posting</span>
                   </a>
                 </div>
               
@@ -1974,8 +2265,28 @@ ParamType 非引用
                 
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">9</span>
-                    <span class="site-state-item-name">分类</span>
+                    <span class="site-state-item-name">kategori</span>
                   </a>
                 </div>
               
@@ -1985,8 +2296,54 @@ ParamType 非引用
                 
                 <div class="site-state-item site-state-tags">
                   <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
                     <span class="site-state-item-count">22</span>
-                    <span class="site-state-item-name">标签</span>
+                    <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
               
@@ -2004,13 +2361,12 @@ ParamType 非引用
 
           
             <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i></a>
-                  </span>
-                
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/thinkermao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
+                  
+                </span>
+              
             </div>
           
 
@@ -2020,6 +2376,9 @@ ParamType 非引用
           
           
 
+          
+            
+          
           
 
         </div>
@@ -2040,7 +2399,7 @@ ParamType 非引用
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Patrick</span>
@@ -2051,7 +2410,9 @@ ParamType 非引用
 </div>
 
 
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.4.4</div>
 
 
 
@@ -2059,12 +2420,13 @@ ParamType 非引用
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.0.0</div>
+  <div class="theme-info">Tema &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
 
 
 
 
         
+
 
 
 
@@ -2084,7 +2446,10 @@ ParamType 非引用
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -2139,53 +2504,46 @@ ParamType 非引用
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=6.0.0"></script>
-
-
-
-  
-  
-
-  
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.0"></script>
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
 
 
 
   
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
 
 
   
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
 
     
 
     
-
-  
-
-
-
-
-	
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
 
 
 
@@ -2243,6 +2601,8 @@ ParamType 非引用
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
+      
+
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -2276,6 +2636,7 @@ ParamType 非引用
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -2575,35 +2936,24 @@ ParamType 非引用
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
+            
             counter.save(null, {
               success: function(counter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            var newcounter = new Counter();
-            /* Set ACL */
-            var acl = new AV.ACL();
-            acl.setPublicReadAccess(true);
-            acl.setPublicWriteAccess(true);
-            newcounter.setACL(acl);
-            /* End Set ACL */
-            newcounter.set("title", title);
-            newcounter.set("url", url);
-            newcounter.set("time", 1);
-            newcounter.save(null, {
-              success: function(newcounter) {
-                var $element = $(document.getElementById(url));
-                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-              },
-              error: function(newcounter, error) {
-                console.log('Failed to create');
-              }
-            });
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
           }
         },
         error: function(error) {
@@ -2648,27 +2998,40 @@ ParamType 非引用
 
   
   
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   
 
+  
+
+
+  
+  
+
+  
+
+  
+
+  
 
   
 
