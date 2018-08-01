@@ -18,8 +18,8 @@
   
   <entry>
     <title>Raft-实现指北-领导选举</title>
-    <link href="http://www.hashcoding.net/2018/01/07/Raft-implemention-leader-election/"/>
-    <id>http://www.hashcoding.net/2018/01/07/Raft-implemention-leader-election/</id>
+    <link href="http://www.hashcoding.net/2018/01/07/Raft-%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8C%97-%E9%A2%86%E5%AF%BC%E9%80%89%E4%B8%BE/"/>
+    <id>http://www.hashcoding.net/2018/01/07/Raft-实现指北-领导选举/</id>
     <published>2018-01-07T05:31:18.000Z</published>
     <updated>2018-01-13T09:21:30.377Z</updated>
     
@@ -441,9 +441,9 @@
       <category term="C++" scheme="http://www.hashcoding.net/categories/C/"/>
     
     
-      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
-    
       <category term="C++" scheme="http://www.hashcoding.net/tags/C/"/>
+    
+      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
     
   </entry>
   
@@ -514,9 +514,9 @@
       <category term="C++" scheme="http://www.hashcoding.net/categories/C/"/>
     
     
-      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
-    
       <category term="C++" scheme="http://www.hashcoding.net/tags/C/"/>
+    
+      <category term="C" scheme="http://www.hashcoding.net/tags/C/"/>
     
   </entry>
   
@@ -1085,9 +1085,9 @@
       <category term="Android" scheme="http://www.hashcoding.net/categories/Android/"/>
     
     
-      <category term="Java" scheme="http://www.hashcoding.net/tags/Java/"/>
-    
       <category term="Android" scheme="http://www.hashcoding.net/tags/Android/"/>
+    
+      <category term="Java" scheme="http://www.hashcoding.net/tags/Java/"/>
     
   </entry>
   

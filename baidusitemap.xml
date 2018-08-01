@@ -21,7 +21,7 @@
 
     
   <url>
-    <loc>http://www.hashcoding.net/2018/01/07/Raft-implemention-leader-election/</loc>
+    <loc>http://www.hashcoding.net/2018/01/07/Raft-%E5%AE%9E%E7%8E%B0%E6%8C%87%E5%8C%97-%E9%A2%86%E5%AF%BC%E9%80%89%E4%B8%BE/</loc>
     <lastmod>2018-01-13T09:21:30.377Z</lastmod>
     <data>
         <display>
@@ -752,9 +752,9 @@
         <title>C语言格式化输出</title>
         <pubTime>2017-05-03T13:19:45.000Z</pubTime>
         
-        <tag>C</tag>
-         
         <tag>C++</tag>
+         
+        <tag>C</tag>
          
          
            
@@ -774,9 +774,9 @@
         <title>C/C++ 调用约定</title>
         <pubTime>2017-05-07T10:42:50.000Z</pubTime>
         
-        <tag>C</tag>
-         
         <tag>C++</tag>
+         
+        <tag>C</tag>
          
          
            
@@ -816,9 +816,9 @@
         <title>Android asynchronized programming summary</title>
         <pubTime>2016-10-16T13:47:48.000Z</pubTime>
         
-        <tag>Java</tag>
-         
         <tag>Android</tag>
+         
+        <tag>Java</tag>
          
          
            
