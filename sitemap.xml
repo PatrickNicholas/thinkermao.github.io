@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.hashcoding.net/2018/08/04/write-ahead-log/</loc>
+    
+    <lastmod>2018-08-04T14:21:58.693Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.hashcoding.net/2017/06/04/SO-REUSEADDR-SO-REUSEPORT-%E5%BC%82%E5%90%8C/</loc>
     
     <lastmod>2018-01-15T15:09:59.724Z</lastmod>

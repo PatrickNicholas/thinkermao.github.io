@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://www.hashcoding.net/2018/08/04/write-ahead-log/</loc>
+    <lastmod>2018-08-04T14:21:58.693Z</lastmod>
+    <data>
+        <display>
+        <title>Write Ahead Log 杂谈</title>
+        <pubTime>2018-08-04T00:21:38.000Z</pubTime>
+        
+        <tag>Storage</tag>
+         
+         
+           
+             
+              <breadCrumb title="存储" url="http://www.hashcoding.net/categories/%E5%AD%98%E5%82%A8/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.hashcoding.net/2017/06/04/SO-REUSEADDR-SO-REUSEPORT-%E5%BC%82%E5%90%8C/</loc>
     <lastmod>2018-01-15T15:09:59.724Z</lastmod>
     <data>
@@ -752,9 +772,9 @@
         <title>C语言格式化输出</title>
         <pubTime>2017-05-03T13:19:45.000Z</pubTime>
         
-        <tag>C++</tag>
-         
         <tag>C</tag>
+         
+        <tag>C++</tag>
          
          
            
@@ -774,9 +794,9 @@
         <title>C/C++ 调用约定</title>
         <pubTime>2017-05-07T10:42:50.000Z</pubTime>
         
-        <tag>C++</tag>
-         
         <tag>C</tag>
+         
+        <tag>C++</tag>
          
          
            
