@@ -102,18 +102,18 @@
 
 
 
-  <meta name="description" content="记录本人常用Linux命令">
+  <meta name="description" content="记录常用Linux命令 CClocCloc是一款使用Perl语言开发的开源代码统计工具，支持多平台使用、多语言识别，能够计算指定目标文件或文件夹中的文件数（files）、空白行数（blank）、注释行数（comment）和代码行数（code）。 Cloc具备很多特性以致于让它更方便于使用、完善、拓展和便携。  作为一个单一的独立形式存在的文件，Cloc只需要下载相应文件并运行这样最少的安装工作即可">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用Linux工具整理">
 <meta property="og:url" content="http://www.hashcoding.net/2017/05/03/常用Linux工具整理/index.html">
 <meta property="og:site_name" content="Coding">
-<meta property="og:description" content="记录本人常用Linux命令">
+<meta property="og:description" content="记录常用Linux命令 CClocCloc是一款使用Perl语言开发的开源代码统计工具，支持多平台使用、多语言识别，能够计算指定目标文件或文件夹中的文件数（files）、空白行数（blank）、注释行数（comment）和代码行数（code）。 Cloc具备很多特性以致于让它更方便于使用、完善、拓展和便携。  作为一个单一的独立形式存在的文件，Cloc只需要下载相应文件并运行这样最少的安装工作即可">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-05-03T12:29:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用Linux工具整理">
-<meta name="twitter:description" content="记录本人常用Linux命令">
+<meta name="twitter:description" content="记录常用Linux命令 CClocCloc是一款使用Perl语言开发的开源代码统计工具，支持多平台使用、多语言识别，能够计算指定目标文件或文件夹中的文件数（files）、空白行数（blank）、注释行数（comment）和代码行数（code）。 Cloc具备很多特性以致于让它更方便于使用、完善、拓展和便携。  作为一个单一的独立形式存在的文件，Cloc只需要下载相应文件并运行这样最少的安装工作即可">
 
 
 
@@ -455,8 +455,7 @@
       
 
       
-        <p>记录本人常用Linux命令</p>
-<a id="more"></a>
+        <p>记录常用Linux命令</p>
 <h1 id="C"><a href="#C" class="headerlink" title="C"></a>C</h1><h2 id="Cloc"><a href="#Cloc" class="headerlink" title="Cloc"></a>Cloc</h2><p>Cloc是一款使用Perl语言开发的开源代码统计工具，支持多平台使用、多语言识别，能够计算指定目标文件或文件夹中的文件数（files）、空白行数（blank）、注释行数（comment）和代码行数（code）。</p>
 <p>Cloc具备很多特性以致于让它更方便于使用、完善、拓展和便携。</p>
 <ul>
@@ -471,7 +470,7 @@
 <li>支持多平台使用。</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Usage: cloc [options] &lt;file(s)/dir(s)&gt; | &lt;set 1&gt; &lt;set 2&gt; | &lt;report files&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>// TODO: </p>
+<h3 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h3><p>// TODO:</p>
 <h1 id="G"><a href="#G" class="headerlink" title="G"></a>G</h1><h2 id="GDB"><a href="#GDB" class="headerlink" title="GDB"></a>GDB</h2><h3 id="开始和停止"><a href="#开始和停止" class="headerlink" title="开始和停止"></a>开始和停止</h3><p><code>quit</code>: 退出GDB<br><code>run</code>: 运行程序（在此给出命令行参数）<br><code>kill</code>: 停止程序</p>
 <h3 id="断点"><a href="#断点" class="headerlink" title="断点"></a>断点</h3><p><code>break sum</code>: 在函数 sum 入口设置断点<br><code>break *0x8048394</code>: 在地址 0x8048394 处设置断点<br><code>delete 1</code>: 删除断点1<br><code>delete</code>: 删除所有断点</p>
 <h3 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h3><p><code>stepi</code>: 执行一条指令<br><code>stepi 4</code>: 执行四条指令<br><code>nexti</code>: 类似<code>stepi</code>，但是以函数调用为单位<br><code>continue</code>: 继续执行<br><code>finish</code>: 运行到当前函数返回</p>
@@ -504,19 +503,19 @@
 <p>如果配合<code>d D</code>使用,则以反汇编以后的格式显示:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">/mnt/d/tmp$ objdump -rd hello.o</span><br><span class="line"></span><br><span class="line">hello.o:     file format elf64-x86-64</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Disassembly of section .text:</span><br><span class="line"></span><br><span class="line">0000000000000000 &lt;main&gt;:</span><br><span class="line">   0:   55                      push   %rbp</span><br><span class="line">   1:   48 89 e5                mov    %rsp,%rbp</span><br><span class="line">   4:   bf 00 00 00 00          mov    $0x0,%edi</span><br><span class="line">                        5: R_X86_64_32  .rodata</span><br><span class="line">   9:   b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">   e:   e8 00 00 00 00          callq  13 &lt;main+0x13&gt;</span><br><span class="line">                        f: R_X86_64_PC32        printf-0x4</span><br><span class="line">  13:   b8 00 00 00 00          mov    $0x0,%eax</span><br><span class="line">  18:   5d                      pop    %rbp</span><br><span class="line">  19:   c3                      retq</span><br></pre></td></tr></table></figure>
 <p><code>-R, --dynamic-reloc</code> 显示动态重定位入口，仅仅对动态文件起作用。</p>
-<h1 id="T"><a href="#T" class="headerlink" title="T"></a>T</h1><h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><p>来自: <a href="http://man.linuxde.net/time" target="_blank" rel="noopener">Linux Man 手册</a><br>time命令用于统计给定命令所花费的总时间。 </p>
+<h1 id="T"><a href="#T" class="headerlink" title="T"></a>T</h1><h2 id="time"><a href="#time" class="headerlink" title="time"></a>time</h2><p>来自: <a href="http://man.linuxde.net/time" target="_blank" rel="noopener">Linux Man 手册</a><br>time命令用于统计给定命令所花费的总时间。</p>
 <h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time 参数</span><br></pre></td></tr></table></figure>
-<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>指令：指定需要运行的额指令及其参数。<br>实例 当测试一个程序或比较不同算法时，执行时间是非常重要的，一个好的算法应该是用时最短的。所有类UNIX系统都包含time命令，使用这个命令可以统计时间消耗。例如： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# time ls </span><br><span class="line">anaconda-ks.cfg install.log install.log.syslog satools text </span><br><span class="line"></span><br><span class="line">real 0m0.009s </span><br><span class="line">user 0m0.002s </span><br><span class="line">sys 0m0.007s</span><br></pre></td></tr></table></figure>
-<p>输出的信息分别显示了该命令所花费的real时间、user时间和sys时间。 </p>
-<p>real时间是指挂钟时间，也就是命令开始执行到结束的时间。这个短时间包括其他进程所占用的时间片，和进程被阻塞时所花费的时间。 </p>
-<p>user时间是指进程花费在用户模式中的CPU时间，这是唯一真正用于执行进程所花费的时间，其他进程和花费阻塞状态中的时间没有计算在内。 sys时间是指花费在内核模式中的CPU时间，代表在内核中执系统调用所花费的时间，这也是真正由进程使用的CPU时间。 </p>
-<p>shell内建也有一个time命令，当运行time时候是调用的系统内建命令，应为系统内建的功能有限，所以需要时间其他功能需要使用time命令可执行二进制文件/usr/bin/time。 </p>
-<p>使用-o选项将执行时间写入到文件中： </p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>指令：指定需要运行的额指令及其参数。<br>实例 当测试一个程序或比较不同算法时，执行时间是非常重要的，一个好的算法应该是用时最短的。所有类UNIX系统都包含time命令，使用这个命令可以统计时间消耗。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]# time ls</span><br><span class="line">anaconda-ks.cfg install.log install.log.syslog satools text</span><br><span class="line"></span><br><span class="line">real 0m0.009s</span><br><span class="line">user 0m0.002s</span><br><span class="line">sys 0m0.007s</span><br></pre></td></tr></table></figure>
+<p>输出的信息分别显示了该命令所花费的real时间、user时间和sys时间。</p>
+<p>real时间是指挂钟时间，也就是命令开始执行到结束的时间。这个短时间包括其他进程所占用的时间片，和进程被阻塞时所花费的时间。</p>
+<p>user时间是指进程花费在用户模式中的CPU时间，这是唯一真正用于执行进程所花费的时间，其他进程和花费阻塞状态中的时间没有计算在内。 sys时间是指花费在内核模式中的CPU时间，代表在内核中执系统调用所花费的时间，这也是真正由进程使用的CPU时间。</p>
+<p>shell内建也有一个time命令，当运行time时候是调用的系统内建命令，应为系统内建的功能有限，所以需要时间其他功能需要使用time命令可执行二进制文件/usr/bin/time。</p>
+<p>使用-o选项将执行时间写入到文件中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/time -o outfile.txt ls</span><br></pre></td></tr></table></figure>
-<p>使用-a选项追加信息： </p>
+<p>使用-a选项追加信息：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/time -a -o outfile.txt ls</span><br></pre></td></tr></table></figure>
-<p>使用-f选项格式化时间输出： </p>
+<p>使用-f选项格式化时间输出：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/time -f &quot;time: %U&quot; ls</span><br></pre></td></tr></table></figure>
 <p>-f选项后的参数：<br>参数    描述<br>%E    real时间，显示格式为[小时:]分钟:秒<br>%U    user时间。<br>%S    sys时间。<br>%C    进行计时的命令名称和命令行参数。<br>%D    进程非共享数据区域，以KB为单位。<br>%x    命令退出状态。<br>%k    进程接收到的信号数量。<br>%w    进程被交换出主存的次数。<br>%Z    系统的页面大小，这是一个系统常量，不用系统中常量值也不同。<br>%P    进程所获取的CPU时间百分百，这个值等于user+system时间除以总共的运行时间。<br>%K    进程的平均总内存使用量（data+stack+text），单位是KB。<br>%w    进程主动进行上下文切换的次数，例如等待I/O操作完成。<br>%c    进程被迫进行上下文切换的次数（由于时间片到期）。</p>
 <h1 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h1><h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><h4 id="APT-安装"><a href="#APT-安装" class="headerlink" title="APT 安装"></a>APT 安装</h4><p>普通安装：<code>apt install softname1 softname2 ...</code><br>修复安装: <code>apt -f install softname1 softname2 ...</code><br>重新安装: <code>apt --reinstall install ....</code></p>
@@ -653,7 +652,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">66</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -686,7 +685,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -745,7 +748,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -817,7 +822,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>

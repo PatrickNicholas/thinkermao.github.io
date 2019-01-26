@@ -4,8 +4,52 @@
 
     
   <url>
+    <loc>http://www.hashcoding.net/2019/01/03/nsq-read-notes/</loc>
+    <lastmod>2019-01-26T10:55:48.334Z</lastmod>
+    <data>
+        <display>
+        <title>nsq read notes</title>
+        <pubTime>2019-01-03T00:00:00.000Z</pubTime>
+        
+        <tag>Nsq - MessageQueue</tag>
+         
+         
+           
+             
+              <breadCrumb title="消息中间件" url="http://www.hashcoding.net/categories/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.hashcoding.net/2019/01/26/Linux-TCP-Rst/</loc>
+    <lastmod>2019-01-26T10:54:55.052Z</lastmod>
+    <data>
+        <display>
+        <title>探究 Linux 下 TCP 的 RST Packet</title>
+        <pubTime>2019-01-26T07:13:00.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>Socket</tag>
+         
+        <tag>TCP/IP</tag>
+         
+         
+           
+             
+              <breadCrumb title="Network" url="http://www.hashcoding.net/categories/Network/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.hashcoding.net/2018/08/04/write-ahead-log/</loc>
-    <lastmod>2018-08-04T14:21:58.693Z</lastmod>
+    <lastmod>2018-08-04T14:21:58.694Z</lastmod>
     <data>
         <display>
         <title>Write Ahead Log 杂谈</title>
@@ -141,7 +185,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/12/07/Mysql%20%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E7%9A%84%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2017-12-07T12:05:34.963Z</lastmod>
+    <lastmod>2017-12-07T12:05:34.964Z</lastmod>
     <data>
         <display>
         <title>Mysql 事务隔离级别的使用</title>
@@ -182,7 +226,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/06/13/Computer-Science-Knowledge-System/</loc>
-    <lastmod>2017-09-08T02:45:19.818Z</lastmod>
+    <lastmod>2017-09-08T02:45:19.819Z</lastmod>
     <data>
         <display>
         <title>Computer Science Knowledge System</title>
@@ -220,7 +264,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/08/26/CSKS-%E4%BA%8C-%E3%80%81%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2017-08-26T10:37:38.970Z</lastmod>
+    <lastmod>2017-08-26T10:37:38.971Z</lastmod>
     <data>
         <display>
         <title>CSKS-(二)、数据库系统</title>
@@ -274,7 +318,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/05/13/FastJson-%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</loc>
-    <lastmod>2017-08-24T08:42:05.202Z</lastmod>
+    <lastmod>2017-08-24T08:42:05.203Z</lastmod>
     <data>
         <display>
         <title>FastJson 踩坑记录</title>
@@ -313,7 +357,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/05/07/%E6%B5%AE%E7%82%B9%E6%95%B0/</loc>
-    <lastmod>2017-08-24T08:40:36.081Z</lastmod>
+    <lastmod>2017-08-24T08:40:36.082Z</lastmod>
     <data>
         <display>
         <title>浮点数</title>
@@ -328,7 +372,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/05/17/%E9%93%BE%E6%8E%A5/</loc>
-    <lastmod>2017-08-15T07:03:19.924Z</lastmod>
+    <lastmod>2017-08-15T07:03:19.925Z</lastmod>
     <data>
         <display>
         <title>链接</title>
@@ -345,7 +389,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/05/26/Linux-TCP-%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2017-08-15T07:01:08.823Z</lastmod>
+    <lastmod>2017-08-15T07:01:08.824Z</lastmod>
     <data>
         <display>
         <title>Linux TCP 编程</title>
@@ -366,7 +410,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/01/15/C-%E5%AF%B9%E8%B1%A1%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8/</loc>
-    <lastmod>2017-07-10T05:05:34.504Z</lastmod>
+    <lastmod>2017-07-10T05:05:34.505Z</lastmod>
     <data>
         <display>
         <title>C++对象线程安全</title>
@@ -426,7 +470,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2015/12/10/%E4%BA%94%E3%80%81%E8%AF%AD%E4%B9%89%E5%88%86%E6%9E%90/</loc>
-    <lastmod>2017-06-12T12:01:42.302Z</lastmod>
+    <lastmod>2017-06-12T12:01:42.303Z</lastmod>
     <data>
         <display>
         <title>五、语义分析</title>
@@ -486,7 +530,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2015/12/24/%E4%B8%83%E3%80%81function-as-first-class/</loc>
-    <lastmod>2017-06-12T12:01:30.760Z</lastmod>
+    <lastmod>2017-06-12T12:01:30.761Z</lastmod>
     <data>
         <display>
         <title>七、function as first class</title>
@@ -566,7 +610,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2016/08/17/Traditional-SSA-Construction-Algorithm/</loc>
-    <lastmod>2017-06-12T12:01:12.530Z</lastmod>
+    <lastmod>2017-06-12T12:01:12.531Z</lastmod>
     <data>
         <display>
         <title>Traditional SSA Construction Algorithm</title>
@@ -606,7 +650,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2016/11/28/LL-Script-implements/</loc>
-    <lastmod>2017-06-12T12:00:57.129Z</lastmod>
+    <lastmod>2017-06-12T12:00:57.130Z</lastmod>
     <data>
         <display>
         <title>LL-Script implements</title>
@@ -626,7 +670,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2016/07/09/Clang-Source-Code-Analysis-3/</loc>
-    <lastmod>2017-06-12T12:00:05.460Z</lastmod>
+    <lastmod>2017-06-12T12:00:05.461Z</lastmod>
     <data>
         <display>
         <title>Clang Source Code Analysis (3)</title>
@@ -646,7 +690,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2016/05/13/Clang-Source-Code-Analysis-1/</loc>
-    <lastmod>2017-06-12T11:59:56.490Z</lastmod>
+    <lastmod>2017-06-12T11:59:56.491Z</lastmod>
     <data>
         <display>
         <title>Clang - Source Code Analysis (1)</title>
@@ -686,7 +730,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/05/Effective-C-Exception-safe-code/</loc>
-    <lastmod>2017-06-12T11:59:13.006Z</lastmod>
+    <lastmod>2017-06-12T11:59:13.007Z</lastmod>
     <data>
         <display>
         <title>Effective C++: Exception-safe code</title>
@@ -706,7 +750,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/05/Effective-C-Designs-Implements/</loc>
-    <lastmod>2017-06-12T11:59:08.438Z</lastmod>
+    <lastmod>2017-06-12T11:59:08.439Z</lastmod>
     <data>
         <display>
         <title>Effective C++: Designs & Implements</title>
@@ -726,7 +770,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/02/Effective-c-Constructors-Destructors-and-Assignment-Operators/</loc>
-    <lastmod>2017-06-12T11:59:04.365Z</lastmod>
+    <lastmod>2017-06-12T11:59:04.366Z</lastmod>
     <data>
         <display>
         <title>Effective c++:Constructors,Destructors,and Assignment Operators</title>
@@ -746,7 +790,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/02/Effective-C-Accustoming-Yourself-to-C/</loc>
-    <lastmod>2017-06-12T11:59:00.949Z</lastmod>
+    <lastmod>2017-06-12T11:59:00.950Z</lastmod>
     <data>
         <display>
         <title>Effective C++: Accustoming Yourself to C++</title>
@@ -766,15 +810,15 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/05/03/C%E8%AF%AD%E8%A8%80%E6%A0%BC%E5%BC%8F%E5%8C%96%E8%BE%93%E5%87%BA/</loc>
-    <lastmod>2017-06-12T11:58:56.023Z</lastmod>
+    <lastmod>2017-06-12T11:58:56.024Z</lastmod>
     <data>
         <display>
         <title>C语言格式化输出</title>
         <pubTime>2017-05-03T13:19:45.000Z</pubTime>
         
-        <tag>C</tag>
-         
         <tag>C++</tag>
+         
+        <tag>C</tag>
          
          
            
@@ -788,15 +832,15 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/05/07/C-C-%E8%B0%83%E7%94%A8%E7%BA%A6%E5%AE%9A/</loc>
-    <lastmod>2017-06-12T11:58:42.159Z</lastmod>
+    <lastmod>2017-06-12T11:58:42.160Z</lastmod>
     <data>
         <display>
         <title>C/C++ 调用约定</title>
         <pubTime>2017-05-07T10:42:50.000Z</pubTime>
         
-        <tag>C</tag>
-         
         <tag>C++</tag>
+         
+        <tag>C</tag>
          
          
            
@@ -852,7 +896,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/13/LeetCode-32-Longest-Valid-Parenthess/</loc>
-    <lastmod>2017-06-12T11:57:53.816Z</lastmod>
+    <lastmod>2017-06-12T11:57:53.817Z</lastmod>
     <data>
         <display>
         <title>LeetCode - 32 Longest Valid Parenthess</title>
@@ -896,7 +940,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/08/LeetCode-15-3-Sum/</loc>
-    <lastmod>2017-06-12T11:57:46.086Z</lastmod>
+    <lastmod>2017-06-12T11:57:46.087Z</lastmod>
     <data>
         <display>
         <title>LeetCode - 15-3 Sum</title>
@@ -918,7 +962,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/07/LeetCode-11-Container-With-Most-Water/</loc>
-    <lastmod>2017-06-12T11:57:42.058Z</lastmod>
+    <lastmod>2017-06-12T11:57:42.059Z</lastmod>
     <data>
         <display>
         <title>LeetCode - 11-Container With Most Water</title>
@@ -940,7 +984,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/03/06/LeetCode-10-Regular-Expression/</loc>
-    <lastmod>2017-06-12T11:57:38.093Z</lastmod>
+    <lastmod>2017-06-12T11:57:38.094Z</lastmod>
     <data>
         <display>
         <title>LeetCode - 10-Regular-Expression-Matching</title>
@@ -1006,7 +1050,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/06/12/LeetCode-85-Maximal-Rectangle/</loc>
-    <lastmod>2017-06-12T11:53:23.582Z</lastmod>
+    <lastmod>2017-06-12T11:53:23.583Z</lastmod>
     <data>
         <display>
         <title>LeetCode - 85 Maximal Rectangle</title>
@@ -1028,7 +1072,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/05/07/SIMD-%E4%B8%8E%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2017-05-07T07:38:06.162Z</lastmod>
+    <lastmod>2017-05-07T07:38:06.163Z</lastmod>
     <data>
         <display>
         <title>SIMD 与编程</title>
@@ -1062,7 +1106,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2016/11/09/%E7%9B%B4%E6%96%B9%E5%9B%BE%E5%9D%87%E8%A1%A1%E5%8C%96/</loc>
-    <lastmod>2017-05-07T05:14:25.306Z</lastmod>
+    <lastmod>2017-05-07T05:14:25.307Z</lastmod>
     <data>
         <display>
         <title>直方图均衡化</title>
@@ -1096,7 +1140,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/02/23/Mysql-ERROR-2002-HY000-Can%E2%80%99t-connect-to-local-MySQL-server-through-socket-%E2%80%98-var-lib-mysql-mysql-sock%E2%80%99-2/</loc>
-    <lastmod>2017-02-23T09:17:41.016Z</lastmod>
+    <lastmod>2017-02-23T09:17:41.017Z</lastmod>
     <data>
         <display>
         <title>Mysql ERROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock’ (2)</title>
@@ -1115,7 +1159,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2017/02/23/Linux-%E6%9F%A5%E7%9C%8B3306%E7%AB%AF%E5%8F%A3%E5%91%BD%E4%BB%A4/</loc>
-    <lastmod>2017-02-23T09:13:54.534Z</lastmod>
+    <lastmod>2017-02-23T09:13:54.535Z</lastmod>
     <data>
         <display>
         <title>Linux 查看3306端口命令</title>
@@ -1168,7 +1212,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2016/11/09/%E5%B8%82%E5%9C%BA%E5%A4%B1%E7%81%B5%E4%B8%8E%E6%94%BF%E5%BA%9C%E7%9A%84%E4%B8%8D%E5%8F%AF%E6%88%96%E7%BC%BA/</loc>
-    <lastmod>2016-11-09T13:39:55.947Z</lastmod>
+    <lastmod>2016-11-09T13:39:55.948Z</lastmod>
     <data>
         <display>
         <title>市场失灵与政府的不可或缺</title>
@@ -1221,7 +1265,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2016/04/22/MySql-%E6%9E%B6%E6%9E%84/</loc>
-    <lastmod>2016-04-22T10:56:43.426Z</lastmod>
+    <lastmod>2016-04-22T10:56:43.427Z</lastmod>
     <data>
         <display>
         <title>MySql 架构学习</title>
@@ -1238,7 +1282,7 @@
     
   <url>
     <loc>http://www.hashcoding.net/2015/12/23/Clang-for-windows/</loc>
-    <lastmod>2015-12-24T13:19:44.306Z</lastmod>
+    <lastmod>2015-12-24T13:19:44.307Z</lastmod>
     <data>
         <display>
         <title>Clang for windows</title>
