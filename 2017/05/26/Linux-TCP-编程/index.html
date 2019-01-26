@@ -2,23 +2,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
   
 
 
 <html class="theme-next muse use-motion" lang="zh-CN">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -29,12 +20,8 @@
 
 
 
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -49,60 +36,46 @@
 
 
 
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
-
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.3.0">
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
 
 
   
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
 
-  <meta name="description" content="TCP(Transmission Control Protocol) 是由 IETF 的 RFC 793 定义的一种面向连接的、可靠的、基于字节流的传输层通信协议。 TCP 报文段TCP 数据被封装在一个 IP 数据报中，如下图所示：  下图是 TCP 首部的数据格式，如果不计任选字段，它通常是20个字节：  下面介绍重要的几个数据：  32位序号：表示数据当前发送的第一个字节在字节流中的序号 3">
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=5.1.4">
+
+
+
+
+
+
+
+  <meta name="keywords" content="Linux,Socket,TCP/IP,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="TCP(Transmission Control Protocol) 是由 IETF 的 RFC 793 定义的一种面向连接的、可靠的、基于字节流的传输层通信协议。 TCP 报文段TCP 数据被封装在一个 IP 数据报中，如下图所示：  下图是 TCP 首部的数据格式，如果不计任选字段，它通常是20个字节：  下面介绍重要的几个数据：  32位序号：表示数据当前发送的第一个字节在字节流中的序号 3">
 <meta name="keywords" content="Linux,Socket,TCP&#x2F;IP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux TCP 编程">
@@ -125,24 +98,40 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="Coding" type="application/atom+xml" />
-
-
-
-
-  <link rel="canonical" href="http://www.hashcoding.net/2017/05/26/Linux-TCP-编程/"/>
-
-
-
-<script type="text/javascript" id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
   };
 </script>
 
+
+
+  <link rel="canonical" href="http://www.hashcoding.net/2017/05/26/Linux-TCP-编程/">
+
+
+
+
+
   <title>Linux TCP 编程 | Coding</title>
   
-
 
 
 
@@ -161,36 +150,9 @@
 
 
 
-  <noscript>
-  <style type="text/css">
-    .use-motion .motion-element,
-    .use-motion .brand,
-    .use-motion .menu-item,
-    .sidebar-inner,
-    .use-motion .post-block,
-    .use-motion .pagination,
-    .use-motion .comments,
-    .use-motion .post-header,
-    .use-motion .post-body,
-    .use-motion .collection-title { opacity: initial; }
-
-    .use-motion .logo,
-    .use-motion .site-title,
-    .use-motion .site-subtitle {
-      opacity: initial;
-      top: initial;
-    }
-
-    .use-motion {
-      .logo-line-before i { left: initial; }
-      .logo-line-after i { right: initial; }
-    }
-  </style>
-</noscript>
-
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -200,7 +162,7 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
@@ -212,15 +174,13 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
       
-        <p class="site-subtitle">纸上得来终觉浅，绝知此事要躬行</p>
+        <h1 class="site-subtitle" itemprop="description">纸上得来终觉浅，绝知此事要躬行</h1>
       
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="切换导航栏">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -228,77 +188,86 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-    <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-about">
-    <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-tags">
-    <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-categories">
-    <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-    <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-sitemap">
-    <a href="/sitemap.xml" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />站点地图</a>
-  </li>
-
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br>
+            
+            Sitemap
+          </a>
+        </li>
+      
+
       
         <li class="menu-item menu-item-search">
           
             <a href="javascript:;" class="popup-trigger">
           
             
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
         </li>
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -313,9 +282,7 @@
       <i class="fa fa-times-circle"></i>
     </span>
     <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="搜索..." spellcheck="false"
-             type="text" id="local-search-input">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
     </div>
   </div>
   <div id="local-search-result"></div>
@@ -329,20 +296,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
 
@@ -355,22 +314,20 @@
   
   
 
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://www.hashcoding.net/2017/05/26/Linux-TCP-编程/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Patrick">
-      <meta itemprop="description" content="C++, Go, 编译器, 分布式, 存储, 操作系统">
+      <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Coding">
     </span>
 
@@ -379,50 +336,25 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux TCP 编程
-              
-            
-          </h1>
+          <h2 class="post-title" itemprop="name headline">Linux TCP 编程</h2>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-
-              
-                
-              
-
-              <time title="创建时间：2017-05-26 18:28:19" itemprop="dateCreated datePublished" datetime="2017-05-26T18:28:19+08:00">2017-05-26</time>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-26T18:28:19+08:00">
+                2017-05-26
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-08-15 15:01:08" itemprop="dateModified" datetime="2017-08-15T15:01:08+08:00">2017-08-15</time>
-              
             
           </span>
 
@@ -436,7 +368,7 @@
                   <i class="fa fa-comment-o"></i>
                 </span>
                 <a href="/2017/05/26/Linux-TCP-编程/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2017/05/26/Linux-TCP-编程/" itemprop="commentsCount"></span>
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2017/05/26/Linux-TCP-编程/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -450,7 +382,7 @@
                  <i class="fa fa-eye"></i>
                </span>
                
-                 <span class="post-meta-item-text">阅读次数：</span>
+                 <span class="post-meta-item-text">Visitors&#58;</span>
                
                  <span class="leancloud-visitors-count"></span>
              </span>
@@ -652,6 +584,8 @@
 <p><code>accept</code> 函数从 <code>sockfd</code> 的<em>已经完成队列</em>中取出 socket。<code>addr</code> 表示接受的远程地址，<code>addrlen</code> 则是地址空间长度。在成功时，这些系统调用返回一个非负整数，它是接受的套接字的描述符。 出错时返回-1，并适当设置errno。在 linux 中还有一个新版本的函数 <code>accept4</code>：</p>
 <blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; #define _GNU_SOURCE             /* See feature_test_macros(7) */</span><br><span class="line">&gt; #include &lt;sys/socket.h&gt;</span><br><span class="line">&gt; int accept4(int sockfd, struct sockaddr  *addr, socklen_t *addrlen, int flags);</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
 <p>If flags is 0, then accept4() is the same as accept().  The following values can be bitwise ORed in flags to obtain different behavior:</p>
 <ul>
 <li><p>SOCK_NONBLOCK   Set  the O_NONBLOCK file status flag on the new open file description.  Using this flag saves extra calls to fcntl(2) to achieve the same result.</p>
@@ -747,9 +681,6 @@
 
       
     </div>
-
-    
-
     
     
     
@@ -809,16 +740,23 @@
   </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
           </div>
           
 
+
+          
+
   
     <div class="comments" id="comments">
       
-        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
         <div id="gitment-container" style="display:none"></div>
       
     </div>
@@ -848,134 +786,58 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
+            Overview
           </li>
         </ul>
       
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
               <p class="site-author-name" itemprop="name">Patrick</p>
-              <p class="site-description motion-element" itemprop="description">C++, Go, 编译器, 分布式, 存储, 操作系统</p>
+              <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">66</span>
-                    <span class="site-state-item-name">日志</span>
-                  </a>
-                </div>
-              
+          <nav class="site-state motion-element">
 
+            
+              <div class="site-state-item site-state-posts">
               
-                
-                
-                <div class="site-state-item site-state-categories">
-                  <a href="/categories/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">12</span>
-                    <span class="site-state-item-name">分类</span>
-                  </a>
-                </div>
+                <a href="/archives/">
               
+                  <span class="site-state-item-count">66</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
 
+            
               
-                
-                
-                <div class="site-state-item site-state-tags">
-                  <a href="/tags/index.html">
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">24</span>
-                    <span class="site-state-item-name">标签</span>
-                  </a>
-                </div>
               
-            </nav>
-          
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
 
           
             <div class="feed-link motion-element">
@@ -988,12 +850,13 @@
 
           
             <div class="links-of-author motion-element">
-              
-                <span class="links-of-author-item">
-                  <a href="https://github.com/thinkermao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i></a>
-                  
-                </span>
-              
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/thinkermao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i></a>
+                  </span>
+                
             </div>
           
 
@@ -1003,9 +866,6 @@
           
           
 
-          
-            
-          
           
 
         </div>
@@ -1042,20 +902,16 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; 2015 &mdash; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
+  <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Patrick</span>
 
   
-
-  
 </div>
 
 
-
-
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.4.4</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
 
 
 
@@ -1063,13 +919,12 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.3.0</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 
 
         
-
 
 
 
@@ -1089,10 +944,7 @@
     
 
     
-	
-    
 
-    
   </div>
 
   
@@ -1111,11 +963,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -1135,6 +983,16 @@
 
   
   
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -1143,29 +1001,48 @@
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
   
 
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
-
-
-
   
   
-
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
-
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
 
 
 
@@ -1173,7 +1050,10 @@
 
 
 
+
+
   
+
 
 
 
@@ -1194,8 +1074,7 @@
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            // id: decodeURI(window.location.pathname),
-            id: '1495794499000',
+            id: window.location.pathname, 
             owner: 'thinkermao',
             repo: 'thinkermao.github.io',
             
@@ -1220,6 +1099,7 @@
       
       </script>
     
+
 
 
 
@@ -1277,8 +1157,6 @@
         .css('overflow', 'hidden');
       $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
 
-      
-
       $.ajax({
         url: path,
         dataType: isXml ? "xml" : "json",
@@ -1312,7 +1190,6 @@
                 var title = data.title.trim();
                 var titleInLowerCase = title.toLowerCase();
                 var content = data.content.trim().replace(/<[^>]+>/g,"");
-                
                 var contentInLowerCase = content.toLowerCase();
                 var articleUrl = decodeURIComponent(data.url);
                 var indexOfTitle = [];
@@ -1612,40 +1489,35 @@
             var counter = results[0];
             counter.fetchWhenSave(true);
             counter.increment("time");
-            
             counter.save(null, {
               success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
               },
               error: function(counter, error) {
                 console.log('Failed to save Visitor num, with error message: ' + error.message);
               }
             });
           } else {
-            
-              var newcounter = new Counter();
-              /* Set ACL */
-              var acl = new AV.ACL();
-              acl.setPublicReadAccess(true);
-              acl.setPublicWriteAccess(true);
-              newcounter.setACL(acl);
-              /* End Set ACL */
-              newcounter.set("title", title);
-              newcounter.set("url", url);
-              newcounter.set("time", 1);
-              newcounter.save(null, {
-                success: function(newcounter) {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
-                },
-                error: function(newcounter, error) {
-                  console.log('Failed to create');
-                }
-              });
-            
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
           }
         },
         error: function(error) {
@@ -1690,18 +1562,27 @@
 
   
   
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
 
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
-
-  
-  
-
-  
-
-  
-
-  
 
   
 
