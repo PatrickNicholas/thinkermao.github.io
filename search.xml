@@ -389,8 +389,8 @@
     <url>%2F2017%2F02%2F23%2FMysql-ERROR-2002-HY000-Can%E2%80%99t-connect-to-local-MySQL-server-through-socket-%E2%80%98-var-lib-mysql-mysql-sock%E2%80%99-2%2F</url>
     <content type="text"><![CDATA[使用 mysql -uroot -p 连接 Mysql 时出现了下面的错误: 12ERROR 2002 (HY000): Can’t connect to local MySQL server through socket ‘/var/run/mysqld/mysqld.sock’ (2) 经过排查，发现是权限问题，使用: 1chown -R mysql:mysql /var/run/mysqld 修改权限，然后启动，成功。]]></content>
       <tags>
-        <tag>Linux</tag>
         <tag>Mysql</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -398,8 +398,8 @@
     <url>%2F2017%2F02%2F23%2FLinux-%E6%9F%A5%E7%9C%8B3306%E7%AB%AF%E5%8F%A3%E5%91%BD%E4%BB%A4%2F</url>
     <content type="text"><![CDATA[查看3306端口被什么程序占用 lsof -i :3306 查看3306端口是被哪个服务使用着 netstat -tunlp | grep :3306 查看3306端口的是否已在使用中，可验证使用该端口的服务是否已正常运行 netstat -an | grep :3306]]></content>
       <tags>
-        <tag>Linux</tag>
         <tag>Mysql</tag>
+        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
