@@ -864,10 +864,11 @@
     
 
     
+      <script src="/js/md5.min.js"></script>
       <script type="text/javascript">
       function renderGitment(){
         var gitment = new Gitmint({
-            id: window.location.pathname, 
+            id: md5(window.location.pathname), 
             owner: 'PatrickNicholas',
             repo: 'thinkermao.github.io',
             
