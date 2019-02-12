@@ -94,7 +94,7 @@
 
 
 
-  <meta name="keywords" content="Linux,Socket,TCP/IP,">
+  <meta name="keywords" content="Linux,TCP/IP,Socket,">
 
 
 
@@ -108,7 +108,7 @@
 
 
 <meta name="description" content="注：本文结论来自网络，真实性未考究，请批判性阅读，如果谬误，请斧正。本文所讨论内容，均假设工作环境为 Linux 服务器。  作为 TCP 不可或缺的一部分，TCP 包头的 RST 为 $1$ 时，表示重置，关闭异常链接。发送 RST 包关闭连接时，不必等缓冲区的包都发出去，直接就丢弃缓存区的包发送 RST 包。而接收端收到 RST 包后，也不必发送 ACK 包来确认。TCP 处理程序会在自己认">
-<meta name="keywords" content="Linux,Socket,TCP&#x2F;IP">
+<meta name="keywords" content="Linux,TCP&#x2F;IP,Socket">
 <meta property="og:type" content="article">
 <meta property="og:title" content="探究 Linux 下 TCP 的 RST Packet">
 <meta property="og:url" content="http://www.hashcoding.net/2019/01/26/Linux-TCP-Rst/index.html">
@@ -541,9 +541,9 @@
           
             <a href="/tags/Linux/" rel="tag"># Linux</a>
           
-            <a href="/tags/Socket/" rel="tag"># Socket</a>
-          
             <a href="/tags/TCP-IP/" rel="tag"># TCP/IP</a>
+          
+            <a href="/tags/Socket/" rel="tag"># Socket</a>
           
         </div>
       
@@ -596,7 +596,7 @@
   
     <div class="comments" id="comments">
       
-        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div onclick="showGitment()" id="gitment-display-button">Show comments from Gitment</div>
         <div id="gitment-container" style="display:none"></div>
       
     </div>
